@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.planos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  height: 100%;
+}
+
+.planos-viewer {
+  position: relative;
+  flex: 1;
+  min-height: var(--planos-min-height);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--planos-bg);
+  cursor: grab;
+  touch-action: none;
+}
+
+.planos-canvas {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  transition: transform 0.05s linear;
+}
+
+.planos-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.plan-tab {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.plan-tab.active {
+  background: var(--tab-active-bg);
+  border-color: var(--tab-active-bg);
+  color: var(--tab-active-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+.planos-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--planos-min-height);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: var(--font-md);
+}

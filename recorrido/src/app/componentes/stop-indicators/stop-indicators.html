@@ -1,0 +1,11 @@
+<div class="stop-indicators" role="list" [attr.aria-label]="label">
+  @for (stop of stops; track stop.id) {
+    <span
+      class="stop"
+      role="listitem"
+      [class.active]="stop.id === activeId"
+      [attr.aria-current]="stop.id === activeId ? 'true' : null">
+      {{ stop.label }}
+    </span>
+  }
+</div>

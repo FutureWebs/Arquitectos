@@ -1,0 +1,24 @@
+<img
+  class="poster"
+  [class.hidden]="state.playing()"
+  [class.contain]="state.scene() === 'inicio'"
+  [src]="posterSrc()"
+  (error)="onPosterError()"
+  alt="" />
+
+<video
+  #video
+  class="video"
+  [attr.src]="videoSrc() || null"
+  [class.inactive]="!state.playing()"
+  muted
+  playsinline
+  preload="auto"
+  (timeupdate)="onTimeUpdate($event)"
+  (ended)="state.onVideoEnded()"
+  (error)="onVideoError()">
+</video>
+
+<div class="stage-ui">
+  <ng-content></ng-content>
+</div>

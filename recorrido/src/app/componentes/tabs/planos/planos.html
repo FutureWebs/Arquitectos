@@ -1,0 +1,29 @@
+@if (planos.length > 0) {
+  <div class="planos">
+    <div class="planos-viewer" #viewer>
+      <app-media-image
+        class="planos-canvas"
+        [mediaKey]="planos[activeIndex].image"
+        [alt]="planos[activeIndex].title"
+        fit="contain" />
+    </div>
+
+    @if (planos.length > 1) {
+      <div class="planos-tabs">
+        @for (plan of planos; track plan.title) {
+          <button
+            type="button"
+            class="plan-tab"
+            [class.active]="$index === activeIndex"
+            (click)="select($index)">
+            {{ plan.title }}
+          </button>
+        }
+      </div>
+    }
+  </div>
+} @else {
+  <div class="planos-empty">
+    <span>{{ emptyLabel }}</span>
+  </div>
+}

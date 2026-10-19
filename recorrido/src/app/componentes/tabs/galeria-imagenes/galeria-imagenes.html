@@ -1,0 +1,34 @@
+@if (imagenes.length > 0) {
+  <div class="carousel">
+    @for (image of [currentImage()]; track image) {
+      <app-media-image
+        class="carousel-img"
+        [mediaKey]="image"
+        [alt]="'Imagen ' + (currentIndex + 1)" />
+    }
+
+    <app-icon-button
+      class="carousel-btn prev"
+      variant="nav"
+      icon="chevron_left"
+      [label]="prevLabel"
+      (pressed)="prev()" />
+
+    <app-icon-button
+      class="carousel-btn next"
+      variant="nav"
+      icon="chevron_right"
+      [label]="nextLabel"
+      (pressed)="next()" />
+
+    <div class="carousel-dots">
+      @for (image of imagenes; track $index) {
+        <span class="dot" [class.active]="$index === currentIndex"></span>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="empty">
+    <span>{{ emptyLabel }}</span>
+  </div>
+}

@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="icon-button"
+  [class.glass]="variant === 'glass'"
+  [class.nav]="variant === 'nav'"
+  [attr.aria-label]="label"
+  [attr.title]="label"
+  [disabled]="disabled"
+  (click)="pressed.emit($event)">
+  <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+</button>

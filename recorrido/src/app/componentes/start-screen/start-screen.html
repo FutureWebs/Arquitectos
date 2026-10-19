@@ -1,0 +1,11 @@
+<div class="start-screen">
+  @if (heroText) {
+    <p class="hero-text">{{ heroText }}</p>
+  }
+
+  <div class="start-action">
+    <button type="button" class="btn-start" (click)="started.emit()">
+      {{ startLabel }}
+    </button>
+  </div>
+</div>
