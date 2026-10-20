@@ -1,4 +1,8 @@
-name: Deploy Angular
+name: Deploy GitHub Pages
+
+# Genera el build de Angular y publica el resultado en la rama `deploys`.
+# GitHub Pages debe estar configurado (una sola vez) con
+# Settings → Pages → Source: "Deploy from a branch" → deploys / (root).
 
 on:
   push:
@@ -6,36 +10,55 @@ on:
       - main
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
+
+# Dos deploys seguidos no pueden pisarse entre sí.
+concurrency:
+  group: github-pages-deploy
+  cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: recorrido/package-lock.json
 
-      - name: Install and Build
+      - name: Install
         working-directory: ./recorrido
+        run: npm ci
+
+      - name: Build
+        working-directory: ./recorrido
+        # La base href se calcula con el nombre del repo para que funcione
+        # en https://<usuario>.github.io/<nombre-del-repo>/
+        run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
+
+      - name: Preparar sitio
         run: |
-          npm install
-          npm run build -- --base-href "/visualizer-beta/"
+          mkdir -p "$RUNNER_TEMP/site"
+          cp -r recorrido/dist/visualizer-beta/browser/. "$RUNNER_TEMP/site/"
+          # .nojekyll: evita que Pages procese la rama con Jekyll
+          cp .nojekyll "$RUNNER_TEMP/site/.nojekyll"
+          # 404.html: al recargar una ruta interna (ej. /componentes)
+          # GitHub Pages sirve este archivo y Angular sigue ruteando.
+          cp "$RUNNER_TEMP/site/index.html" "$RUNNER_TEMP/site/404.html"
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # APUNTA A DONDE ANGULAR DEJA EL BUILD
-          path: './recorrido/dist/visualizer-beta/browser'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publicar en la rama deploys
+        working-directory: ${{ runner.temp }}/site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git init --initial-branch=deploys
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "deploy: ${{ github.sha }}"
+          git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" deploys

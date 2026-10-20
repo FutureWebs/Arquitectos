@@ -25,6 +25,7 @@ export const DATA_ENVIRONMENT: DataEnvironment = {
     loading: 'Cargando experiencia 3D...',
     hero: 'Bienvenido a tu nuevo espacio',
     start: 'Empezar',
+    componentsGallery: 'Componentes',
     back: 'Volver',
     enter: 'Entrar',
     fullscreen: 'Pantalla completa',

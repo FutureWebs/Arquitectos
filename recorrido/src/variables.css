@@ -94,6 +94,10 @@
   --bar-top: 30px;
   --bar-inset: 30px;
 
+  /* Texto y paneles superpuestos sobre el escenario oscuro */
+  --text-on-stage: rgba(255, 255, 255, 0.7);
+  --stage-panel: rgba(15, 23, 42, 0.6);
+
   /* Hero de la pantalla inicial */
   --hero-top: 12%;
   --hero-size: 1.9rem;
@@ -117,6 +121,16 @@
   --btn-start-padding-x: 40px;
   --btn-start-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   --btn-start-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+  /* Botón "Componentes" (galería de componentes reutilizables) */
+  --btn-components-bg: rgba(255, 255, 255, 0.16);
+  --btn-components-bg-hover: rgba(255, 255, 255, 0.3);
+  --btn-components-border: 1px solid rgba(255, 255, 255, 0.55);
+  --btn-components-color: var(--color-white);
+  --btn-components-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  --btn-components-font: var(--font-sm);
+  --btn-components-padding-y: 12px;
+  --btn-components-padding-x: 20px;
 
   /* ── Navegación del recorrido exterior ──────────────────────────────── */
   --nav-bottom: 60px;

@@ -40,6 +40,8 @@ export interface UiLabels {
   loading: string;
   hero: string;
   start: string;
+  /** Texto del botón que abre la galería de componentes reutilizables. */
+  componentsGallery: string;
   back: string;
   enter: string;
   fullscreen: string;

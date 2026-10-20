@@ -1,0 +1,240 @@
+<div class="gallery">
+  <header class="header">
+    <div class="header-main">
+      <app-icon-button
+        variant="glass"
+        icon="arrow_back"
+        label="Volver al recorrido"
+        (pressed)="goBack()" />
+
+      <div class="header-text">
+        <h1 class="title">Componentes reutilizables</h1>
+        <p class="subtitle">
+          Cada componente aislado, con sus inputs, estados y eventos, para
+          revisarlos y corregirlos rápido.
+        </p>
+      </div>
+    </div>
+
+    <div class="events" role="status" aria-live="polite">
+      <span class="events-title">Eventos</span>
+      @for (event of events(); track $index) {
+        <span class="event">{{ event }}</span>
+      } @empty {
+        <span class="event event-empty">Todavía no se disparó ninguno</span>
+      }
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- ── Base ─────────────────────────────────────────────────────── -->
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">IconButton</h2>
+        <code class="card-path">icon-button</code>
+      </div>
+      <div class="demo demo-row">
+        <app-icon-button
+          icon="star"
+          label="solid"
+          (pressed)="log('IconButton', 'pressed → solid')" />
+        <app-icon-button
+          variant="glass"
+          icon="fullscreen"
+          label="glass"
+          (pressed)="log('IconButton', 'pressed → glass')" />
+        <app-icon-button
+          variant="nav"
+          icon="chevron_right"
+          label="nav"
+          (pressed)="log('IconButton', 'pressed → nav')" />
+        <app-icon-button
+          icon="close"
+          label="deshabilitado"
+          [disabled]="true"
+          (pressed)="log('IconButton', 'pressed → deshabilitado')" />
+      </div>
+      <p class="note">variant: solid (default) · glass · nav — y estado disabled.</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">MediaImage</h2>
+        <code class="card-path">media-image</code>
+      </div>
+      <div class="demo demo-media">
+        <app-media-image class="fill" [mediaKey]="poster" alt="Parada A" />
+      </div>
+      <p class="note">Resuelve la clave según dispositivo y encadena respaldos con (error).</p>
+    </section>
+
+    <!-- ── Escenario ────────────────────────────────────────────────── -->
+    <section class="card card-wide">
+      <div class="card-head">
+        <h2 class="card-title">StartScreen</h2>
+        <code class="card-path">start-screen</code>
+      </div>
+      <div class="demo demo-stage demo-start">
+        <app-start-screen
+          [heroText]="heroText"
+          startLabel="Empezar"
+          componentsLabel="Componentes"
+          (started)="log('StartScreen', 'started')"
+          (componentsRequested)="log('StartScreen', 'componentsRequested')" />
+      </div>
+      <p class="note">Ocupa todo el escenario. Botón de la galería a la derecha de "Empezar".</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">LoadingScreen</h2>
+        <code class="card-path">loading-screen</code>
+      </div>
+      <div class="demo demo-stage demo-loading">
+        <app-loading-screen [text]="labels.loading" />
+      </div>
+      <p class="note">Capa absoluta con z-index alto: tapa todo lo que haya debajo.</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">StopIndicators</h2>
+        <code class="card-path">stop-indicators</code>
+      </div>
+      <div class="demo-controls">
+        @for (stop of demoStops; track stop.id) {
+          <button
+            type="button"
+            class="chip"
+            [class.active]="activeStop() === stop.id"
+            [attr.aria-pressed]="activeStop() === stop.id"
+            (click)="activeStop.set(stop.id)">
+            {{ stop.label }}
+          </button>
+        }
+      </div>
+      <div class="demo demo-stage demo-stops">
+        <app-stop-indicators
+          [stops]="demoStops"
+          [activeId]="activeStop()"
+          [label]="labels.stopIndicator" />
+      </div>
+      <p class="note">Se ancla arriba al centro; en mobile baja a --stops-top-mobile.</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">NavControls</h2>
+        <code class="card-path">nav-controls</code>
+      </div>
+      <div class="demo-controls">
+        <button type="button" class="chip" [class.active]="canPrev()" (click)="canPrev.set(!canPrev())">
+          canPrev: {{ canPrev() ? 'true' : 'false' }}
+        </button>
+        <button type="button" class="chip" [class.active]="canNext()" (click)="canNext.set(!canNext())">
+          canNext: {{ canNext() ? 'true' : 'false' }}
+        </button>
+      </div>
+      <div class="demo demo-stage demo-nav">
+        <app-nav-controls
+          [canPrev]="canPrev()"
+          [canNext]="canNext()"
+          [prevLabel]="labels.prevStop"
+          [nextLabel]="labels.nextStop"
+          (prev)="log('NavControls', 'prev')"
+          (next)="log('NavControls', 'next')" />
+      </div>
+      <p class="note">Flechas ancladas abajo al centro; quedan opacas cuando están deshabilitadas.</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">EnterHotspot</h2>
+        <code class="card-path">enter-hotspot</code>
+      </div>
+      <div class="demo demo-stage demo-hotspot">
+        <app-enter-hotspot
+          [label]="labels.enter"
+          [buildingName]="building.name"
+          [position]="{ x: 50, y: 48 }"
+          (entered)="log('EnterHotspot', 'entered')" />
+      </div>
+      <p class="note">Posición en % del contenedor, según parada y dispositivo.</p>
+    </section>
+
+    <!-- ── Modal ────────────────────────────────────────────────────── -->
+    <section class="card card-wide">
+      <div class="card-head">
+        <h2 class="card-title">InfoModal</h2>
+        <code class="card-path">info-modal</code>
+      </div>
+      <div class="demo-controls">
+        <button type="button" class="chip" (click)="modalOpen.set(true)">
+          Abrir modal
+        </button>
+        <span class="note">Se cierra con la X, Escape o clickeando afuera.</span>
+      </div>
+      <div class="demo demo-stage demo-modal">
+        <app-info-modal
+          [visible]="modalOpen()"
+          [building]="building"
+          [tabs]="tabs"
+          [labels]="labels"
+          (closed)="modalOpen.set(false); log('InfoModal', 'closed')" />
+      </div>
+      <p class="note">Compone las cuatro pestañas: Informacion, GaleriaImagenes, Planos y Recorrido3D.</p>
+    </section>
+
+    <!-- ── Pestañas del modal ───────────────────────────────────────── -->
+    <section class="card card-wide">
+      <div class="card-head">
+        <h2 class="card-title">Informacion</h2>
+        <code class="card-path">tabs/informacion</code>
+      </div>
+      <div class="demo demo-tab">
+        <app-informacion [info]="info" />
+      </div>
+      <p class="note">Descripción, specs, chips de características y acciones.</p>
+    </section>
+
+    <section class="card card-wide">
+      <div class="card-head">
+        <h2 class="card-title">GaleriaImagenes</h2>
+        <code class="card-path">tabs/galeria-imagenes</code>
+      </div>
+      <div class="demo demo-tab">
+        <app-galeria-imagenes
+          [imagenes]="gallery"
+          [emptyLabel]="labels.emptyGallery"
+          [prevLabel]="labels.prevStop"
+          [nextLabel]="labels.nextStop" />
+      </div>
+      <p class="note">Carrusel con flechas y puntos; con la lista vacía muestra emptyLabel.</p>
+    </section>
+
+    <section class="card card-wide">
+      <div class="card-head">
+        <h2 class="card-title">Planos</h2>
+        <code class="card-path">tabs/planos</code>
+      </div>
+      <div class="demo demo-tab demo-planos">
+        <app-planos [planos]="plans" [emptyLabel]="labels.emptyPlans" />
+      </div>
+      <p class="note">Zoom con rueda/pellizco, arrastre y doble clic para resetear.</p>
+    </section>
+
+    <section class="card card-wide">
+      <div class="card-head">
+        <h2 class="card-title">Recorrido3D</h2>
+        <code class="card-path">tabs/recorrido-3d</code>
+      </div>
+      <div class="demo demo-tab demo-tour3d">
+        <app-recorrido-3d
+          [tour3d]="tour3d"
+          [emptyLabel]="labels.emptyTour3d"
+          [fullscreenLabel]="labels.fullscreen" />
+      </div>
+      <p class="note">Iframe embebible con botón de pantalla completa propio.</p>
+    </section>
+  </main>
+</div>

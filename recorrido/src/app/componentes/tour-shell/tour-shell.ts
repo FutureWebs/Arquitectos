@@ -1,4 +1,5 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { DATA_ENVIRONMENT } from '../../data/data.environment';
 import { TourStateService } from '../../services/tour-state.service';
 import { EnterHotspot } from '../enter-hotspot/enter-hotspot';
@@ -34,6 +35,7 @@ import { StopIndicators, StopMarker } from '../stop-indicators/stop-indicators';
 })
 export class TourShell implements OnInit {
   readonly state = inject(TourStateService);
+  private readonly router = inject(Router);
   readonly labels = DATA_ENVIRONMENT.ui;
   readonly tabs = DATA_ENVIRONMENT.tabs;
   readonly stopMarkers: StopMarker[] = DATA_ENVIRONMENT.tour.stops.map((stop) => ({
@@ -45,6 +47,11 @@ export class TourShell implements OnInit {
 
   ngOnInit(): void {
     this.state.init();
+  }
+
+  /** Acceso a la galería de componentes reutilizables (herramienta de desarrollo). */
+  openGallery(): void {
+    this.router.navigate(['/componentes']);
   }
 
   toggleFullscreen(): void {

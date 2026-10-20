@@ -7,7 +7,9 @@
     <app-start-screen
       [heroText]="labels.hero"
       [startLabel]="labels.start"
-      (started)="state.start()" />
+      [componentsLabel]="labels.componentsGallery"
+      (started)="state.start()"
+      (componentsRequested)="openGallery()" />
   }
 
   @if (state.showBack()) {
