@@ -1,48 +1,75 @@
 <div class="informacion-container">
 
+  <!-- Cabecera de Información -->
   <div class="info-header-section">
     <div class="info-header-text">
       <div class="info-titulo">{{ info!.titulo }}</div>
       <div class="info-edificio">{{ info!.edificio }}</div>
-      <div class="info-disponibilidad" *ngIf="info!.disponibilidad">
-        <span class="badge">{{ info!.disponibilidad }}</span>
-      </div>
+
+      @if (info!.disponibilidad) {
+        <div class="info-disponibilidad">
+          <span class="badge">{{ info!.disponibilidad }}</span>
+        </div>
+      }
+
       <div class="info-tipologia">{{ info!.tipologia }}</div>
     </div>
+
     <img class="info-foto-titulo" [src]="info!.fotoTitulo" [alt]="info!.titulo" />
   </div>
 
+  <!-- Sección de Instalaciones y Características -->
   <div class="info-instalaciones">
-    <div class="info-section-title">Instalaciones</div>
+    <div class="info-section-title">Instalaciones y Características</div>
 
-    <div class="info-row">
-      <mat-icon class="info-icon">square_foot</mat-icon>
-      <span class="info-text">Área total {{ info!.metrosCuadrados }} m²</span>
-    </div>
+    <div class="instalaciones-grid">
+      <div class="info-row">
+        <div class="icon-wrapper">
+          <mat-icon class="info-icon">square_foot</mat-icon>
+        </div>
+        <span class="info-text">Área total <strong>{{ info!.metrosCuadrados }} m²</strong></span>
+      </div>
 
-    <div class="info-row">
-      <mat-icon class="info-icon">bed</mat-icon>
-      <span class="info-text">{{ info!.dormitorios }} Recámara</span>
-    </div>
+      <div class="info-row">
+        <div class="icon-wrapper">
+          <mat-icon class="info-icon">bed</mat-icon>
+        </div>
+        <span class="info-text"><strong>{{ info!.dormitorios }}</strong> Recámara(s)</span>
+      </div>
 
-    <div class="info-row">
-      <mat-icon class="info-icon">bathtub</mat-icon>
-      <span class="info-text">{{ info!.banios }} Baño</span>
-    </div>
+      <div class="info-row">
+        <div class="icon-wrapper">
+          <mat-icon class="info-icon">bathtub</mat-icon>
+        </div>
+        <span class="info-text"><strong>{{ info!.banios }}</strong> Baño(s)</span>
+      </div>
 
-    <div class="info-row" *ngIf="info!.lavadero">
-      <mat-icon class="info-icon">local_laundry_service</mat-icon>
-      <span class="info-text">Lavandería</span>
-    </div>
+      @if (info!.lavadero) {
+        <div class="info-row">
+          <div class="icon-wrapper">
+            <mat-icon class="info-icon">local_laundry_service</mat-icon>
+          </div>
+          <span class="info-text">Lavandería incluida</span>
+        </div>
+      }
 
-    <div class="info-row" *ngIf="info!.balcon">
-      <mat-icon class="info-icon">balcony</mat-icon>
-      <span class="info-text">Balcón</span>
-    </div>
+      @if (info!.balcon) {
+        <div class="info-row">
+          <div class="icon-wrapper">
+            <mat-icon class="info-icon">balcony</mat-icon>
+          </div>
+          <span class="info-text">Balcón privado</span>
+        </div>
+      }
 
-    <div class="info-row" *ngIf="info!.cochera">
-      <mat-icon class="info-icon">local_parking</mat-icon>
-      <span class="info-text">Cochera</span>
+      @if (info!.cochera) {
+        <div class="info-row">
+          <div class="icon-wrapper">
+            <mat-icon class="info-icon">local_parking</mat-icon>
+          </div>
+          <span class="info-text">Cochera asignada</span>
+        </div>
+      }
     </div>
   </div>
 
