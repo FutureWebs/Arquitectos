@@ -76,7 +76,7 @@
 
 .badge-text {
   font-family: var(--font-family);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   fill: #ffffff;
 }
@@ -100,7 +100,7 @@
 /* Tipografía súper pesada y legible a distancia de brazo */
 .badge-text {
   font-family: var(--font-family);
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 800;
   fill: #ffffff;
 }
@@ -115,18 +115,19 @@
 /* --- BOTONERA HORIZONTAL SUPERIOR --- */
 .floor-selector {
   position: absolute;
-  max-width: 60%;
+  max-width: 80%;
   top: 25px;
-  translate: calc(33%);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 25;
-  background: var(--color-white);
+  background: var(--panel-dark);
   backdrop-filter: blur(20px);
-  border: none;
+  border: 1px solid var(--panel-dark-border);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-sm) var(--spacing-sm);
+  padding: var(--spacing-xs);
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
   -webkit-tap-highlight-color: transparent;
 }
@@ -135,12 +136,14 @@
 .floors-scroll {
   display: flex;
   flex-direction: row;
-  gap: var(--spacing-sm);
+  gap: 4px;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .floors-scroll::-webkit-scrollbar {
@@ -150,14 +153,14 @@
 .floor-btn {
   background: transparent;
   border: none;
-  color: var(--color-text-primary);
+  color: var(--text-on-dark-muted);
   font-family: var(--font-family);
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
   border-radius: 50%;
   font-weight: var(--font-weight-semibold);
-  font-size: var(--font-md);
+  font-size: 13px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -169,13 +172,41 @@
 }
 
 .floor-btn:hover {
-  color: var(--color-white);
-  background: rgba(152, 152, 152, 0.04);
+  color: var(--text-on-dark);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .floor-btn.active {
-  background: rgba(138, 138, 138, 0.18);
-  color: var(--color-text-primary);
+  background: rgba(0, 136, 255, 0.8);
+  color: #ffffff;
+}
+
+/* Mobile: hacer el selector más compacto */
+@media (max-width: 767px) {
+  .floor-selector {
+    max-width: calc(100vw - 140px);
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 6px;
+    gap: 2px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .floors-scroll {
+    gap: 2px;
+    flex-wrap: nowrap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .floor-btn {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 10px;
+  }
 }
 
 /* Botón Volver integrado a la izquierda del selector */

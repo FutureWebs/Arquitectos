@@ -64,7 +64,7 @@ export class MainComponent {
   isFullscreen = signal<boolean>(false);
 
   edificioCompleto = EDIFICIO_COMPLETO;
-  pisoActual = signal<Floor>(EDIFICIO_COMPLETO[0]);
+  pisoActual = signal<Floor>(EDIFICIO_COMPLETO.find(f => f.nombre === 'T2') || EDIFICIO_COMPLETO[0]);
 
   currentPoster = signal<string>(`${this.pathFotos}intro.webp`);
   currentVideoUrl = signal<string>('');
