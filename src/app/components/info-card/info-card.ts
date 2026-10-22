@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { GaleriaImagenes } from '../tabs/galeria-imagenes/galeria-imagenes';
 import { Planos } from '../tabs/planos/planos';
 import { Informacion } from '../tabs/informacion/informacion';
-import { InfoDepto } from '../../../../../models/info-depto';
+import { InfoDepto } from '../../models/info-depto';
 
 @Component({
   selector: 'app-info-card',

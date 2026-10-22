@@ -5,6 +5,9 @@ import { EdificioOverlay } from '../edificio-overlay/edificio-overlay.component'
 import { EDIFICIO_COMPLETO } from '../../data/edificio.mock';
 import { Apartment, Floor } from '../../models/building.models';
 import {TranslatePipe} from '@ngx-translate/core';
+import {SidenavComponent} from '../sidenav/sidenav.component';
+import {InfoCard} from '../info-card/info-card';
+import {InfoDepto} from '../../models/info-depto';
 
 type AppState = 'INICIO' | 'NAVEGANDO_360' | 'ADENTRO';
 type Perspectiva = 'FRENTE' | 'DERECHA' | 'IZQUIERDA';
@@ -19,16 +22,39 @@ interface VideoStep {
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, TopBarComponent, EdificioOverlay, TranslatePipe],
+  imports: [CommonModule, TopBarComponent, EdificioOverlay, TranslatePipe, SidenavComponent, InfoCard],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
+
+  protected infoTest: InfoDepto = {
+    balcon: false,
+    banios: 0,
+    cochera: false,
+    disponibilidad: '',
+    dormitorios: 0,
+    edificio: '',
+    fotoTitulo: '',
+    imagenes: [],
+    lavadero: false,
+    metrosCuadrados: 0,
+    piso: '',
+    plano: '',
+    planta3D: '',
+    precio: 0,
+    tipologia: '',
+    titulo: ''
+  };
+
+
   private cdr = inject(ChangeDetectorRef);
   @ViewChild('mainVideo') videoElement!: ElementRef<HTMLVideoElement>;
 
   private pathVideos = 'mobile/vuelo/videos/';
   private pathFotos = 'mobile/vuelo/fotos/';
+
+  isSidenavOpen = signal<boolean>(false);
 
   estadoActual = signal<AppState>('INICIO');
   perspectivaActual = signal<Perspectiva>('FRENTE');
@@ -43,6 +69,9 @@ export class MainComponent {
   currentPoster = signal<string>(`${this.pathFotos}intro.webp`);
   currentVideoUrl = signal<string>('');
 
+  mostrarInfo = false;
+  svgInfo = false;
+
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
 
   private targetPosterForEnd: string = '';
@@ -56,6 +85,10 @@ export class MainComponent {
     img.onload = () => setTimeout(() => this.isLoading.set(false), 400);
     img.onerror = () => this.isLoading.set(false);
     img.src = this.currentPoster();
+  }
+
+  abrirMenuPrincipal() {
+    this.isSidenavOpen.set(true);
   }
 
   // --- ACCIONES DE VIDEOS Y SECUENCIAS ---
@@ -186,11 +219,18 @@ export class MainComponent {
     }
   }
 
-  abrirMenuPrincipal() {
-    console.log('Menú hamburguesa abierto');
-  }
 
   abrirDetalle(apto: Apartment) {
-    console.log('Apartamento seleccionado:', apto);
+
+    this.svgInfo = true;
+    this.mostrarInfo = true;
+    this.infoTest = apto.datos;
   }
+  abrirInfo() {
+    this.mostrarInfo = true;
+  }
+  cerrarInfo() {
+    this.mostrarInfo = false;
+  }
+
 }
