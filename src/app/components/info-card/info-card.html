@@ -1,0 +1,69 @@
+<div class="info-card-peek" (click)="toggle()">
+  <mat-icon class="peek-arrow" [class.rotated]="visible">expand_less</mat-icon>
+</div>
+
+<div class="info-card-overlay" [class.open]="visible" (click)="onClose()">
+    <div class="info-card" [class.fake-fullscreen]="is3DFullscreen" (click)="$event.stopPropagation()">
+
+    <div class="info-card-header" (click)="onClose()">
+      <mat-icon class="header-arrow">expand_more</mat-icon>
+    </div>
+
+    <div class="info-card-tabs">
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'informacion'"
+        (click)="selectTab('informacion')">
+        <mat-icon>info</mat-icon>
+        <span>Info</span>
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'galeria'"
+        (click)="selectTab('galeria')">
+        <mat-icon>photo_library</mat-icon>
+        <span>Galería</span>
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'planos'"
+        (click)="selectTab('planos')">
+        <mat-icon>architecture</mat-icon>
+        <span>Planos</span>
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'planta3d'"
+        (click)="selectTab('planta3d')">
+        <mat-icon>view_in_ar</mat-icon>
+        <span>3D</span>
+      </button>
+    </div>
+
+    <div class="info-card-content">
+      <app-informacion
+        *ngIf="activeTab === 'informacion'"
+        [info]="info!">
+      </app-informacion>
+      <app-galeria-imagenes
+        *ngIf="activeTab === 'galeria'"
+        [imagenes]="info!.imagenes">
+      </app-galeria-imagenes>
+      <app-planos
+        *ngIf="activeTab === 'planos'"
+        [plano]="info!.plano">
+      </app-planos>
+      <div class="planta3d-container" [class.fake-fullscreen]="is3DFullscreen" *ngIf="activeTab === 'planta3d'" #planta3dContainer>
+        <iframe
+          class="planta3d-iframe"
+          [src]="safeUrl"
+          allowfullscreen>
+        </iframe>
+        <button class="fullscreen-btn" (click)="toggle3DFullscreen()">
+          <mat-icon>{{ is3DFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

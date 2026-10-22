@@ -1,0 +1,9 @@
+<div class="planos-container">
+  <div class="planos-viewer" *ngIf="plano" #viewer>
+    <img class="planos-img" [src]="plano" [alt]="'Plano del departamento'" draggable="false" />
+  </div>
+  <div class="planos-empty" *ngIf="!plano">
+    <mat-icon class="empty-icon">architecture</mat-icon>
+    <span>No hay plano disponible</span>
+  </div>
+</div>

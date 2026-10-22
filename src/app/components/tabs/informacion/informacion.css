@@ -1,0 +1,103 @@
+.informacion-container {
+  padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.info-header-section {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-lg);
+}
+
+.info-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-foto-titulo {
+  width: 200px;
+  height: 90px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .info-foto-titulo {
+    width: 420px;
+    height: 140px;
+    border-radius: var(--radius-xl);
+  }
+}
+
+.info-titulo {
+  font-size: var(--font-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.info-edificio {
+  font-size: var(--font-md);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-disponibilidad {
+  margin-bottom: var(--spacing-xs);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+}
+
+.info-tipologia {
+  font-size: var(--font-base);
+  color: var(--color-text-muted);
+}
+
+.info-instalaciones {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-section-title {
+  font-size: var(--font-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-icon {
+  color: var(--color-icon);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.info-text {
+  font-size: var(--font-md);
+  color: var(--color-text);
+}

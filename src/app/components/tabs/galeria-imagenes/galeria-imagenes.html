@@ -1,0 +1,29 @@
+<div class="galeria-container">
+  <div class="carousel" *ngIf="imagenes.length > 0">
+    <img
+      class="carousel-img"
+      *ngFor="let img of [imagenes[currentIndex]]"
+      @fadeIn
+      [src]="img"
+      [alt]="'Imagen ' + (currentIndex + 1)" />
+
+    <button class="carousel-btn prev" (click)="prev()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button class="carousel-btn next" (click)="next()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+
+    <div class="carousel-dots">
+      <span
+        class="dot"
+        *ngFor="let img of imagenes; let i = index"
+        [class.active]="i === currentIndex">
+      </span>
+    </div>
+  </div>
+
+  <div class="galeria-empty" *ngIf="imagenes.length === 0">
+    <span>No hay imágenes disponibles</span>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+.planta3d-container {
+  padding: 16px 20px;
+}
+
+.planta3d-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.planta3d-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.planta3d-item.selected {
+  border-color: #1a1a1a;
+  background: #eeeeee;
+}
+
+.planta3d-item:hover:not(.selected) {
+  background: #eeeeee;
+}
+
+.planta3d-icon {
+  font-size: 20px;
+}
+
+.planta3d-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.planta3d-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.planta3d-url {
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.planta3d-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  color: #999;
+  font-size: 14px;
+}

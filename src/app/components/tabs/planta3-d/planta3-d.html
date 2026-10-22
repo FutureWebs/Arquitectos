@@ -1,0 +1,18 @@
+<div class="planta3d-container">
+  <div class="planta3d-list" *ngIf="modelos.length > 0">
+    <div
+      class="planta3d-item"
+      *ngFor="let modelo of modelos"
+      [class.selected]="modeloSeleccionado === modelo"
+      (click)="seleccionarModelo(modelo)">
+      <div class="planta3d-icon">🏗️</div>
+      <div class="planta3d-info">
+        <span class="planta3d-name">Modelo 3D</span>
+        <span class="planta3d-url">{{ modelo }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="planta3d-empty" *ngIf="modelos.length === 0">
+    <span>No hay modelos 3D disponibles</span>
+  </div>
+</div>

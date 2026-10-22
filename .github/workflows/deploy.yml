@@ -29,14 +29,11 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-          cache-dependency-path: recorrido/package-lock.json
 
       - name: Install
-        working-directory: ./recorrido
         run: npm ci
 
       - name: Build
-        working-directory: ./recorrido
         # La base href se calcula con el nombre del repo para que funcione
         # en https://<usuario>.github.io/<nombre-del-repo>/
         run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
@@ -44,11 +41,10 @@ jobs:
       - name: Preparar sitio
         run: |
           mkdir -p "$RUNNER_TEMP/site"
-          cp -r recorrido/dist/visualizer-beta/browser/. "$RUNNER_TEMP/site/"
+          cp -r dist/torre/browser/. "$RUNNER_TEMP/site/"
           # .nojekyll: evita que Pages procese la rama con Jekyll
           cp .nojekyll "$RUNNER_TEMP/site/.nojekyll"
-          # 404.html: al recargar una ruta interna (ej. /componentes)
-          # GitHub Pages sirve este archivo y Angular sigue ruteando.
+          # 404.html: al recargar una ruta interna, GitHub Pages sirve este archivo y Angular sigue ruteando.
           cp "$RUNNER_TEMP/site/index.html" "$RUNNER_TEMP/site/404.html"
 
       - name: Publicar en la rama deploys

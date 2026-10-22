@@ -1,0 +1,49 @@
+<div class="informacion-container">
+
+  <div class="info-header-section">
+    <div class="info-header-text">
+      <div class="info-titulo">{{ info!.titulo }}</div>
+      <div class="info-edificio">{{ info!.edificio }}</div>
+      <div class="info-disponibilidad" *ngIf="info!.disponibilidad">
+        <span class="badge">{{ info!.disponibilidad }}</span>
+      </div>
+      <div class="info-tipologia">{{ info!.tipologia }}</div>
+    </div>
+    <img class="info-foto-titulo" [src]="info!.fotoTitulo" [alt]="info!.titulo" />
+  </div>
+
+  <div class="info-instalaciones">
+    <div class="info-section-title">Instalaciones</div>
+
+    <div class="info-row">
+      <mat-icon class="info-icon">square_foot</mat-icon>
+      <span class="info-text">Área total {{ info!.metrosCuadrados }} m²</span>
+    </div>
+
+    <div class="info-row">
+      <mat-icon class="info-icon">bed</mat-icon>
+      <span class="info-text">{{ info!.dormitorios }} Recámara</span>
+    </div>
+
+    <div class="info-row">
+      <mat-icon class="info-icon">bathtub</mat-icon>
+      <span class="info-text">{{ info!.banios }} Baño</span>
+    </div>
+
+    <div class="info-row" *ngIf="info!.lavadero">
+      <mat-icon class="info-icon">local_laundry_service</mat-icon>
+      <span class="info-text">Lavandería</span>
+    </div>
+
+    <div class="info-row" *ngIf="info!.balcon">
+      <mat-icon class="info-icon">balcony</mat-icon>
+      <span class="info-text">Balcón</span>
+    </div>
+
+    <div class="info-row" *ngIf="info!.cochera">
+      <mat-icon class="info-icon">local_parking</mat-icon>
+      <span class="info-text">Cochera</span>
+    </div>
+  </div>
+
+</div>

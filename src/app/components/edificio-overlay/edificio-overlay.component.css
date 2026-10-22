@@ -1,0 +1,236 @@
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.bg-img, .interactive-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+.bg-img {
+  object-fit: fill;
+}
+
+/* --- CONFIGURACIÓN DE POLÍGONOS (UNIFICADOS) --- */
+.apto-path {
+  cursor: pointer;
+
+  /* Borde grueso y uniforme para todos los apartamentos */
+  stroke: rgba(0, 90, 180, 0.7);
+  stroke-width: 4;
+
+  /* Relleno plano y muy transparente por defecto */
+  fill: rgba(0, 20, 50, 0.02);
+  transition: fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
+
+  /* ELIMINA EL RECUADRO TURQUESA/CELESTE EN MÓVILES */
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+/* Al pasar el mouse, todos se iluminan con el mismo tono azul corporativo */
+.apto-path:hover {
+  stroke: rgba(0, 140, 255, 1);
+  fill: rgba(0, 50, 110, 0.08);
+}
+
+/* Efecto al presionar (:active) - Azul más oscuro y transparente */
+.apto-path:active {
+  fill: rgba(0, 15, 40, 0.25) !important;
+  stroke: #003366 !important;
+  stroke-width: 10;
+  outline: none;
+}
+
+/* --- REDISEÑO DE BADGES MASIVAS (PASIVAS) --- */
+.apto-badge {
+  /* HACE QUE EL CLICK ATRAVIESE LA BADGE Y TOQUE EL PATH DE ABAJO */
+  pointer-events: none;
+
+  /* Desactivamos selección de texto o highlights molestos */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+
+
+}
+
+.badge-container-bg {
+  fill: rgba(10, 16, 26, 0.92);
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1.5;
+}
+
+.badge-text {
+  font-family: var(--font-family);
+  font-size: 32px;
+  font-weight: 800;
+  fill: #ffffff;
+}
+
+/* Colores de los puntos e iluminación de bordes de la píldora */
+.apto-badge.disponible .status-dot { fill: #0088ff; }
+.apto-badge.disponible .badge-container-bg { stroke: rgba(0, 136, 255, 0.4); }
+
+.apto-badge.reservado .status-dot { fill: #ffaa00; }
+.apto-badge.reservado .badge-container-bg { stroke: rgba(255, 170, 0, 0.4); }
+
+.apto-badge.vendido .status-dot { fill: #ff4444; }
+.apto-badge.vendido .badge-container-bg { stroke: rgba(255, 68, 68, 0.4); }
+
+.badge-container-bg {
+  fill: rgba(10, 16, 26, 0.92);
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1.5;
+}
+
+/* Tipografía súper pesada y legible a distancia de brazo */
+.badge-text {
+  font-family: var(--font-family);
+  font-size: 38px;
+  font-weight: 800;
+  fill: #ffffff;
+}
+
+.status-dot {
+  transition: fill 0.2s ease;
+}
+
+
+
+
+/* --- BOTONERA HORIZONTAL SUPERIOR --- */
+.floor-selector {
+  position: absolute;
+  max-width: 60%;
+  top: 25px;
+  translate: calc(33%);
+  z-index: 25;
+  background: var(--color-white);
+  backdrop-filter: blur(20px);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+.floors-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-sm);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.floors-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.floor-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.floor-btn:hover {
+  color: var(--color-white);
+  background: rgba(152, 152, 152, 0.04);
+}
+
+.floor-btn.active {
+  background: rgba(138, 138, 138, 0.18);
+  color: var(--color-text-primary);
+}
+
+/* Botón Volver integrado a la izquierda del selector */
+.back-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  margin-right: var(--spacing-xs);
+}
+
+.back-btn:hover {
+  color: #ff4444;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.back-icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.floor-selector .fullscreen-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  margin-left: var(--spacing-xs);
+}
+
+.floor-selector .fullscreen-btn:hover {
+  color: var(--color-text-primary);
+  background: rgba(138, 138, 138, 0.18);
+}
+
+.floor-selector .fullscreen-btn mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
