@@ -13,6 +13,7 @@ export class TopBarComponent {
   @Input() mostrarMenuBtn: boolean = true;
   @Input() mostrarBackBtn: boolean = true;
   @Input() mostrarFullscreenBtn: boolean = true;
+  @Input() mostrarActionBtns: boolean = false; // Galería + Ubicación (solo en home/360)
   @Input() isBlocked: boolean = false; // Desactiva todos los botones (ej: durante animaciones)
   @Input() isFullscreen: boolean = false;
 
@@ -20,6 +21,9 @@ export class TopBarComponent {
   @Output() menuClicked = new EventEmitter<void>();
   @Output() backClicked = new EventEmitter<void>();
   @Output() fullscreenToggled = new EventEmitter<void>();
+  @Output() galleryClicked = new EventEmitter<void>();
+
+  ubicacionUrl = 'https://maps.app.goo.gl/N3P3VjhsurUdVeBo8';
 
   onMenuClick() {
     this.menuClicked.emit();
@@ -31,5 +35,9 @@ export class TopBarComponent {
 
   toggleFullscreen() {
     this.fullscreenToggled.emit();
+  }
+
+  onGalleryClick() {
+    this.galleryClicked.emit();
   }
 }

@@ -29,8 +29,31 @@
 
   </div>
 
-  <!-- Grupo Derecha: Pantalla Completa -->
+  <!-- Grupo Derecha: Galería + Ubicación + Pantalla Completa -->
   <div class="top-right-group">
+    @if (mostrarActionBtns) {
+      <button class="btn-glass"
+              [disabled]="isBlocked"
+              (click)="onGalleryClick()"
+              aria-label="Galería">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+      </button>
+
+      <a class="btn-glass"
+         [href]="ubicacionUrl"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Ubicación">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      </a>
+    }
     @if (mostrarFullscreenBtn) {
       <button class="btn-glass"
               [disabled]="isBlocked"
