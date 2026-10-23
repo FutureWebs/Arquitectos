@@ -7,8 +7,8 @@
 
   <header>
     <h2>Panel de Administración - Edificio</h2>
-    <p>Usuario: {{ userProfile.email }}</p>
-    <button (click)="authService.logout()">Cerrar Sesión</button>
+    <p>Usuario: ADMINISTRADOR</p>
+    <button (click)="logout()">Cerrar Sesión</button>
   </header>
 
   <!-- CONTENIDO PRINCIPAL (Bloqueado si no pagó) -->
@@ -16,14 +16,16 @@
     <h3>Departamentos</h3>
 
     <div class="grid-deptos">
+      <!-- Recorremos la lista de departamentos que trae Firestore -->
       <div *ngFor="let depto of departamentos" class="card-depto">
-        <h4>Depto {{ depto.numero }} (Piso {{ depto.piso }})</h4>
+        <!-- Mostramos el ID del documento (ej: P1-Apto-10) -->
+        <h4>Departamento: {{ depto.id }}</h4>
         <p>Estado actual: <strong>{{ depto.estado }}</strong></p>
 
         <div class="actions">
-          <button (click)="cambiarEstado(depto, 'Disponible')" [disabled]="!edificioActivo">Disponible</button>
-          <button (click)="cambiarEstado(depto, 'Ocupado')" [disabled]="!edificioActivo">Ocupado</button>
-          <button (click)="cambiarEstado(depto, 'Mantenimiento')" [disabled]="!edificioActivo">Mantenimiento</button>
+          <button (click)="cambiarEstado(depto, 'DISPONIBLE')" [disabled]="!edificioActivo">Disponible</button>
+          <button (click)="cambiarEstado(depto, 'VENDIDO')" [disabled]="!edificioActivo">Vendido</button>
+          <button (click)="cambiarEstado(depto, 'RESERVADO')" [disabled]="!edificioActivo">Reservado</button>
         </div>
       </div>
     </div>
