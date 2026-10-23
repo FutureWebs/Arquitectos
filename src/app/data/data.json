@@ -37,14 +37,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -65,12 +65,12 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
               "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
@@ -93,14 +93,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -121,14 +121,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -149,14 +149,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -177,14 +177,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -205,14 +205,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -233,14 +233,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -261,14 +261,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -289,14 +289,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -317,14 +317,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -345,14 +345,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -373,14 +373,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -401,14 +401,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -429,14 +429,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -457,14 +457,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -485,15 +485,15 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
-              "planta3D": "https://gaston-vr.github.io/Jejui-Dpxo/"
+              "plano": "assets/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           }
         ]
@@ -520,14 +520,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -548,14 +548,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -576,14 +576,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -604,14 +604,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -632,14 +632,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -660,14 +660,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -688,14 +688,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -716,14 +716,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -744,14 +744,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -772,14 +772,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -800,14 +800,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -828,14 +828,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -856,14 +856,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -884,14 +884,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -912,14 +912,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -940,14 +940,14 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -968,15 +968,15 @@
               "lavadero": true,
               "balcon": true,
               "cochera": false,
-              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
               "imagenes": [
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
-                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600"
               ],
-              "plano": "mobile/test/plano_test.webp",
-              "planta3D": "https://gaston-vr.github.io/Jejui-Dpxo/"
+              "plano": "assets/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           }
 

@@ -130,6 +130,19 @@
   transform: translateX(4px);
 }
 
+.nav-links a.nav-login {
+  color: #38bdf8;
+  font-weight: 600;
+  margin-top: 8px;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.nav-links a.nav-login:hover {
+  background: rgba(56, 189, 248, 0.18);
+  color: #ffffff;
+}
+
 .divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.08);
