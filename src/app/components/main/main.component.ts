@@ -1,13 +1,13 @@
-import { Component, ElementRef, ViewChild, signal, computed, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, ViewChild, signal, computed, inject, ChangeDetectorRef, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 import { EdificioOverlay } from '../edificio-overlay/edificio-overlay.component';
-import { EDIFICIO_COMPLETO } from '../../data/edificio.mock';
+import { BuildingDataService } from '../../services/building-data.service';
 import { Apartment, Floor } from '../../models/building.models';
-import {TranslatePipe} from '@ngx-translate/core';
-import {SidenavComponent} from '../sidenav/sidenav.component';
-import {InfoCard} from '../info-card/info-card';
-import {InfoDepto} from '../../models/info-depto';
+import { TranslatePipe } from '@ngx-translate/core';
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { InfoCard } from '../info-card/info-card';
+import { InfoDepto } from '../../models/info-depto';
 
 type AppState = 'INICIO' | 'NAVEGANDO_360' | 'ADENTRO';
 type Perspectiva = 'FRENTE' | 'DERECHA' | 'IZQUIERDA';
@@ -27,35 +27,15 @@ interface VideoStep {
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-
-  protected infoTest: InfoDepto = {
-    balcon: false,
-    banios: 0,
-    cochera: false,
-    disponibilidad: '',
-    dormitorios: 0,
-    edificio: '',
-    fotoTitulo: '',
-    imagenes: [],
-    lavadero: false,
-    metrosCuadrados: 0,
-    piso: '',
-    plano: '',
-    planta3D: '',
-    precio: 0,
-    tipologia: '',
-    titulo: ''
-  };
-
-
+  private buildingService = inject(BuildingDataService);
   private cdr = inject(ChangeDetectorRef);
+
   @ViewChild('mainVideo') videoElement!: ElementRef<HTMLVideoElement>;
 
   private pathVideos = 'mobile/vuelo/videos/';
   private pathFotos = 'mobile/vuelo/fotos/';
 
   isSidenavOpen = signal<boolean>(false);
-
   estadoActual = signal<AppState>('INICIO');
   perspectivaActual = signal<Perspectiva>('FRENTE');
   isAnimating = signal<boolean>(false);
@@ -63,22 +43,29 @@ export class MainComponent {
   isVideoPlaying = signal<boolean>(false);
   isFullscreen = signal<boolean>(false);
 
-  edificioCompleto = EDIFICIO_COMPLETO;
-  pisoActual = signal<Floor>(EDIFICIO_COMPLETO.find(f => f.nombre === 'T2') || EDIFICIO_COMPLETO[0]);
+  // Obtenemos los pisos sincronizados desde el servicio (JSON + Firebase)
+  edificioCompleto = this.buildingService.edificioPisos;
+  pisoActual = signal<Floor | null>(null);
 
   currentPoster = signal<string>(`${this.pathFotos}intro.webp`);
   currentVideoUrl = signal<string>('');
 
   mostrarInfo = false;
   svgInfo = false;
+  infoSeleccionada!: InfoDepto;
 
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
 
-  private targetPosterForEnd: string = '';
-  private esperandoInicioVideo = false;
-  private videoQueue: VideoStep[] = [];
-  private pasoEnReproduccion: VideoStep | null = null;
-  private posterTimeoutRef: any;
+  constructor() {
+    // Efecto para asignar el piso por defecto (T2 o el primero disponible) cuando carguen los datos
+    effect(() => {
+      const pisos = this.edificioCompleto();
+      if (pisos.length > 0 && !this.pisoActual()) {
+        const pisoDefault = pisos.find(f => f.nombre === 'T2') || pisos[0];
+        this.pisoActual.set(pisoDefault);
+      }
+    });
+  }
 
   ngOnInit() {
     const img = new Image();
@@ -91,7 +78,7 @@ export class MainComponent {
     this.isSidenavOpen.set(true);
   }
 
-  // --- ACCIONES DE VIDEOS Y SECUENCIAS ---
+  // --- MÉTODOS DE VIDEO Y NAVEGACIÓN (Se mantienen igual) ---
   private ejecutarSecuencia(pasos: VideoStep[]) {
     if (this.isAnimating()) return;
     this.videoQueue = pasos;
@@ -154,7 +141,6 @@ export class MainComponent {
     this.reproducirSiguienteDeLaCola();
   }
 
-  // --- BOTONES Y NAVEGACIÓN ---
   iniciarDescubrimiento() {
     this.ejecutarSecuencia([
       { video: 'intro.mp4', poster: 'home.webp', targetState: 'NAVEGANDO_360', targetPerspectiva: 'FRENTE' }
@@ -219,18 +205,27 @@ export class MainComponent {
     }
   }
 
-
+  // Al seleccionar un apartamento, cargamos sus datos estáticos y el estado actualizado
   abrirDetalle(apto: Apartment) {
-
     this.svgInfo = true;
     this.mostrarInfo = true;
-    this.infoTest = apto.datos;
+    this.infoSeleccionada = {
+      ...apto.datosEstaticos,
+      disponibilidad: apto.disponibilidadText || apto.estado
+    };
   }
+
   abrirInfo() {
     this.mostrarInfo = true;
   }
+
   cerrarInfo() {
     this.mostrarInfo = false;
   }
 
+  private targetPosterForEnd: string = '';
+  private esperandoInicioVideo = false;
+  private videoQueue: VideoStep[] = [];
+  private pasoEnReproduccion: VideoStep | null = null;
+  private posterTimeoutRef: any;
 }

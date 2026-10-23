@@ -1,7 +1,7 @@
 
 import { Apartment, Floor } from '../models/building.models';
 import {InfoDepto} from '../models/info-depto';
-
+/*
 const crearInfoDepto = (titulo: string, piso: string, tipologia: string, estado: string): InfoDepto => ({
   titulo,
   edificio: 'Torre A',
@@ -324,3 +324,4 @@ const generarEdificio = (): Floor[] => {
 };
 
 export const EDIFICIO_COMPLETO: Floor[] = generarEdificio();
+*/

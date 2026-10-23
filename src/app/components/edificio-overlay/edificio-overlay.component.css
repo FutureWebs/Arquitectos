@@ -1,267 +1,183 @@
-
+/* --- CONTENEDOR OVERLAY PRINCIPAL --- */
 .overlay {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 20;
+  inset: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.4s ease;
+  z-index: 40;
 }
 
 .overlay.visible {
   opacity: 1;
-  pointer-events: all;
-}
-
-.bg-img, .interactive-svg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  pointer-events: auto;
 }
 
 .bg-img {
-  object-fit: fill;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* --- CONFIGURACIÓN DE POLÍGONOS (UNIFICADOS) --- */
+.interactive-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- POLÍGONOS DE LOS DEPARTAMENTOS (PATHS SVG) --- */
 .apto-path {
   cursor: pointer;
-
-  /* Borde grueso y uniforme para todos los apartamentos */
-  stroke: rgba(0, 90, 180, 0.7);
-  stroke-width: 4;
-
-  /* Relleno plano y muy transparente por defecto */
-  fill: rgba(0, 20, 50, 0.02);
-  transition: fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
-
-  /* ELIMINA EL RECUADRO TURQUESA/CELESTE EN MÓVILES */
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 2;
+  transition: fill 0.25s ease, stroke 0.25s ease;
   -webkit-tap-highlight-color: transparent;
   outline: none;
 }
 
-/* Al pasar el mouse, todos se iluminan con el mismo tono azul corporativo */
-.apto-path:hover {
-  stroke: rgba(0, 140, 255, 1);
-  fill: rgba(0, 50, 110, 0.08);
+/* Colores según estado dinámico con opacidades para el fondo */
+.apto-path.disponible {
+  fill: rgba(52, 211, 153, 0.22); /* Verde translúcido */
+}
+.apto-path.disponible:hover {
+  fill: rgba(52, 211, 153, 0.45);
+  stroke: rgba(52, 211, 153, 0.9);
 }
 
-/* Efecto al presionar (:active) - Azul más oscuro y transparente */
-.apto-path:active {
-  fill: rgba(0, 15, 40, 0.25) !important;
-  stroke: #003366 !important;
-  stroke-width: 10;
-  outline: none;
+.apto-path.reservado {
+  fill: rgba(251, 191, 36, 0.28); /* Amarillo/Naranja translúcido */
+}
+.apto-path.reservado:hover {
+  fill: rgba(251, 191, 36, 0.5);
+  stroke: rgba(251, 191, 36, 0.9);
 }
 
-/* --- REDISEÑO DE BADGES MASIVAS (PASIVAS) --- */
+.apto-path.vendido {
+  fill: rgba(239, 68, 68, 0.25); /* Rojo translúcido */
+  cursor: not-allowed;
+}
+.apto-path.vendido:hover {
+  fill: rgba(239, 68, 68, 0.45);
+  stroke: rgba(239, 68, 68, 0.8);
+}
+
+/* --- BADGES Y PÍLDORAS FLOTANTES --- */
 .apto-badge {
-  /* HACE QUE EL CLICK ATRAVIESE LA BADGE Y TOQUE EL PATH DE ABAJO */
-  pointer-events: none;
-
-  /* Desactivamos selección de texto o highlights molestos */
+  cursor: pointer;
+  pointer-events: auto; /* Permite clic directo en la badge */
   user-select: none;
+  transition: transform 0.2s ease;
   -webkit-tap-highlight-color: transparent;
-  outline: none;
-
-
 }
 
+.apto-badge:hover {
+  transform: scale(1.08);
+}
+
+/* Contenedor de la píldora vertical */
 .badge-container-bg {
-  fill: rgba(10, 16, 26, 0.92);
-  stroke: rgba(255, 255, 255, 0.15);
+  fill: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   stroke-width: 1.5;
+  transition: stroke 0.2s ease;
 }
 
+/* Colores del borde de la píldora y del punto de estado */
+.apto-badge.disponible .status-dot { fill: #34d399; }
+.apto-badge.disponible .badge-container-bg { stroke: rgba(52, 211, 153, 0.5); }
+
+.apto-badge.reservado .status-dot { fill: #fbbf24; }
+.apto-badge.reservado .badge-container-bg { stroke: rgba(251, 191, 36, 0.5); }
+
+.apto-badge.vendido .status-dot { fill: #ef4444; }
+.apto-badge.vendido .badge-container-bg { stroke: rgba(239, 68, 68, 0.5); }
+
+/* Tipografía de la píldora */
 .badge-text {
-  font-family: var(--font-family);
-  font-size: 28px;
-  font-weight: 800;
   fill: #ffffff;
-}
-
-/* Colores de los puntos e iluminación de bordes de la píldora */
-.apto-badge.disponible .status-dot { fill: #0088ff; }
-.apto-badge.disponible .badge-container-bg { stroke: rgba(0, 136, 255, 0.4); }
-
-.apto-badge.reservado .status-dot { fill: #ffaa00; }
-.apto-badge.reservado .badge-container-bg { stroke: rgba(255, 170, 0, 0.4); }
-
-.apto-badge.vendido .status-dot { fill: #ff4444; }
-.apto-badge.vendido .badge-container-bg { stroke: rgba(255, 68, 68, 0.4); }
-
-.badge-container-bg {
-  fill: rgba(10, 16, 26, 0.92);
-  stroke: rgba(255, 255, 255, 0.15);
-  stroke-width: 1.5;
-}
-
-/* Tipografía súper pesada y legible a distancia de brazo */
-.badge-text {
-  font-family: var(--font-family);
-  font-size: 28px;
-  font-weight: 800;
-  fill: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-family, sans-serif);
+  letter-spacing: -0.3px;
 }
 
 .status-dot {
   transition: fill 0.2s ease;
 }
 
-
-
-
-/* --- BOTONERA HORIZONTAL SUPERIOR --- */
+/* --- SELECTOR DE PISOS FLOTANTE DERECHO --- */
 .floor-selector {
   position: absolute;
-  max-width: 80%;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 25;
-  background: var(--panel-dark);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--panel-dark-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xs);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-  -webkit-tap-highlight-color: transparent;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-height: 75vh;
+  overflow-y: auto;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 8px;
+  z-index: 50;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  scrollbar-width: none; /* Firefox */
 }
 
+.floor-selector::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
 
 .floors-scroll {
   display: flex;
-  flex-direction: row;
-  gap: 4px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  max-width: 100%;
-  -webkit-overflow-scrolling: touch;
-}
-
-.floors-scroll::-webkit-scrollbar {
-  display: none;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .floor-btn {
   background: transparent;
   border: none;
-  color: var(--text-on-dark-muted);
-  font-family: var(--font-family);
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
-  border-radius: 50%;
-  font-weight: var(--font-weight-semibold);
-  font-size: 13px;
+  color: #94a3b8;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
   -webkit-tap-highlight-color: transparent;
   outline: none;
 }
 
 .floor-btn:hover {
-  color: var(--text-on-dark);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.floor-btn.active {
-  background: rgba(0, 136, 255, 0.8);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
 }
 
-/* Mobile: hacer el selector más compacto */
+.floor-btn.active {
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+/* Adaptación para pantallas pequeñas */
 @media (max-width: 767px) {
   .floor-selector {
-    max-width: calc(100vw - 140px);
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 4px 6px;
-    gap: 2px;
-    flex-wrap: nowrap;
-    overflow: hidden;
-  }
-
-  .floors-scroll {
-    gap: 2px;
-    flex-wrap: nowrap;
-    flex: 1;
-    min-width: 0;
+    right: 12px;
+    padding: 6px;
   }
 
   .floor-btn {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    font-size: 10px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    font-size: 12px;
   }
-}
-
-/* Botón Volver integrado a la izquierda del selector */
-.back-btn {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  margin-right: var(--spacing-xs);
-}
-
-.back-btn:hover {
-  color: #ff4444;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.back-icon {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-}
-
-.floor-selector .fullscreen-btn {
-  background: transparent;
-  border: none;
-  color: var(--color-text-primary);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  margin-left: var(--spacing-xs);
-}
-
-.floor-selector .fullscreen-btn:hover {
-  color: var(--color-text-primary);
-  background: rgba(138, 138, 138, 0.18);
-}
-
-.floor-selector .fullscreen-btn mat-icon {
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
 }

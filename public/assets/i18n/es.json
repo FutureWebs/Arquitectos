@@ -1,5 +1,7 @@
 {
   "aria_menu": "Menú principal",
   "aria_back": "Volver atrás",
-  "aria_fullscreen": "Alternar pantalla completa"
+  "aria_fullscreen": "Alternar pantalla completa",
+  "btn_discover": "Descubrir",
+  "btn_enter": "Entrar"
 }

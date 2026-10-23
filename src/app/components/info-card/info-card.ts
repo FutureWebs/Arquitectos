@@ -7,7 +7,6 @@ import { Planos } from '../tabs/planos/planos';
 import { Informacion } from '../tabs/informacion/informacion';
 import { InfoDepto } from '../../models/info-depto';
 
-/** Elemento que puede entrar en pantalla completa (con el alias de Safari). */
 type FullscreenElement = HTMLElement & {
   webkitRequestFullscreen?: () => Promise<void> | void;
 };
@@ -28,13 +27,7 @@ export class InfoCard implements OnDestroy {
 
   activeTab: 'informacion' | 'galeria' | 'planos' | 'planta3d' = 'informacion';
   is3DFullscreen = false;
-
-  /**
-   * true => el navegador no soporta Fullscreen API en elementos (iOS Safari)
-   * y se usa el modo "fake" (contenedor fijo) que en mobile ya funciona bien.
-   */
   usingFakeFullscreen = false;
-
   safeUrl: SafeResourceUrl = '';
 
   constructor(private sanitizer: DomSanitizer) {}
@@ -71,8 +64,6 @@ export class InfoCard implements OnDestroy {
       return;
     }
 
-    // Pantalla completa real: el contenedor pasa al "top layer" del navegador,
-    // ocupa TODO el monitor y el botón de salida queda siempre visible.
     const request = container && (container.requestFullscreen ?? container.webkitRequestFullscreen);
     if (container && typeof request === 'function') {
       Promise.resolve(request.call(container))
@@ -87,7 +78,6 @@ export class InfoCard implements OnDestroy {
     this.enterFakeFullscreen();
   }
 
-  /** Salida con la tecla Escape del navegador (o de la barra del sistema). */
   @HostListener('document:fullscreenchange')
   @HostListener('document:webkitfullscreenchange')
   onFullscreenChange() {

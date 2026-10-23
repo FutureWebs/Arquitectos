@@ -44,7 +44,7 @@ export interface Floor {
   apartamentos: Apartment[];
 }
 
-export interface BuildingStructure {
+export interface Building {
   id: string;
   nombre: string;
   pisos: Floor[];

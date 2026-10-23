@@ -1,6 +1,5 @@
 <div class="video-container">
 
-  <!-- Pantalla de Carga -->
   @if (isLoading()) {
     <div class="loading-screen">
       <div class="spinner"></div>
@@ -8,13 +7,11 @@
     </div>
   }
 
-  <!-- Póster estático de fondo cuando no corre video -->
   <img [src]="currentPoster()"
        class="poster-layer"
        [class.hidden]="isVideoPlaying()"
        alt="" />
 
-  <!-- Video de fondo principal -->
   <video #mainVideo
          class="background-video"
          [class.inactive]="!isVideoPlaying()"
@@ -24,7 +21,6 @@
          (ended)="onVideoEnded()">
   </video>
 
-  <!-- Barra Superior con botones Glass (Menú, Volver, Fullscreen) -->
   <app-top-bar
     [mostrarMenuBtn]="true"
     [mostrarBackBtn]="estadoActual() !== 'INICIO'"
@@ -36,26 +32,35 @@
     (fullscreenToggled)="toggleFullscreen()">
   </app-top-bar>
 
-  <!-- Overlay del Edificio cuando se entra -->
-  <app-edificio-overlay
-    [isVisible]="mostrarOverlay()"
-    [floorData]="pisoActual()"
-    [listaPisos]="edificioCompleto"
-    [isFullscreen]="isFullscreen()"
-    (backPressed)="volverAtras()"
-    (toggleFullscreen)="toggleFullscreen()"
-    (floorChanged)="pisoActual.set($event)"
-    (apartmentSelected)="abrirDetalle($event)">
-  </app-edificio-overlay>
+  <!-- Overlay usando la señal reactiva y validando que el piso actual exista -->
+  @if (pisoActual()) {
+    <app-edificio-overlay
+      [isVisible]="mostrarOverlay()"
+      [floorData]="pisoActual()!"
+      [listaPisos]="edificioCompleto()"
+      [isFullscreen]="isFullscreen()"
+      (backPressed)="volverAtras()"
+      (toggleFullscreen)="toggleFullscreen()"
+      (floorChanged)="pisoActual.set($event)"
+      (apartmentSelected)="abrirDetalle($event)">
+    </app-edificio-overlay>
+  }
 
-  <!-- Capa de Interfaz de Usuario (UI Layer) -->
   <div class="ui-layer" [class.ui-hidden]="isAnimating()">
 
-    <!-- Estado: INICIO -->
+    <!-- Estado: INICIO con Branding Oficial -->
     @if (estadoActual() === 'INICIO') {
-      <div class="top-center">
-        <p class="hero-text">{{ 'welcome_hero' | translate }}</p>
+      <div class="top-center brand-hero-container">
+        <div class="hero-star-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+          </svg>
+        </div>
+        <h1 class="hero-brand-title">CARDINALES</h1>
+        <div class="hero-brand-pill">ALTO PANORAMA</div>
+
       </div>
+
       <div class="center-overlay">
         <button class="btn-premium" (click)="iniciarDescubrimiento()">
           {{ 'btn_discover' | translate }}
@@ -79,9 +84,7 @@
         </button>
       </div>
     }
-
   </div>
-</div>
 
 <app-sidenav
   [isOpen]="isSidenavOpen()"
@@ -90,7 +93,7 @@
 
 @if (svgInfo) {
   <app-info-card
-    [info]="infoTest"
+    [info]="infoSeleccionada"
     [visible]="mostrarInfo"
     (close)="cerrarInfo()"
     (open)="abrirInfo()">
