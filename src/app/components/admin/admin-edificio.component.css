@@ -83,11 +83,14 @@ h3 {
   color: #334155;
 }
 
-/* Grilla de departamentos */
+/* Contenedor principal o de la grilla de departamentos */
 .grid-deptos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  max-height: 70vh; /* Limita la altura de la sección */
+  overflow-y: auto;  /* Habilita la barra de desplazamiento vertical si son muchos */
+  padding-right: 10px; /* Espacio para que la barra no tape el contenido */
 }
 
 .card-depto {

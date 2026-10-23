@@ -1,37 +1,37 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-galeria-imagenes',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [MatIconModule],
   templateUrl: './galeria-imagenes.html',
-  styleUrl: './galeria-imagenes.css',
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('300ms ease', style({ opacity: 1 }))
-      ])
-    ])
-  ]
+  styleUrl: './galeria-imagenes.css'
 })
 export class GaleriaImagenes {
   @Input() imagenes: string[] = [];
 
-  currentIndex = 0;
+  selectedIndex = 0;
+  lightboxOpen = false;
+
+  openLightbox(index: number) {
+    this.selectedIndex = index;
+    this.lightboxOpen = true;
+  }
+
+  closeLightbox() {
+    this.lightboxOpen = false;
+  }
 
   prev() {
-    this.currentIndex = this.currentIndex === 0
+    this.selectedIndex = this.selectedIndex === 0
       ? this.imagenes.length - 1
-      : this.currentIndex - 1;
+      : this.selectedIndex - 1;
   }
 
   next() {
-    this.currentIndex = this.currentIndex === this.imagenes.length - 1
+    this.selectedIndex = this.selectedIndex === this.imagenes.length - 1
       ? 0
-      : this.currentIndex + 1;
+      : this.selectedIndex + 1;
   }
 }

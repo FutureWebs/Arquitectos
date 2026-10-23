@@ -32,7 +32,7 @@
     (fullscreenToggled)="toggleFullscreen()">
   </app-top-bar>
 
-  <!-- Overlay usando la señal reactiva y validando que el piso actual exista -->
+  <!-- Reemplaza la línea (floorChanged)="pisoActual.set($event)" por esto: -->
   @if (pisoActual()) {
     <app-edificio-overlay
       [isVisible]="mostrarOverlay()"
@@ -41,7 +41,7 @@
       [isFullscreen]="isFullscreen()"
       (backPressed)="volverAtras()"
       (toggleFullscreen)="toggleFullscreen()"
-      (floorChanged)="pisoActual.set($event)"
+      (floorChanged)="onFloorChanged($event)"
       (apartmentSelected)="abrirDetalle($event)">
     </app-edificio-overlay>
   }
@@ -99,3 +99,4 @@
     (open)="abrirInfo()">
   </app-info-card>
 }
+</div>

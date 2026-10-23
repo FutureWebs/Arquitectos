@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService, UserProfile } from '../../services/auth.service';
 import { EdificioService } from '../../services/edificio.service';
+import { collection, onSnapshot, getFirestore } from 'firebase/firestore';
+import {Router} from '@angular/router'; // Asegúrate de importar esto si usas Firestore directo o ponlo en tu servicio
 
 @Component({
   selector: 'app-admin-edificio',
@@ -16,6 +18,7 @@ export class AdminEdificioComponent implements OnInit {
   departamentos: any[] = [];
 
   constructor(
+    private router: Router,
     public authService: AuthService,
     private edificioService: EdificioService
   ) {}
@@ -25,7 +28,8 @@ export class AdminEdificioComponent implements OnInit {
       if (profile) {
         this.userProfile = profile;
         if (profile.edificio_id) {
-          await this.cargarDatosEdificio(profile.edificio_id);
+          // Cargamos la info y los departamentos en tiempo real usando el ID del perfil
+          this.cargarDatosEdificio(profile.edificio_id);
         }
       }
     });
@@ -37,7 +41,16 @@ export class AdminEdificioComponent implements OnInit {
       if (edificioData) {
         this.edificioActivo = edificioData.activo ?? true;
       }
-      this.departamentos = await this.edificioService.getDepartamentos(edificio_id);
+
+      let deptos = await this.edificioService.getDepartamentos(edificio_id);
+
+      // Ordenar correctamente (ej: P1-Apto-2 antes que P1-Apto-10)
+      deptos.sort((a: any, b: any) => {
+        return a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' });
+      });
+
+      this.departamentos = deptos;
+      console.log("Departamentos ordenados:", this.departamentos);
     } catch (error) {
       console.error("Error al cargar los datos del edificio:", error);
     }
@@ -47,7 +60,10 @@ export class AdminEdificioComponent implements OnInit {
     if (!this.edificioIdValido()) return;
 
     try {
+      // Actualizamos en Firebase usando el id del documento (ej: "P1-Apto-10")
       await this.edificioService.actualizarEstadoDepto(this.userProfile!.edificio_id!, depto.id, nuevoEstado);
+
+      // Actualizamos localmente de inmediato para que la UI responda al instante
       depto.estado = nuevoEstado;
     } catch (error) {
       console.error("Error al actualizar el estado:", error);
@@ -57,5 +73,10 @@ export class AdminEdificioComponent implements OnInit {
 
   private edificioIdValido(): boolean {
     return !!this.userProfile?.edificio_id;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']);
   }
 }

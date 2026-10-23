@@ -1,29 +1,40 @@
 <div class="galeria-container">
-  <div class="carousel" *ngIf="imagenes.length > 0">
-    <img
-      class="carousel-img"
-      *ngFor="let img of [imagenes[currentIndex]]"
-      @fadeIn
-      [src]="img"
-      [alt]="'Imagen ' + (currentIndex + 1)" />
-
-    <button class="carousel-btn prev" (click)="prev()">
-      <mat-icon>chevron_left</mat-icon>
-    </button>
-    <button class="carousel-btn next" (click)="next()">
-      <mat-icon>chevron_right</mat-icon>
-    </button>
-
-    <div class="carousel-dots">
-      <span
-        class="dot"
-        *ngFor="let img of imagenes; let i = index"
-        [class.active]="i === currentIndex">
-      </span>
+  @if (imagenes.length > 0) {
+    <div class="thumbs-grid">
+      @for (img of imagenes; track $index; let i = $index) {
+        <button class="thumb" type="button" (click)="openLightbox(i)">
+          <img [src]="img" [alt]="'Imagen ' + (i + 1)" loading="lazy" />
+        </button>
+      }
     </div>
-  </div>
-
-  <div class="galeria-empty" *ngIf="imagenes.length === 0">
-    <span>No hay imágenes disponibles</span>
-  </div>
+  } @else {
+    <div class="galeria-empty">
+      <span>No hay imágenes disponibles</span>
+    </div>
+  }
 </div>
+
+@if (lightboxOpen && imagenes.length > 0) {
+  <div class="lightbox-overlay" (click)="closeLightbox()">
+    <button class="lightbox-btn close" type="button" aria-label="Cerrar" (click)="closeLightbox(); $event.stopPropagation()">
+      <mat-icon>close</mat-icon>
+    </button>
+
+    @if (imagenes.length > 1) {
+      <button class="lightbox-btn prev" type="button" aria-label="Anterior" (click)="prev(); $event.stopPropagation()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button class="lightbox-btn next" type="button" aria-label="Siguiente" (click)="next(); $event.stopPropagation()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    }
+
+    <img
+      class="lightbox-img"
+      [src]="imagenes[selectedIndex]"
+      [alt]="'Imagen ' + (selectedIndex + 1)"
+      (click)="$event.stopPropagation()" />
+
+    <span class="lightbox-counter">{{ selectedIndex + 1 }} / {{ imagenes.length }}</span>
+  </div>
+}
