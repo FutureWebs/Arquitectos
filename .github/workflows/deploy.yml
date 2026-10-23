@@ -42,8 +42,8 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/site"
           cp -r dist/torre/browser/. "$RUNNER_TEMP/site/"
-          # .nojekyll: evita que Pages procese la rama con Jekyll
-          cp .nojekyll "$RUNNER_TEMP/site/.nojekyll"
+          # .nojekyll: evita que Pages procese la rama con Jekyll (lo crea automáticamente)
+          touch "$RUNNER_TEMP/site/.nojekyll"
           # 404.html: al recargar una ruta interna, GitHub Pages sirve este archivo y Angular sigue ruteando.
           cp "$RUNNER_TEMP/site/index.html" "$RUNNER_TEMP/site/404.html"
 
