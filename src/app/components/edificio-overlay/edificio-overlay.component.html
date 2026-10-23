@@ -1,50 +1,48 @@
 <div class="overlay" [class.visible]="isVisible">
-  <img [src]="floorData.planoFondoSvg" class="bg-img" alt="Plano del piso" />
+  <!-- Contenedor con ancho fijo idéntico al Canva (1920x1080) -->
+  <div class="canvas-container">
+    <img [src]="floorData.planoFondoSvg" class="bg-img" alt="Plano del piso" />
 
-  <svg class="interactive-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+    <svg class="interactive-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
 
-    <!-- Polígonos interactivos (Paths SVG) -->
-    @for (apto of floorData.apartamentos; track apto.id) {
-      <path
-        [attr.d]="apto.svgPathCode"
-        [class]="'apto-path ' + apto.estado.toLowerCase()"
-        (click)="apartmentSelected.emit(apto)"
-      />
-    }
-
-    <!-- Badges estilo Píldora (Puntito arriba + Texto abajo) -->
-    @for (apto of floorData.apartamentos; track apto.id) {
-      @if (apto.badgeCoords) {
-        <g [class]="'apto-badge ' + apto.estado.toLowerCase()"
-           [attr.transform]="'translate(' + apto.badgeCoords.x + ',' + apto.badgeCoords.y + ')'"
-           (click)="apartmentSelected.emit(apto)">
-
-          <!-- Contenedor vertical: centrado en (0,0), ancho 70px, alto 52px -->
-          <rect class="badge-container-bg" x="-35" y="-26" width="70" height="52" rx="14" />
-
-          <!-- Puntito de estado en el renglón superior -->
-          <circle class="status-dot" cx="0" cy="-11" r="5" />
-
-          <!-- Nombre/Número del departamento en el renglón inferior -->
-          <text class="badge-text" x="0" y="11" text-anchor="middle" dominant-baseline="central">
-            {{ apto.datosEstaticos?.titulo || apto.id.split('-')[1] }}
-          </text>
-        </g>
+      <!-- Polígonos interactivos (Paths SVG) -->
+      @for (apto of floorData.apartamentos; track apto.id) {
+        <path
+          [attr.d]="apto.svgPathCode"
+          [class]="'apto-path ' + apto.estado.toLowerCase()"
+          (click)="apartmentSelected.emit(apto)"
+        />
       }
-    }
-  </svg>
 
-  <!-- Selector de pisos lateral flotante -->
-  <div class="floor-selector">
-    <div class="floors-scroll">
-      @for (piso of listaPisos; track piso.nivel) {
-        <button
-          class="floor-btn"
-          [class.active]="piso.nivel === floorData.nivel"
-          (click)="floorChanged.emit(piso)">
-          {{ piso.nombre }}
-        </button>
+      <!-- Badges estilo Píldora -->
+      @for (apto of floorData.apartamentos; track apto.id) {
+        @if (apto.badgeCoords) {
+          <g [class]="'apto-badge ' + apto.estado.toLowerCase()"
+             [attr.transform]="'translate(' + apto.badgeCoords.x + ',' + apto.badgeCoords.y + ')'"
+             (click)="apartmentSelected.emit(apto)">
+
+            <rect class="badge-container-bg" x="-35" y="-26" width="70" height="52" rx="14" />
+            <circle class="status-dot" cx="0" cy="-11" r="5" />
+            <text class="badge-text" x="0" y="11" text-anchor="middle" dominant-baseline="central">
+              {{ apto.datosEstaticos?.titulo || apto.id.split('-')[1] }}
+            </text>
+          </g>
+        }
       }
-    </div>
+    </svg>
+  </div>
+</div>
+
+<!-- Selector de pisos lateral flotante FUERA del overlay para garantizar que siempre flote en la pantalla -->
+<div class="floor-selector" [class.visible]="isVisible">
+  <div class="floors-scroll">
+    @for (piso of listaPisos; track piso.nivel) {
+      <button
+        class="floor-btn"
+        [class.active]="piso.nivel === floorData.nivel"
+        (click)="floorChanged.emit(piso)">
+        {{ piso.nombre }}
+      </button>
+    }
   </div>
 </div>
