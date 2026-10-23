@@ -180,25 +180,28 @@
   width: 100%;
   height: 100%;
   position: relative;
+  padding: 24px;
 }
 
 .planta3d-iframe {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: var(--radius-xl);
+  background: var(--panel-dark);
 }
 
 .fullscreen-btn {
   position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
+  top: calc(24px + var(--spacing-md));
+  right: calc(24px + var(--spacing-md));
   width: 40px;
   height: 40px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--panel-dark-border);
+  background: var(--panel-dark);
   backdrop-filter: blur(8px);
-  color: #ffffff;
+  color: var(--text-on-dark);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -223,8 +226,32 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  padding: 0;
   z-index: 10000;
   background: #000;
+}
+
+.planta3d-container.fake-fullscreen .fullscreen-btn {
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+}
+
+/* Pantalla completa real (Fullscreen API): el contenedor ocupa todo el
+   monitor y el botón de salida sigue visible arriba a la derecha. */
+.planta3d-container:fullscreen,
+.planta3d-container:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  padding: 0;
+  background: #000;
+}
+
+.planta3d-container:fullscreen .fullscreen-btn,
+.planta3d-container:-webkit-full-screen .fullscreen-btn {
+  top: 20px;
+  right: 20px;
+  z-index: 10;
 }
 
 
@@ -274,12 +301,14 @@
   }
 
   .info-card-tabs {
+    justify-content: center;
     padding: 0 30px;
     gap: 20px;
     background: rgba(0, 0, 0, 0.2);
   }
 
   .tab-btn {
+    flex: 0 0 auto;
     flex-direction: row;
     gap: 10px;
     padding: 16px 20px;
@@ -291,5 +320,15 @@
     font-size: 22px;
     width: 22px;
     height: 22px;
+  }
+
+  /* Mismo padding que las otras tabs (Informacion / Galeria / Planos) */
+  .planta3d-container {
+    padding: 40px;
+  }
+
+  .planta3d-container .fullscreen-btn {
+    top: calc(40px + var(--spacing-md));
+    right: calc(40px + var(--spacing-md));
   }
 }

@@ -3,7 +3,7 @@
 
 <!-- Overlay general translúcido -->
 <div class="info-card-overlay" [class.open]="visible" (click)="onClose()">
-  <div class="info-card" [class.fake-fullscreen]="is3DFullscreen" (click)="$event.stopPropagation()">
+  <div class="info-card" [class.fake-fullscreen]="is3DFullscreen && usingFakeFullscreen" (click)="$event.stopPropagation()">
 
     <!-- Cabecera / Botón de cierre -->
     <div class="info-card-header" (click)="onClose()">
@@ -57,7 +57,7 @@
         <app-planos [plano]="info!.plano"></app-planos>
       }
       @if (activeTab === 'planta3d') {
-        <div class="planta3d-container" [class.fake-fullscreen]="is3DFullscreen" #planta3dContainer>
+        <div class="planta3d-container" [class.fake-fullscreen]="is3DFullscreen && usingFakeFullscreen" #planta3dContainer>
           <iframe
             class="planta3d-iframe"
             [src]="safeUrl"

@@ -31,7 +31,7 @@ export interface Apartment {
   svgPathCode: string;            // Trazo SVG
   datosEstaticos: InfoDeptoEstatico;
 
-  // CAMPOS DINÁMICOS (Se rellenan en tiempo de ejecución combinando con Firebase)
+  badgeCoords: { x: number; y: number }; // Centro del badge en coordenadas SVG (1920x1080)
   estado: 'DISPONIBLE' | 'RESERVADO' | 'VENDIDO';
   precio?: number;
   disponibilidadText?: string;

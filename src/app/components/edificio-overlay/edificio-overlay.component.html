@@ -1,7 +1,7 @@
 <div class="overlay" [class.visible]="isVisible">
   <img [src]="floorData.planoFondoSvg" class="bg-img" alt="Plano del piso" />
 
-  <svg class="interactive-svg" viewBox="0 0 1080 1920" preserveAspectRatio="none">
+  <svg class="interactive-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
 
     @for (apto of floorData.apartamentos; track apto.id) {
       <path
@@ -12,15 +12,13 @@
     }
 
     @for (apto of floorData.apartamentos; track apto.id) {
-      @let coords = getCenterCoords(apto.id);
-
       <g [class]="'apto-badge ' + apto.estado.toLowerCase()"
-         [attr.transform]="'translate(' + coords.x + ',' + coords.y + ')'">
+         [attr.transform]="'translate(' + apto.badgeCoords.x + ',' + apto.badgeCoords.y + ')'">
 
-        <rect class="badge-container-bg" x="-55" y="-35" width="130" height="70" rx="35" />
-        <circle class="status-dot" cx="-22" cy="0" r="12" />
+        <rect class="badge-container-bg" x="-40" y="-25" width="90" height="50" rx="25" />
+        <circle class="status-dot" cx="-16" cy="0" r="8" />
 
-        <text class="badge-text" x="22" y="0" text-anchor="middle" dominant-baseline="central">
+        <text class="badge-text" x="14" y="0" text-anchor="middle" dominant-baseline="central">
           {{ apto.id.split('-')[1] }}
         </text>
       </g>
@@ -35,7 +33,7 @@
           class="floor-btn"
           [class.active]="piso.nivel === floorData.nivel"
           (click)="floorChanged.emit(piso)">
-          {{ piso.nivel }}
+          {{ piso.nombre }}
         </button>
       }
     </div>

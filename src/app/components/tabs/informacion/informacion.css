@@ -1,6 +1,6 @@
 .informacion-container {
   padding: 24px;
-  color: #f8fafc;
+  color: var(--text-on-dark);
 }
 
 /* Cabecera */
