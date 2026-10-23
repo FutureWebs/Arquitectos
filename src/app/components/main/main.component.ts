@@ -32,8 +32,8 @@ export class MainComponent {
 
   @ViewChild('mainVideo') videoElement!: ElementRef<HTMLVideoElement>;
 
-  private pathVideos = 'mobile/vuelo/videos/';
-  private pathFotos = 'mobile/vuelo/fotos/';
+  private pathVideos = 'videos/';
+  private pathFotos = 'fotos/';
 
   isSidenavOpen = signal<boolean>(false);
   estadoActual = signal<AppState>('INICIO');

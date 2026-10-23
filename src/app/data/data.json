@@ -6,19 +6,19 @@
       {
         "nivel": 0,
         "nombre": "E",
-        "planoFondoSvg": "mobile/vuelo/fotos/Satelital/Estacionamiento.jpg",
+        "planoFondoSvg": "fotos/Satelital/webp/Estacionamiento.webp",
         "apartamentos": []
       },
       {
         "nivel": 1,
         "nombre": "PB",
-        "planoFondoSvg": "mobile/vuelo/fotos/Satelital/Piso_00.jpg",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_00.webp",
         "apartamentos": []
       },
       {
         "nivel": 2,
         "nombre": "1",
-        "planoFondoSvg": "mobile/vuelo/fotos/Satelital/Piso_01.jpg",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_01.webp",
         "apartamentos": [
           {
             "id": "P1-Apto-1",
@@ -72,7 +72,7 @@
                 "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
                 "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
               ],
-              "plano": "mobile/test/plano_test.webp",
+              "plano": "assets/plano_test.webp",
               "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
             }
           },
@@ -501,7 +501,7 @@
       {
         "nivel": 3,
         "nombre": "2",
-        "planoFondoSvg": "mobile/vuelo/fotos/Satelital/Piso_02.jpg",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_02.webp",
         "apartamentos": [
           {
             "id": "P2-Apto-1",
