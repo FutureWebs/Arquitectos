@@ -3,7 +3,6 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 import { Floor, Apartment } from '../models/building.models';
-// Importamos tu JSON estructural completo (asegúrate de guardarlo en src/app/data/edificio.json)
 import edificiosData from '../data/data.json';
 
 interface DeptoDinamicoFirebase {
