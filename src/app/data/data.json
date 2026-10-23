@@ -982,6 +982,132 @@
 
 
         ]
+      },
+      {
+        "nivel": 4,
+        "nombre": "3",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_03.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 5,
+        "nombre": "4",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_04.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 6,
+        "nombre": "5",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_05.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 7,
+        "nombre": "6",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_06.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 8,
+        "nombre": "7",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_07.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 9,
+        "nombre": "8",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_08.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 10,
+        "nombre": "9",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_09.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 11,
+        "nombre": "10",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_10.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 12,
+        "nombre": "11",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_11.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 13,
+        "nombre": "12",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_12.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 14,
+        "nombre": "13",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_13.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 15,
+        "nombre": "14",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_14.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 16,
+        "nombre": "15",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_15.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 17,
+        "nombre": "16",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_16.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 18,
+        "nombre": "17",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_17.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 19,
+        "nombre": "18",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_18.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 20,
+        "nombre": "19",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_19.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 21,
+        "nombre": "20",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_20.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 22,
+        "nombre": "21",
+        "planoFondoSvg": "fotos/Satelital/webp/Top_00.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 23,
+        "nombre": "T1",
+        "planoFondoSvg": "fotos/Satelital/webp/Top_01.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 24,
+        "nombre": "T2",
+        "planoFondoSvg": "fotos/Satelital/webp/Top_02.webp",
+        "apartamentos": []
       }
     ]
   }

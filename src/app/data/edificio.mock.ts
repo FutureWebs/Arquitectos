@@ -324,4 +324,5 @@ const generarEdificio = (): Floor[] => {
 };
 
 export const EDIFICIO_COMPLETO: Floor[] = generarEdificio();
+
 */
