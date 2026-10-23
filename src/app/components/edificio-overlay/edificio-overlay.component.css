@@ -143,9 +143,9 @@
 .floor-selector {
   position: fixed;
   right: 20px;
-  top: 50%;
+  margin-top: 60px;
   transform: translateY(-50%);
-  max-height: 75vh;
+  max-height: 70vh;
   overflow-y: auto;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(16px);
@@ -156,7 +156,7 @@
   z-index: 100;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
   scrollbar-width: none;
-
+  max-width: 48px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -181,9 +181,9 @@
   background: transparent;
   border: none;
   color: #94a3b8;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
   border-radius: 10px;
   font-weight: 600;
   font-size: 14px;

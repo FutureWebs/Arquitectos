@@ -36,7 +36,7 @@
 <!-- Selector de pisos lateral flotante FUERA del overlay para garantizar que siempre flote en la pantalla -->
 <div class="floor-selector" [class.visible]="isVisible">
   <div class="floors-scroll">
-    @for (piso of listaPisos; track piso.nivel) {
+    @for (piso of listaPisos.slice().reverse(); track piso.nivel) {
       <button
         class="floor-btn"
         [class.active]="piso.nivel === floorData.nivel"
