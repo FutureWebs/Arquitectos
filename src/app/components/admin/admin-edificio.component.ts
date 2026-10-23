@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService, UserProfile } from '../../services/auth.service';
 import { EdificioService } from '../../services/edificio.service';
-import { collection, onSnapshot, getFirestore } from 'firebase/firestore'; // Asegúrate de importar esto si usas Firestore directo o ponlo en tu servicio
+import { collection, onSnapshot, getFirestore } from 'firebase/firestore';
+import {Router} from '@angular/router'; // Asegúrate de importar esto si usas Firestore directo o ponlo en tu servicio
 
 @Component({
   selector: 'app-admin-edificio',
@@ -17,6 +18,7 @@ export class AdminEdificioComponent implements OnInit {
   departamentos: any[] = [];
 
   constructor(
+    private router: Router,
     public authService: AuthService,
     private edificioService: EdificioService
   ) {}
@@ -71,5 +73,10 @@ export class AdminEdificioComponent implements OnInit {
 
   private edificioIdValido(): boolean {
     return !!this.userProfile?.edificio_id;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']);
   }
 }
