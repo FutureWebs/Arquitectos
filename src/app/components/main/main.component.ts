@@ -223,6 +223,12 @@ export class MainComponent {
     this.mostrarInfo = false;
   }
 
+  // Método dedicado para manejar el cambio de piso seleccionado
+  onFloorChanged(nuevoPiso: Floor) {
+    this.pisoActual.set({ ...nuevoPiso });
+    this.cdr.detectChanges(); // Forzamos la detección de cambios
+  }
+
   private targetPosterForEnd: string = '';
   private esperandoInicioVideo = false;
   private videoQueue: VideoStep[] = [];
