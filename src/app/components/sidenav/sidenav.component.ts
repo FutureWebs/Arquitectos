@@ -13,6 +13,8 @@ export class SidenavComponent {
   @Input() isOpen: boolean = false;
   @Output() closeSidenav = new EventEmitter<void>();
 
+  ubicacionUrl = 'https://maps.app.goo.gl/N3P3VjhsurUdVeBo8';
+
   constructor(private router: Router) {}
 
   close() {

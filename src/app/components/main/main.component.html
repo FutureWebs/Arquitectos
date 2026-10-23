@@ -25,6 +25,7 @@
     [mostrarMenuBtn]="true"
     [mostrarBackBtn]="estadoActual() !== 'INICIO'"
     [mostrarFullscreenBtn]="true"
+    [mostrarActionBtns]="estadoActual() === 'NAVEGANDO_360'"
     [isBlocked]="isAnimating()"
     [isFullscreen]="isFullscreen()"
     (menuClicked)="abrirMenuPrincipal()"
