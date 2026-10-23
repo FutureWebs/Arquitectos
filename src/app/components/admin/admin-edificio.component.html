@@ -1,0 +1,36 @@
+<div class="admin-panel" *ngIf="userProfile; else loading">
+
+  <!-- ALERTA DE PAGO (Controlada por vos desde tu panel maestro) -->
+  <div *ngIf="!edificioActivo" class="alert-suspendido">
+    ⚠️ Su cuenta se encuentra suspendida por falta de pago. Por favor, comuníquese con el administrador general para regularizar su situación.
+  </div>
+
+  <header>
+    <h2>Panel de Administración - Edificio</h2>
+    <p>Usuario: {{ userProfile.email }}</p>
+    <button (click)="authService.logout()">Cerrar Sesión</button>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL (Bloqueado si no pagó) -->
+  <div [class.disabled-section]="!edificioActivo">
+    <h3>Departamentos</h3>
+
+    <div class="grid-deptos">
+      <div *ngFor="let depto of departamentos" class="card-depto">
+        <h4>Depto {{ depto.numero }} (Piso {{ depto.piso }})</h4>
+        <p>Estado actual: <strong>{{ depto.estado }}</strong></p>
+
+        <div class="actions">
+          <button (click)="cambiarEstado(depto, 'Disponible')" [disabled]="!edificioActivo">Disponible</button>
+          <button (click)="cambiarEstado(depto, 'Ocupado')" [disabled]="!edificioActivo">Ocupado</button>
+          <button (click)="cambiarEstado(depto, 'Mantenimiento')" [disabled]="!edificioActivo">Mantenimiento</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <p>Cargando panel de administración...</p>
+</ng-template>

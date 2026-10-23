@@ -1,0 +1,988 @@
+{
+  "Building": {
+    "id": "cardinales_alto_panorama",
+    "nombre": "Cardinales Alto Panorama",
+    "pisos": [
+      {
+        "nivel": 0,
+        "nombre": "E",
+        "planoFondoSvg": "fotos/Satelital/webp/Estacionamiento.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 1,
+        "nombre": "PB",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_00.webp",
+        "apartamentos": []
+      },
+      {
+        "nivel": 2,
+        "nombre": "1",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_01.webp",
+        "apartamentos": [
+          {
+            "id": "P1-Apto-1",
+            "svgPathCode": "M465,262 L560,262 L560,463 L465,463 Z",
+            "badgeCoords": { "x": 512, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-1",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-2",
+            "svgPathCode": "M563,262 L660,262 L660,463 L563,463 Z",
+            "badgeCoords": { "x": 611, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-2",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "assets/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-3",
+            "svgPathCode": "M660,262 L755,262 L755,463 L660,463 Z",
+            "badgeCoords": { "x": 707, "y": 362 },
+            "estado": "RESERVADO",
+            "disponibilidadText": "Reservado",
+            "datosEstaticos": {
+              "titulo": "Apto-3",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-4",
+            "svgPathCode": "M755,262 L843,262 L843,463 L755,463 Z",
+            "badgeCoords": { "x": 799, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-4",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-5",
+            "svgPathCode": "M843,262 L938,262 L938,463 L843,463 Z",
+            "badgeCoords": { "x": 890, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-5",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-6",
+            "svgPathCode": "M938,262 L1038,262 L1038,463 L938,463 Z",
+            "badgeCoords": { "x": 988, "y": 362 },
+            "estado": "VENDIDO",
+            "disponibilidadText": "Vendido",
+            "datosEstaticos": {
+              "titulo": "Apto-6",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-7",
+            "svgPathCode": "M1038,262 L1140,262 L1140,463 L1038,463 Z",
+            "badgeCoords": { "x": 1089, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-7",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-8",
+            "svgPathCode": "M455,512 L543,512 L543,742 L455,742 Z",
+            "badgeCoords": { "x": 499, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-8",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-9",
+            "svgPathCode": "M543,512 L648,512 L648,742 L543,742 Z",
+            "badgeCoords": { "x": 595, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-9",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-10",
+            "svgPathCode": "M648,512 L748,512 L748,742 L648,742 Z",
+            "badgeCoords": { "x": 698, "y": 627 },
+            "estado": "RESERVADO",
+            "disponibilidadText": "Reservado",
+            "datosEstaticos": {
+              "titulo": "Apto-10",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-11",
+            "svgPathCode": "M748,512 L843,512 L843,742 L748,742 Z",
+            "badgeCoords": { "x": 795, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-11",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-12",
+            "svgPathCode": "M843,512 L938,512 L938,742 L843,742 Z",
+            "badgeCoords": { "x": 890, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-12",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-13",
+            "svgPathCode": "M938,512 L1038,512 L1038,742 L938,742 Z",
+            "badgeCoords": { "x": 988, "y": 627 },
+            "estado": "VENDIDO",
+            "disponibilidadText": "Vendido",
+            "datosEstaticos": {
+              "titulo": "Apto-13",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-14",
+            "svgPathCode": "M1038,512 L1140,512 L1140,742 L1038,742 Z",
+            "badgeCoords": { "x": 1089, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-14",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-15",
+            "svgPathCode": "M1140,512 L1243,512 L1243,742 L1140,742 Z",
+            "badgeCoords": { "x": 1191, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-15",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-16",
+            "svgPathCode": "M1243,512 L1343,512 L1343,742 L1243,742 Z",
+            "badgeCoords": { "x": 1293, "y": 627 },
+            "estado": "RESERVADO",
+            "disponibilidadText": "Reservado",
+            "datosEstaticos": {
+              "titulo": "Apto-16",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P1-Apto-17",
+            "svgPathCode": "M1343,512 L1443,512 L1443,742 L1343,742 Z",
+            "badgeCoords": { "x": 1393, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-17",
+              "edificio": "Torre A",
+              "piso": "1",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpxo/"
+            }
+          }
+        ]
+      },
+      {
+        "nivel": 3,
+        "nombre": "2",
+        "planoFondoSvg": "fotos/Satelital/webp/Piso_02.webp",
+        "apartamentos": [
+          {
+            "id": "P2-Apto-1",
+            "svgPathCode": "M465,262 L560,262 L560,463 L465,463 Z",
+            "badgeCoords": { "x": 512, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-1",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-2",
+            "svgPathCode": "M563,262 L660,262 L660,463 L563,463 Z",
+            "badgeCoords": { "x": 611, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-2",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-3",
+            "svgPathCode": "M660,262 L755,262 L755,463 L660,463 Z",
+            "badgeCoords": { "x": 707, "y": 362 },
+            "estado": "RESERVADO",
+            "disponibilidadText": "Reservado",
+            "datosEstaticos": {
+              "titulo": "Apto-3",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-4",
+            "svgPathCode": "M755,262 L843,262 L843,463 L755,463 Z",
+            "badgeCoords": { "x": 799, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-4",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-5",
+            "svgPathCode": "M843,262 L938,262 L938,463 L843,463 Z",
+            "badgeCoords": { "x": 890, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-5",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-6",
+            "svgPathCode": "M938,262 L1038,262 L1038,463 L938,463 Z",
+            "badgeCoords": { "x": 988, "y": 362 },
+            "estado": "VENDIDO",
+            "disponibilidadText": "Vendido",
+            "datosEstaticos": {
+              "titulo": "Apto-6",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-7",
+            "svgPathCode": "M1038,262 L1140,262 L1140,463 L1038,463 Z",
+            "badgeCoords": { "x": 1089, "y": 362 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-7",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-8",
+            "svgPathCode": "M455,512 L543,512 L543,742 L455,742 Z",
+            "badgeCoords": { "x": 499, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-8",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-9",
+            "svgPathCode": "M543,512 L648,512 L648,742 L543,742 Z",
+            "badgeCoords": { "x": 595, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-9",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-10",
+            "svgPathCode": "M648,512 L748,512 L748,742 L648,742 Z",
+            "badgeCoords": { "x": 698, "y": 627 },
+            "estado": "RESERVADO",
+            "disponibilidadText": "Reservado",
+            "datosEstaticos": {
+              "titulo": "Apto-10",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-11",
+            "svgPathCode": "M748,512 L843,512 L843,742 L748,742 Z",
+            "badgeCoords": { "x": 795, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-11",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-12",
+            "svgPathCode": "M843,512 L938,512 L938,742 L843,742 Z",
+            "badgeCoords": { "x": 890, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-12",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-13",
+            "svgPathCode": "M938,512 L1038,512 L1038,742 L938,742 Z",
+            "badgeCoords": { "x": 988, "y": 627 },
+            "estado": "VENDIDO",
+            "disponibilidadText": "Vendido",
+            "datosEstaticos": {
+              "titulo": "Apto-13",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-14",
+            "svgPathCode": "M1038,512 L1140,512 L1140,742 L1038,742 Z",
+            "badgeCoords": { "x": 1089, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-14",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-15",
+            "svgPathCode": "M1140,512 L1243,512 L1243,742 L1140,742 Z",
+            "badgeCoords": { "x": 1191, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-15",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-16",
+            "svgPathCode": "M1243,512 L1343,512 L1343,742 L1243,742 Z",
+            "badgeCoords": { "x": 1293, "y": 627 },
+            "estado": "RESERVADO",
+            "disponibilidadText": "Reservado",
+            "datosEstaticos": {
+              "titulo": "Apto-16",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpto/"
+            }
+          },
+          {
+            "id": "P2-Apto-17",
+            "svgPathCode": "M1343,512 L1443,512 L1443,742 L1343,742 Z",
+            "badgeCoords": { "x": 1393, "y": 627 },
+            "estado": "DISPONIBLE",
+            "disponibilidadText": "Disponible para vender",
+            "datosEstaticos": {
+              "titulo": "Apto-17",
+              "edificio": "Torre A",
+              "piso": "2",
+              "tipologia": "Tipología Pequeño",
+              "metrosCuadrados": 45,
+              "banios": 1,
+              "dormitorios": 1,
+              "lavadero": true,
+              "balcon": true,
+              "cochera": false,
+              "fotoTitulo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+              "imagenes": [
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400",
+                "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400"
+              ],
+              "plano": "mobile/test/plano_test.webp",
+              "planta3D": "https://gaston-vr.github.io/Jejui-Dpxo/"
+            }
+          }
+
+
+        ]
+      }
+    ]
+  }
+}

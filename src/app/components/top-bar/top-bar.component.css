@@ -1,0 +1,18 @@
+.top-bar-layout {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none; /* Dejar pasar eventos al fondo */
+}
+
+.top-left-group, .top-right-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  pointer-events: auto; /* Reactivar clicks en los botones */
+}

@@ -1,0 +1,53 @@
+.planos-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.planos-viewer {
+  flex: 1;
+  overflow: hidden;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  background: var(--panel-dark);
+  border: 1px solid var(--panel-dark-border);
+  border-radius: var(--radius-xl);
+}
+
+.planos-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.1s ease-out;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.planos-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 200px;
+  color: var(--text-on-dark-muted);
+  font-size: var(--font-md);
+  gap: var(--spacing-sm);
+}
+
+.empty-icon {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: var(--text-on-dark-muted);
+}
+
+@media (min-width: 768px) {
+  .planos-container {
+    padding: 40px;
+  }
+}

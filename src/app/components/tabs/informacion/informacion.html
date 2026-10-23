@@ -1,0 +1,76 @@
+<div class="informacion-container">
+
+  <!-- Cabecera de Información -->
+  <div class="info-header-section">
+    <div class="info-header-text">
+      <div class="info-titulo">{{ info!.titulo }}</div>
+      <div class="info-edificio">{{ info!.edificio }}</div>
+
+      @if (info!.disponibilidad) {
+        <div class="info-disponibilidad">
+          <span class="badge">{{ info!.disponibilidad }}</span>
+        </div>
+      }
+
+      <div class="info-tipologia">{{ info!.tipologia }}</div>
+    </div>
+
+    <img class="info-foto-titulo" [src]="info!.fotoTitulo" [alt]="info!.titulo" />
+  </div>
+
+  <!-- Sección de Instalaciones y Características -->
+  <div class="info-instalaciones">
+    <div class="info-section-title">Instalaciones y Características</div>
+
+    <div class="instalaciones-grid">
+      <div class="info-row">
+        <div class="icon-wrapper">
+          <mat-icon class="info-icon">square_foot</mat-icon>
+        </div>
+        <span class="info-text">Área total <strong>{{ info!.metrosCuadrados }} m²</strong></span>
+      </div>
+
+      <div class="info-row">
+        <div class="icon-wrapper">
+          <mat-icon class="info-icon">bed</mat-icon>
+        </div>
+        <span class="info-text"><strong>{{ info!.dormitorios }}</strong> Recámara(s)</span>
+      </div>
+
+      <div class="info-row">
+        <div class="icon-wrapper">
+          <mat-icon class="info-icon">bathtub</mat-icon>
+        </div>
+        <span class="info-text"><strong>{{ info!.banios }}</strong> Baño(s)</span>
+      </div>
+
+      @if (info!.lavadero) {
+        <div class="info-row">
+          <div class="icon-wrapper">
+            <mat-icon class="info-icon">local_laundry_service</mat-icon>
+          </div>
+          <span class="info-text">Lavandería incluida</span>
+        </div>
+      }
+
+      @if (info!.balcon) {
+        <div class="info-row">
+          <div class="icon-wrapper">
+            <mat-icon class="info-icon">balcony</mat-icon>
+          </div>
+          <span class="info-text">Balcón privado</span>
+        </div>
+      }
+
+      @if (info!.cochera) {
+        <div class="info-row">
+          <div class="icon-wrapper">
+            <mat-icon class="info-icon">local_parking</mat-icon>
+          </div>
+          <span class="info-text">Cochera asignada</span>
+        </div>
+      }
+    </div>
+  </div>
+
+</div>

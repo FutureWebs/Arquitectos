@@ -1,0 +1,101 @@
+<div class="video-container">
+
+  @if (isLoading()) {
+    <div class="loading-screen">
+      <div class="spinner"></div>
+      <p>{{ 'loading_experience' | translate }}</p>
+    </div>
+  }
+
+  <img [src]="currentPoster()"
+       class="poster-layer"
+       [class.hidden]="isVideoPlaying()"
+       alt="" />
+
+  <video #mainVideo
+         class="background-video"
+         [class.inactive]="!isVideoPlaying()"
+         muted playsinline
+         [src]="currentVideoUrl()"
+         (timeupdate)="onVideoTimeUpdate()"
+         (ended)="onVideoEnded()">
+  </video>
+
+  <app-top-bar
+    [mostrarMenuBtn]="true"
+    [mostrarBackBtn]="estadoActual() !== 'INICIO'"
+    [mostrarFullscreenBtn]="true"
+    [isBlocked]="isAnimating()"
+    [isFullscreen]="isFullscreen()"
+    (menuClicked)="abrirMenuPrincipal()"
+    (backClicked)="volverAtras()"
+    (fullscreenToggled)="toggleFullscreen()">
+  </app-top-bar>
+
+  <!-- Overlay usando la señal reactiva y validando que el piso actual exista -->
+  @if (pisoActual()) {
+    <app-edificio-overlay
+      [isVisible]="mostrarOverlay()"
+      [floorData]="pisoActual()!"
+      [listaPisos]="edificioCompleto()"
+      [isFullscreen]="isFullscreen()"
+      (backPressed)="volverAtras()"
+      (toggleFullscreen)="toggleFullscreen()"
+      (floorChanged)="pisoActual.set($event)"
+      (apartmentSelected)="abrirDetalle($event)">
+    </app-edificio-overlay>
+  }
+
+  <div class="ui-layer" [class.ui-hidden]="isAnimating()">
+
+    <!-- Estado: INICIO con Branding Oficial -->
+    @if (estadoActual() === 'INICIO') {
+      <div class="top-center brand-hero-container">
+        <div class="hero-star-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+          </svg>
+        </div>
+        <h1 class="hero-brand-title">CARDINALES</h1>
+        <div class="hero-brand-pill">ALTO PANORAMA</div>
+
+      </div>
+
+      <div class="center-overlay">
+        <button class="btn-premium" (click)="iniciarDescubrimiento()">
+          {{ 'btn_discover' | translate }}
+        </button>
+      </div>
+    }
+
+    <!-- Estado: NAVEGANDO_360 -->
+    @if (estadoActual() === 'NAVEGANDO_360') {
+      <div class="bottom-center">
+        <button class="btn-nav" (click)="girarIzquierda()" aria-label="Izquierda">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <button class="btn-nav btn-nav-primary" (click)="entrarEdificio()">
+          {{ 'btn_enter' | translate }}
+        </button>
+
+        <button class="btn-nav" (click)="girarDerecha()" aria-label="Derecha">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    }
+  </div>
+
+<app-sidenav
+  [isOpen]="isSidenavOpen()"
+  (closeSidenav)="isSidenavOpen.set(false)">
+</app-sidenav>
+
+@if (svgInfo) {
+  <app-info-card
+    [info]="infoSeleccionada"
+    [visible]="mostrarInfo"
+    (close)="cerrarInfo()"
+    (open)="abrirInfo()">
+  </app-info-card>
+}

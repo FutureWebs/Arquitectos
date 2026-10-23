@@ -1,0 +1,74 @@
+
+
+
+<!-- Overlay general translúcido -->
+<div class="info-card-overlay" [class.open]="visible" (click)="onClose()">
+  <div class="info-card" [class.fake-fullscreen]="is3DFullscreen && usingFakeFullscreen" (click)="$event.stopPropagation()">
+
+    <!-- Cabecera / Botón de cierre -->
+    <div class="info-card-header" (click)="onClose()">
+      <span class="desktop-title-hint">Detalle del Departamento</span>
+      <button class="btn-close-modal" aria-label="Cerrar modal">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <!-- Pestañas de navegación -->
+    <div class="info-card-tabs">
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'informacion'"
+        (click)="selectTab('informacion')">
+        <mat-icon>info</mat-icon>
+        <span>Información</span>
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'galeria'"
+        (click)="selectTab('galeria')">
+        <mat-icon>photo_library</mat-icon>
+        <span>Galería</span>
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'planos'"
+        (click)="selectTab('planos')">
+        <mat-icon>architecture</mat-icon>
+        <span>Planos</span>
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'planta3d'"
+        (click)="selectTab('planta3d')">
+        <mat-icon>view_in_ar</mat-icon>
+        <span>Recorrido 3D</span>
+      </button>
+    </div>
+
+    <!-- Contenido dinámico -->
+    <div class="info-card-content">
+      @if (activeTab === 'informacion') {
+        <app-informacion [info]="info!"></app-informacion>
+      }
+      @if (activeTab === 'galeria') {
+        <app-galeria-imagenes [imagenes]="info!.imagenes"></app-galeria-imagenes>
+      }
+      @if (activeTab === 'planos') {
+        <app-planos [plano]="info!.plano"></app-planos>
+      }
+      @if (activeTab === 'planta3d') {
+        <div class="planta3d-container" [class.fake-fullscreen]="is3DFullscreen && usingFakeFullscreen" #planta3dContainer>
+          <iframe
+            class="planta3d-iframe"
+            [src]="safeUrl"
+            allowfullscreen>
+          </iframe>
+          <button class="fullscreen-btn" (click)="toggle3DFullscreen()">
+            <mat-icon>{{ is3DFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

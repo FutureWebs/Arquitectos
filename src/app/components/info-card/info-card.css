@@ -1,0 +1,334 @@
+/* --- PEEK INFERIOR (Solo Celular) --- */
+.info-card-peek {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--card-max-width);
+  height: var(--peek-height);
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 998;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: none;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  transition: background var(--transition-fast);
+}
+
+.info-card-peek:hover {
+  background: rgba(15, 23, 42, 1);
+}
+
+.peek-arrow {
+  color: #ffffff;
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  transition: transform var(--transition-normal);
+}
+
+.peek-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.desktop-title-hint {
+  display: none;
+}
+
+/* --- OVERLAY GENERAL --- */
+.info-card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal), visibility 0s 0.35s;
+}
+
+.info-card-overlay.open {
+  visibility: visible;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity var(--transition-normal), visibility 0s 0s;
+}
+
+/* --- TARJETA INFO (MOBILE) --- */
+.info-card {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  width: 100%;
+  max-width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+  color: #ffffff;
+}
+
+.info-card-overlay.open .info-card {
+  transform: translateY(0);
+}
+
+.info-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-close-modal {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.btn-close-modal:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-close-modal mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Pestañas */
+.info-card-tabs {
+  display: flex;
+  padding: 0 var(--spacing-md);
+  gap: var(--spacing-xs);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-medium);
+  color: #bfbfbf; /* Texto inactivo claro y legible */
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab-btn mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.tab-btn.active {
+  color: #38bdf8;
+  border-bottom-color: #38bdf8;
+}
+
+.tab-btn:hover:not(.active) {
+  color: #f1f5f9;
+}
+
+.info-card-content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 200px;
+  background: transparent;
+  color: #f8fafc; /* Texto interno garantizado en blanco/claro */
+}
+
+/* Planta 3D y Fullscreen */
+.planta3d-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 24px;
+}
+
+.planta3d-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: var(--radius-xl);
+  background: var(--panel-dark);
+}
+
+.fullscreen-btn {
+  position: absolute;
+  top: calc(24px + var(--spacing-md));
+  right: calc(24px + var(--spacing-md));
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--panel-dark-border);
+  background: var(--panel-dark);
+  backdrop-filter: blur(8px);
+  color: var(--text-on-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-fast);
+  z-index: 1;
+}
+
+.fullscreen-btn:hover {
+  transform: scale(1.05);
+  background: rgba(15, 23, 42, 1);
+}
+
+.info-card.fake-fullscreen {
+  height: 100%;
+}
+
+.planta3d-container.fake-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  z-index: 10000;
+  background: #000;
+}
+
+.planta3d-container.fake-fullscreen .fullscreen-btn {
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+}
+
+/* Pantalla completa real (Fullscreen API): el contenedor ocupa todo el
+   monitor y el botón de salida sigue visible arriba a la derecha. */
+.planta3d-container:fullscreen,
+.planta3d-container:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  padding: 0;
+  background: #000;
+}
+
+.planta3d-container:fullscreen .fullscreen-btn,
+.planta3d-container:-webkit-full-screen .fullscreen-btn {
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+
+/* ==========================================================
+   VERSIÓN COMPUTADORA (Desktop >= 768px): Amplio y Elegante
+   ========================================================== */
+@media (min-width: 768px) {
+  .info-card-peek {
+    display: none;
+  }
+
+  .info-card-overlay {
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Tarjeta considerablemente más grande y espaciosa */
+  .info-card {
+    width: 90vw;
+    max-width: 1200px; /* Más ancho para aprovechar monitores */
+    height: 88vh;      /* Más alto */
+    border-radius: 24px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .info-card-overlay.open .info-card {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  .info-card-header {
+    justify-content: space-between;
+    padding: 18px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .desktop-title-hint {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+
+  .info-card-tabs {
+    justify-content: center;
+    padding: 0 30px;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .tab-btn {
+    flex: 0 0 auto;
+    flex-direction: row;
+    gap: 10px;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .tab-btn mat-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Mismo padding que las otras tabs (Informacion / Galeria / Planos) */
+  .planta3d-container {
+    padding: 40px;
+  }
+
+  .planta3d-container .fullscreen-btn {
+    top: calc(40px + var(--spacing-md));
+    right: calc(40px + var(--spacing-md));
+  }
+}
