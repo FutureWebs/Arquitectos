@@ -1099,14 +1099,8 @@
       },
       {
         "nivel": 23,
-        "nombre": "T1",
+        "nombre": "T",
         "planoFondoSvg": "fotos/Satelital/webp/Top_01.webp",
-        "apartamentos": []
-      },
-      {
-        "nivel": 24,
-        "nombre": "T2",
-        "planoFondoSvg": "fotos/Satelital/webp/Top_02.webp",
         "apartamentos": []
       }
     ]

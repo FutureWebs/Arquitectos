@@ -61,7 +61,7 @@ export class MainComponent {
     effect(() => {
       const pisos = this.edificioCompleto();
       if (pisos.length > 0 && !this.pisoActual()) {
-        const pisoDefault = pisos.find(f => f.nombre === 'T2') || pisos[0];
+        const pisoDefault = pisos.find(f => f.nombre === 'T') || pisos[0];
         this.pisoActual.set(pisoDefault);
       }
     });
