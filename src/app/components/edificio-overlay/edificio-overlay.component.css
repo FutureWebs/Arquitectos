@@ -40,15 +40,17 @@
   margin: auto;
 }
 
-/* En celulares: se adapta al alto y le damos un padding o margen izquierdo/derecho
-   para que arranque ligeramente separado y permita scrollear hacia ambos lados sin trabarse */
 @media (max-width: 1023px) {
+  .overlay {
+    justify-content: flex-start; /* Vital para que exista espacio de scroll a ambos lados */
+  }
+
   .canvas-container {
     height: 100vh;
     width: auto;
     aspect-ratio: 1920 / 1080;
-    margin: 0; /* Sin auto para liberar el bloqueo de scroll izquierdo */
-
+    margin: 0;
+    flex-shrink: 0;
   }
 }
 /* Tanto la foto como el SVG ocupan exactamente el 100% de ese contenedor único */

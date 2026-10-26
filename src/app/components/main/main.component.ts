@@ -57,14 +57,16 @@ export class MainComponent {
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
 
   constructor() {
-    // Efecto para asignar el piso por defecto (T2 o el primero disponible) cuando carguen los datos
+
     effect(() => {
       const pisos = this.edificioCompleto();
       if (pisos.length > 0 && !this.pisoActual()) {
-        const pisoDefault = pisos.find(f => f.nombre === 'T') || pisos[0];
+        const pisoDefault = pisos.find(f => f.nombre === 'T2') || pisos[0];
         this.pisoActual.set(pisoDefault);
       }
     });
+
+
   }
 
   ngOnInit() {
@@ -77,6 +79,8 @@ export class MainComponent {
   abrirMenuPrincipal() {
     this.isSidenavOpen.set(true);
   }
+
+
 
   // --- MÉTODOS DE VIDEO Y NAVEGACIÓN (Se mantienen igual) ---
   private ejecutarSecuencia(pasos: VideoStep[]) {
