@@ -56,6 +56,28 @@ export class MainComponent {
 
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
 
+  // Contornos clickeables del edificio por perspectiva (coords en lienzo 1920x1080)
+  private readonly contornosEdificio: Record<Perspectiva, { d: string; x: number; y: number }> = {
+    FRENTE: {
+      d: 'M245.513 0.511078L287.513 10.5111V43.5111L337.013 51.0111L319.513 692.011L131.013 800.011L21.0129 746.511L0.512878 76.0111L176.513 43.5111V13.5111L245.513 0.511078Z',
+      x: 783, y: 127
+    },
+    DERECHA: {
+      d: 'M326.013 13.5083L303.513 729.508L210.513 775.508L20.5134 664.008L0.513382 23.0083L114.013 4.0083L201.513 23.0083V10.0083L250.013 0.508301L326.013 13.5083Z',
+      x: 800, y: 157
+    },
+    IZQUIERDA: {
+      d: 'M310.51 75.0064L286.51 753.006L174.51 796.506L16.5105 683.006L0.510483 7.50644L53.0105 0.506439L109.51 11.5064V28.0064L310.51 75.0064Z',
+      x: 818, y: 133
+    }
+  };
+
+  contornoEdificio = computed(() => this.contornosEdificio[this.perspectivaActual()]);
+
+  mostrarZonaEntrada = computed(() => this.estadoActual() === 'NAVEGANDO_360' && !this.isAnimating());
+
+  zonaHover = signal<boolean>(false);
+
   constructor() {
 
     effect(() => {
@@ -85,6 +107,7 @@ export class MainComponent {
   // --- MÉTODOS DE VIDEO Y NAVEGACIÓN (Se mantienen igual) ---
   private ejecutarSecuencia(pasos: VideoStep[]) {
     if (this.isAnimating()) return;
+    this.zonaHover.set(false);
     this.videoQueue = pasos;
     this.isAnimating.set(true);
     this.reproducirSiguienteDeLaCola();

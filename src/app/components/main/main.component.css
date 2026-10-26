@@ -154,15 +154,6 @@
   transform: scale(1.05);
 }
 
-.bottom-center {
-  position: absolute;
-  bottom: 120px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
 .btn-nav {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -186,13 +177,99 @@
   fill: none;
 }
 
-.btn-nav-primary {
-  width: auto;
-  padding: 0 24px;
-  border-radius: 25px;
-  font-weight: 600;
-}
-
 .btn-nav:hover {
   transform: scale(1.08);
+}
+
+.btn-nav-side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn-nav-side:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.btn-nav-left {
+  left: 20px;
+}
+
+.btn-nav-right {
+  right: 20px;
+}
+
+/* --- Zona clickeable del edificio (reemplaza el botón Entrar) --- */
+.zona-entrada {
+  position: absolute;
+  inset: 0;
+  z-index: 40; /* debajo del ui-layer (50) y del top-bar (100) */
+  pointer-events: none; /* solo el path recibe eventos */
+  overflow: hidden;
+}
+
+/* Réplica de object-fit: cover sobre una imagen 1920x1080 */
+.zona-entrada__frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, calc(100vh * 16 / 9));
+  height: max(100vh, calc(100vw * 9 / 16));
+}
+
+.zona-entrada__frame svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.zona-entrada path {
+  fill: rgba(255, 255, 255, 0);
+  stroke: rgba(255, 255, 255, 0);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+  pointer-events: all;
+  cursor: pointer;
+  transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
+}
+
+.zona-entrada path:hover {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+}
+
+.zona-entrada path:active {
+  fill: rgba(255, 255, 255, 0.2);
+}
+
+/* Texto "Entrar" centrado al hacer hover sobre el edificio */
+.zona-entrada__label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.92);
+  padding: 14px 40px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.zona-entrada__label.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }

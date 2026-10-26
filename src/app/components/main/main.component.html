@@ -47,6 +47,25 @@
     </app-edificio-overlay>
   }
 
+  <!-- Zona clickeable del edificio: hover resalta el contorno, click entra al edificio -->
+  @if (mostrarZonaEntrada()) {
+    <div class="zona-entrada">
+      <div class="zona-entrada__frame">
+        <svg viewBox="0 0 1920 1080" aria-hidden="true">
+          <g [attr.transform]="'translate(' + contornoEdificio().x + ',' + contornoEdificio().y + ')'">
+            <path [attr.d]="contornoEdificio().d"
+                  (click)="entrarEdificio()"
+                  (mouseenter)="zonaHover.set(true)"
+                  (mouseleave)="zonaHover.set(false)" />
+          </g>
+        </svg>
+        <div class="zona-entrada__label" [class.visible]="zonaHover()">
+          {{ 'btn_enter' | translate }}
+        </div>
+      </div>
+    </div>
+  }
+
   <div class="ui-layer" [class.ui-hidden]="isAnimating()">
 
     <!-- Estado: INICIO con Branding Oficial -->
@@ -71,19 +90,13 @@
 
     <!-- Estado: NAVEGANDO_360 -->
     @if (estadoActual() === 'NAVEGANDO_360') {
-      <div class="bottom-center">
-        <button class="btn-nav" (click)="girarIzquierda()" aria-label="Izquierda">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
+      <button class="btn-nav btn-nav-side btn-nav-left" (click)="girarIzquierda()" aria-label="Izquierda">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
 
-        <button class="btn-nav btn-nav-primary" (click)="entrarEdificio()">
-          {{ 'btn_enter' | translate }}
-        </button>
-
-        <button class="btn-nav" (click)="girarDerecha()" aria-label="Derecha">
-          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
+      <button class="btn-nav btn-nav-side btn-nav-right" (click)="girarDerecha()" aria-label="Derecha">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     }
   </div>
 

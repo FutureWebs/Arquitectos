@@ -15,16 +15,16 @@
       }
 
       <!-- Badges estilo Píldora -->
-      @for (apto of floorData.apartamentos; track apto.id) {
+      @for (apto of floorData.apartamentos; track apto.id; let idx = $index) {
         @if (apto.badgeCoords) {
           <g [class]="'apto-badge ' + apto.estado.toLowerCase()"
              [attr.transform]="'translate(' + apto.badgeCoords.x + ',' + apto.badgeCoords.y + ')'"
              (click)="apartmentSelected.emit(apto)">
 
-            <rect class="badge-container-bg" x="-35" y="-26" width="70" height="52" rx="14" />
-            <circle class="status-dot" cx="0" cy="-11" r="5" />
-            <text class="badge-text" x="0" y="11" text-anchor="middle" dominant-baseline="central">
-              {{ apto.datosEstaticos?.titulo || apto.id.split('-')[1] }}
+            <rect class="badge-container-bg" x="-34" y="-15" width="68" height="30" rx="9" />
+            <circle class="status-dot" cx="-15" cy="0" r="5" />
+            <text class="badge-text" x="9" y="0" text-anchor="middle" dominant-baseline="central">
+              {{ floorData.nombre }}-{{ letraDepto(idx) }}
             </text>
           </g>
         }
