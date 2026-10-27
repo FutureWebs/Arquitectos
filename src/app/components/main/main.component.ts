@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, signal, computed, inject, ChangeDetectorRef, effect } from '@angular/core';
+import { Component, ElementRef, ViewChild, signal, computed, inject, ChangeDetectorRef, effect, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 import { EdificioOverlay } from '../edificio-overlay/edificio-overlay.component';
@@ -7,6 +7,7 @@ import { Apartment, Floor } from '../../models/building.models';
 import { TranslatePipe } from '@ngx-translate/core';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 import { InfoCard } from '../info-card/info-card';
+import { GalleryCarouselComponent } from '../gallery-carousel/gallery-carousel.component';
 import { InfoDepto } from '../../models/info-depto';
 
 type AppState = 'INICIO' | 'NAVEGANDO_360' | 'ADENTRO';
@@ -22,7 +23,7 @@ interface VideoStep {
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, TopBarComponent, EdificioOverlay, TranslatePipe, SidenavComponent, InfoCard],
+  imports: [CommonModule, TopBarComponent, EdificioOverlay, TranslatePipe, SidenavComponent, InfoCard, GalleryCarouselComponent],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
@@ -57,18 +58,18 @@ export class MainComponent {
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
 
   // Contornos clickeables del edificio por perspectiva (coords en lienzo 1920x1080)
-  private readonly contornosEdificio: Record<Perspectiva, { d: string; x: number; y: number }> = {
+  private readonly contornosEdificio: Record<Perspectiva, { d: string; x: number; y: number; cx: number; cy: number }> = {
     FRENTE: {
       d: 'M245.513 0.511078L287.513 10.5111V43.5111L337.013 51.0111L319.513 692.011L131.013 800.011L21.0129 746.511L0.512878 76.0111L176.513 43.5111V13.5111L245.513 0.511078Z',
-      x: 783, y: 127
+      x: 783, y: 127, cx: 168.76, cy: 400.26
     },
     DERECHA: {
       d: 'M326.013 13.5083L303.513 729.508L210.513 775.508L20.5134 664.008L0.513382 23.0083L114.013 4.0083L201.513 23.0083V10.0083L250.013 0.508301L326.013 13.5083Z',
-      x: 800, y: 157
+      x: 800, y: 157, cx: 163.26, cy: 388.01
     },
     IZQUIERDA: {
       d: 'M310.51 75.0064L286.51 753.006L174.51 796.506L16.5105 683.006L0.510483 7.50644L53.0105 0.506439L109.51 11.5064V28.0064L310.51 75.0064Z',
-      x: 818, y: 133
+      x: 818, y: 133, cx: 155.51, cy: 398.51
     }
   };
 
@@ -77,6 +78,34 @@ export class MainComponent {
   mostrarZonaEntrada = computed(() => this.estadoActual() === 'NAVEGANDO_360' && !this.isAnimating());
 
   zonaHover = signal<boolean>(false);
+  mobileConfirmado = signal<boolean>(false);
+  private esTactil = window.matchMedia('(hover: none)').matches;
+
+  // Carrusel de renders (botón Galería)
+  galeriaAbierta = signal<boolean>(false);
+  readonly imagenesRender: string[] = [
+    'fotos/render/A-Render Principal Modificado (2).webp',
+    'fotos/render/B-Render Secundario Modificado (1).webp',
+    'fotos/render/C-Render Peatonal (1) (1).webp',
+    'fotos/render/Copia de D-Render Terraza (1) (1).webp',
+    'fotos/render/Copia de F-Render Interiro Quincho (1) (1).webp',
+    'fotos/render/Copia de G-Render 360º Microdepto.webp',
+    'fotos/render/Copia de H-Render Interior Departamento 2 Dormitorios (1).webp',
+    'fotos/render/AP-IMG-3-v2-FULL-SIZE.webp',
+    'fotos/render/Render ao 1 (1).webp',
+    'fotos/render/T4 004 (1) (1).webp',
+    'fotos/render/alto p ia 2-expanded.webp'
+  ];
+
+  // Video inicial de fondo (inicial_web.mp4): visible siempre que se esté en INICIO
+  mostrarIntroVideo = computed(() => this.estadoActual() === 'INICIO' && !this.isVideoPlaying());
+
+  onIntroCanPlay(video: HTMLVideoElement) {
+    if (video.paused) {
+      video.muted = true;
+      video.play().catch(() => {});
+    }
+  }
 
   constructor() {
 
@@ -108,6 +137,7 @@ export class MainComponent {
   private ejecutarSecuencia(pasos: VideoStep[]) {
     if (this.isAnimating()) return;
     this.zonaHover.set(false);
+    this.mobileConfirmado.set(false);
     this.videoQueue = pasos;
     this.isAnimating.set(true);
     this.reproducirSiguienteDeLaCola();
@@ -203,6 +233,22 @@ export class MainComponent {
     }
     sequence.push({ video: 'top.mp4', poster: 'top.webp', targetState: 'ADENTRO', targetPerspectiva: 'FRENTE' });
     this.ejecutarSecuencia(sequence);
+  }
+
+  onEdificioClick() {
+    if (this.esTactil && !this.mobileConfirmado()) {
+      this.mobileConfirmado.set(true);
+      return;
+    }
+    this.entrarEdificio();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(e: Event) {
+    if (!this.mobileConfirmado()) return;
+    const el = e.target as Element | null;
+    if (el && el.closest('.zona-entrada')) return;
+    this.mobileConfirmado.set(false);
   }
 
   volverAtras() {

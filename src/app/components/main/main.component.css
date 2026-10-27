@@ -31,6 +31,17 @@
   pointer-events: none;
 }
 
+/* --- Video de intro (inicial_web): detrás de todos los controles --- */
+.intro-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
 .loading-screen {
   position: absolute;
   inset: 0;
@@ -231,6 +242,7 @@
   vector-effect: non-scaling-stroke;
   pointer-events: all;
   cursor: pointer;
+  touch-action: manipulation;
   transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
 }
 
@@ -242,6 +254,31 @@
 
 .zona-entrada path:active {
   fill: rgba(255, 255, 255, 0.2);
+}
+
+/* Círculo-pista en el centro del edificio (mismo estilo que el botón Entrar) */
+.zona-hint-pulse {
+  pointer-events: none;
+  animation: hint-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes hint-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.zona-hint {
+  fill: rgba(15, 23, 42, 0.55);
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.zona-entrada path:hover ~ .zona-hint-pulse .zona-hint,
+.zona-entrada.confirmado .zona-hint {
+  opacity: 0;
 }
 
 /* Texto "Entrar" centrado al hacer hover sobre el edificio */

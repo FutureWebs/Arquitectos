@@ -12,6 +12,18 @@
        [class.hidden]="isVideoPlaying()"
        alt="" />
 
+  <!-- Video de intro (inicial_web): primer plano de fondo en estado INICIO -->
+  @if (mostrarIntroVideo()) {
+    <video #introVideo
+           class="intro-video"
+           src="videos/inicial_web.mp4"
+           poster="fotos/intro.webp"
+           autoplay muted loop playsinline
+           (canplay)="onIntroCanPlay(introVideo)"
+           aria-hidden="true">
+    </video>
+  }
+
   <video #mainVideo
          class="background-video"
          [class.inactive]="!isVideoPlaying()"
@@ -30,7 +42,8 @@
     [isFullscreen]="isFullscreen()"
     (menuClicked)="abrirMenuPrincipal()"
     (backClicked)="volverAtras()"
-    (fullscreenToggled)="toggleFullscreen()">
+    (fullscreenToggled)="toggleFullscreen()"
+    (galleryClicked)="galeriaAbierta.set(true)">
   </app-top-bar>
 
   <!-- Reemplaza la línea (floorChanged)="pisoActual.set($event)" por esto: -->
@@ -49,17 +62,23 @@
 
   <!-- Zona clickeable del edificio: hover resalta el contorno, click entra al edificio -->
   @if (mostrarZonaEntrada()) {
-    <div class="zona-entrada">
+    <div class="zona-entrada" [class.confirmado]="mobileConfirmado()">
       <div class="zona-entrada__frame">
         <svg viewBox="0 0 1920 1080" aria-hidden="true">
           <g [attr.transform]="'translate(' + contornoEdificio().x + ',' + contornoEdificio().y + ')'">
             <path [attr.d]="contornoEdificio().d"
-                  (click)="entrarEdificio()"
+                  (click)="onEdificioClick()"
                   (mouseenter)="zonaHover.set(true)"
                   (mouseleave)="zonaHover.set(false)" />
+            <g class="zona-hint-pulse">
+              <circle class="zona-hint"
+                      [attr.cx]="contornoEdificio().cx"
+                      [attr.cy]="contornoEdificio().cy"
+                      r="32" />
+            </g>
           </g>
         </svg>
-        <div class="zona-entrada__label" [class.visible]="zonaHover()">
+        <div class="zona-entrada__label" [class.visible]="zonaHover() || mobileConfirmado()">
           {{ 'btn_enter' | translate }}
         </div>
       </div>
@@ -104,6 +123,13 @@
   [isOpen]="isSidenavOpen()"
   (closeSidenav)="isSidenavOpen.set(false)">
 </app-sidenav>
+
+<!-- Carrusel de renders (botón Galería del top-bar) -->
+<app-gallery-carousel
+  [isVisible]="galeriaAbierta()"
+  [imagenes]="imagenesRender"
+  (closed)="galeriaAbierta.set(false)">
+</app-gallery-carousel>
 
 @if (svgInfo) {
   <app-info-card
