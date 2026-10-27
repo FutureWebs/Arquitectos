@@ -3,7 +3,7 @@
 
 <!-- Overlay general translúcido -->
 <div class="info-card-overlay" [class.open]="visible" (click)="onClose()">
-  <div class="info-card" [class.fake-fullscreen]="is3DFullscreen && usingFakeFullscreen" (click)="$event.stopPropagation()">
+  <div class="info-card" (click)="$event.stopPropagation()">
 
     <!-- Pestañas de navegación -->
     <div class="info-card-tabs">
@@ -30,8 +30,7 @@
       </button>
       <button
         class="tab-btn"
-        [class.active]="activeTab === 'planta3d'"
-        (click)="selectTab('planta3d')">
+        (click)="abrirRecorrido3D()">
         <mat-icon>view_in_ar</mat-icon>
         <span>Recorrido 3D</span>
       </button>
@@ -52,18 +51,6 @@
       }
       @if (activeTab === 'planos') {
         <app-planos [plano]="info!.plano"></app-planos>
-      }
-      @if (activeTab === 'planta3d') {
-        <div class="planta3d-container" [class.fake-fullscreen]="is3DFullscreen && usingFakeFullscreen" #planta3dContainer>
-          <iframe
-            class="planta3d-iframe"
-            [src]="safeUrl"
-            allowfullscreen>
-          </iframe>
-          <button class="fullscreen-btn" (click)="toggle3DFullscreen()">
-            <mat-icon>{{ is3DFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
-          </button>
-        </div>
       }
     </div>
 
