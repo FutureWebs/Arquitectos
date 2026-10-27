@@ -281,12 +281,12 @@
   opacity: 0;
 }
 
-/* Texto "Entrar" centrado al hacer hover sobre el edificio */
+/* Texto "Entrar": abajo del edificio, a la altura del viejo botón Descubrir (bottom: 100px) */
 .zona-entrada__label {
   position: absolute;
-  top: 50%;
+  bottom: 100px;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.92);
+  transform: translateX(-50%) scale(0.92);
   padding: 14px 40px;
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.55);
@@ -308,5 +308,6 @@
 
 .zona-entrada__label.visible {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
 }

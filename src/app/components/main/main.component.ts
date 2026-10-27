@@ -83,6 +83,8 @@ export class MainComponent {
 
   // Carrusel de renders (botón Galería)
   galeriaAbierta = signal<boolean>(false);
+  tourAbierto = signal<boolean>(false);
+  videosAbiertos = signal<boolean>(false);
   readonly imagenesRender: string[] = [
     'fotos/render/A-Render Principal Modificado (2).webp',
     'fotos/render/B-Render Secundario Modificado (1).webp',
@@ -97,8 +99,31 @@ export class MainComponent {
     'fotos/render/alto p ia 2-expanded.webp'
   ];
 
+  // Tour 360 (menú hamburguesa) y videos del menú
+  readonly imagenesTour360: string[] = [
+    'fotos/tour360/Planta Monoambiaente.webp',
+    'fotos/tour360/Planta Monoambiaente_A01.webp',
+    'fotos/tour360/Planta Monoambiaente_B01.webp',
+    'fotos/tour360/Planta Dpto 1 Dormitorio_A01.webp',
+    'fotos/tour360/Planta Dpto 1 Dormitorio_A02.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios A01.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios A02.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios_B01.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios_B02.webp'
+  ];
+
+  readonly videosMenu: string[] = [
+    'videos/videos-menu/ALTO PANORAMA T4 ANIMACION.mp4',
+    'videos/videos-menu/ALTO PANORAMA T4 ANIMACION VERTICAL.mp4',
+    'videos/videos-menu/Alto Panorama - video showroom (2).mp4'
+  ];
+
   // Video inicial de fondo (inicial_web.mp4): visible siempre que se esté en INICIO
-  mostrarIntroVideo = computed(() => this.estadoActual() === 'INICIO' && !this.isVideoPlaying());
+  // Oculto temporalmente (sin borrar nada): poner en true para restaurarlo
+  private readonly introVideoActivo: boolean = false;
+  mostrarIntroVideo = computed(() =>
+    this.introVideoActivo && this.estadoActual() === 'INICIO' && !this.isVideoPlaying()
+  );
 
   onIntroCanPlay(video: HTMLVideoElement) {
     if (video.paused) {
