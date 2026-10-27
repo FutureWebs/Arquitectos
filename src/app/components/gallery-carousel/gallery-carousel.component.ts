@@ -9,6 +9,7 @@ import { Component, EventEmitter, HostListener, Input, OnChanges, Output, Simple
 export class GalleryCarouselComponent implements OnChanges {
   @Input() imagenes: string[] = [];
   @Input() isVisible = false;
+  @Input() modo: 'imagen' | 'video' = 'imagen';
   @Output() closed = new EventEmitter<void>();
 
   indice = 0;

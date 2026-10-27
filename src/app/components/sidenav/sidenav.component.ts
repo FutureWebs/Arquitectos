@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class SidenavComponent {
   @Input() isOpen: boolean = false;
   @Output() closeSidenav = new EventEmitter<void>();
+  @Output() galleryClicked = new EventEmitter<void>();
+  @Output() tourClicked = new EventEmitter<void>();
+  @Output() videosClicked = new EventEmitter<void>();
 
   ubicacionUrl = 'https://maps.app.goo.gl/N3P3VjhsurUdVeBo8';
 
@@ -19,6 +22,21 @@ export class SidenavComponent {
 
   close() {
     this.closeSidenav.emit();
+  }
+
+  onGaleria() {
+    this.close();
+    this.galleryClicked.emit();
+  }
+
+  onTour360() {
+    this.close();
+    this.tourClicked.emit();
+  }
+
+  onVideos() {
+    this.close();
+    this.videosClicked.emit();
   }
 
   goToLogin() {

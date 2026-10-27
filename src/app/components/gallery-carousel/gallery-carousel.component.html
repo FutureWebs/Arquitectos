@@ -1,11 +1,21 @@
 @if (isVisible) {
-  <div class="gallery-overlay" role="dialog" aria-label="Galería de renders">
+  <div class="gallery-overlay" [class.gallery-overlay--video]="modo === 'video'" role="dialog" aria-label="Galería de renders">
 
-    <img [src]="imagenActual"
-         class="gallery-img"
-         alt="Render del proyecto"
-         (load)="cargando.set(false)"
-         (error)="cargando.set(false)" />
+    @if (modo === 'imagen') {
+      <img [src]="imagenActual"
+           class="gallery-img"
+           alt="Render del proyecto"
+           (load)="cargando.set(false)"
+           (error)="cargando.set(false)" />
+    } @else {
+      <video class="gallery-img"
+             [src]="imagenActual"
+             [muted]="true"
+             autoplay controls playsinline
+             (loadedmetadata)="cargando.set(false)"
+             (error)="cargando.set(false)">
+      </video>
+    }
 
     @if (cargando()) {
       <div class="gallery-spinner"></div>

@@ -34,13 +34,12 @@
   <!-- Contenido -->
   <nav class="sidenav-content">
     <ul class="nav-links">
-      <li><a href="#" (click)="close()"><span>Información</span></a></li>
-      <li><a href="#" (click)="close()"><span>Plantas</span></a></li>
-      <li><a href="#" (click)="close()"><span>Galería</span></a></li>
-      <li><a href="#" (click)="close()"><span>Videos</span></a></li>
-      <li><a href="#" (click)="close()"><span>Tour 360</span></a></li>
+      <li><a href="#" (click)="close(); $event.preventDefault()"><span>Información</span></a></li>
+      <li><a href="#" (click)="onGaleria(); $event.preventDefault()"><span>Galería</span></a></li>
+      <li><a href="#" (click)="onVideos(); $event.preventDefault()"><span>Videos</span></a></li>
+      <li><a href="#" (click)="onTour360(); $event.preventDefault()"><span>Tour 360</span></a></li>
       <li><a [href]="ubicacionUrl" target="_blank" rel="noopener noreferrer"><span>Ubicación</span></a></li>
-      <li><a href="#" (click)="close()"><span>Contacto</span></a></li>
+      <li><a href="#" (click)="close(); $event.preventDefault()"><span>Contacto</span></a></li>
     </ul>
 
     <div class="footer-section">

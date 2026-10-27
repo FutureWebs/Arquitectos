@@ -104,4 +104,11 @@
   letter-spacing: 2px;
   z-index: 2;
   user-select: none;
+  pointer-events: none;
+}
+
+/* En modo video el contador sube para no tapar los controles nativos */
+.gallery-overlay--video .gallery-counter {
+  bottom: auto;
+  top: 24px;
 }

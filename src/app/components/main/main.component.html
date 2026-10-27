@@ -78,9 +78,13 @@
             </g>
           </g>
         </svg>
-        <div class="zona-entrada__label" [class.visible]="zonaHover() || mobileConfirmado()">
-          {{ 'btn_enter' | translate }}
-        </div>
+      </div>
+      <div class="zona-entrada__label"
+           [class.visible]="zonaHover() || mobileConfirmado()"
+           (click)="onEdificioClick()"
+           (mouseenter)="zonaHover.set(true)"
+           (mouseleave)="zonaHover.set(false)">
+        {{ 'btn_enter' | translate }}
       </div>
     </div>
   }
@@ -121,7 +125,10 @@
 
 <app-sidenav
   [isOpen]="isSidenavOpen()"
-  (closeSidenav)="isSidenavOpen.set(false)">
+  (closeSidenav)="isSidenavOpen.set(false)"
+  (galleryClicked)="galeriaAbierta.set(true)"
+  (tourClicked)="tourAbierto.set(true)"
+  (videosClicked)="videosAbiertos.set(true)">
 </app-sidenav>
 
 <!-- Carrusel de renders (botón Galería del top-bar) -->
@@ -129,6 +136,21 @@
   [isVisible]="galeriaAbierta()"
   [imagenes]="imagenesRender"
   (closed)="galeriaAbierta.set(false)">
+</app-gallery-carousel>
+
+<!-- Tour 360 (menú hamburguesa) -->
+<app-gallery-carousel
+  [isVisible]="tourAbierto()"
+  [imagenes]="imagenesTour360"
+  (closed)="tourAbierto.set(false)">
+</app-gallery-carousel>
+
+<!-- Videos (menú hamburguesa) -->
+<app-gallery-carousel
+  [isVisible]="videosAbiertos()"
+  [imagenes]="videosMenu"
+  modo="video"
+  (closed)="videosAbiertos.set(false)">
 </app-gallery-carousel>
 
 @if (svgInfo) {

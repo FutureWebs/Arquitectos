@@ -64,12 +64,12 @@ export class MainComponent {
       x: 783, y: 127, cx: 168.76, cy: 400.26
     },
     DERECHA: {
-      d: 'M326.013 13.5083L303.513 729.508L210.513 775.508L20.5134 664.008L0.513382 23.0083L114.013 4.0083L201.513 23.0083V10.0083L250.013 0.508301L326.013 13.5083Z',
-      x: 800, y: 157, cx: 163.26, cy: 388.01
+      d: 'M342.015 11.5069L261.515 0.506927L217.515 9.50693V26.5069L107.515 7.50693L0.514542 26.5069L22.5145 669.507L231.015 766.507L317.515 721.007L342.015 11.5069Z',
+      x: 789, y: 151, cx: 171.26, cy: 383.51
     },
     IZQUIERDA: {
-      d: 'M310.51 75.0064L286.51 753.006L174.51 796.506L16.5105 683.006L0.510483 7.50644L53.0105 0.506439L109.51 11.5064V28.0064L310.51 75.0064Z',
-      x: 818, y: 133, cx: 155.51, cy: 398.51
+      d: 'M47.0206 15.5108V49.5108L0.520599 42.0108L22.5206 682.011L121.021 738.011V766.511L136.021 760.011L173.021 780.511L325.521 692.511L344.521 18.5108L233.021 0.510803L169.521 11.0108L120.021 0.510803L47.0206 15.5108Z',
+      x: 783, y: 162, cx: 172.52, cy: 390.51
     }
   };
 
@@ -83,6 +83,8 @@ export class MainComponent {
 
   // Carrusel de renders (botón Galería)
   galeriaAbierta = signal<boolean>(false);
+  tourAbierto = signal<boolean>(false);
+  videosAbiertos = signal<boolean>(false);
   readonly imagenesRender: string[] = [
     'fotos/render/A-Render Principal Modificado (2).webp',
     'fotos/render/B-Render Secundario Modificado (1).webp',
@@ -97,8 +99,31 @@ export class MainComponent {
     'fotos/render/alto p ia 2-expanded.webp'
   ];
 
+  // Tour 360 (menú hamburguesa) y videos del menú
+  readonly imagenesTour360: string[] = [
+    'fotos/tour360/Planta Monoambiaente.webp',
+    'fotos/tour360/Planta Monoambiaente_A01.webp',
+    'fotos/tour360/Planta Monoambiaente_B01.webp',
+    'fotos/tour360/Planta Dpto 1 Dormitorio_A01.webp',
+    'fotos/tour360/Planta Dpto 1 Dormitorio_A02.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios A01.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios A02.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios_B01.webp',
+    'fotos/tour360/Planta Dpto 2 Dormitorios_B02.webp'
+  ];
+
+  readonly videosMenu: string[] = [
+    'videos/videos-menu/ALTO PANORAMA T4 ANIMACION.mp4',
+    'videos/videos-menu/ALTO PANORAMA T4 ANIMACION VERTICAL.mp4',
+    'videos/videos-menu/Alto Panorama - video showroom (2).mp4'
+  ];
+
   // Video inicial de fondo (inicial_web.mp4): visible siempre que se esté en INICIO
-  mostrarIntroVideo = computed(() => this.estadoActual() === 'INICIO' && !this.isVideoPlaying());
+  // Oculto temporalmente (sin borrar nada): poner en true para restaurarlo
+  private readonly introVideoActivo: boolean = false;
+  mostrarIntroVideo = computed(() =>
+    this.introVideoActivo && this.estadoActual() === 'INICIO' && !this.isVideoPlaying()
+  );
 
   onIntroCanPlay(video: HTMLVideoElement) {
     if (video.paused) {
