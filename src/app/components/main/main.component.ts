@@ -186,40 +186,50 @@ export class MainComponent {
 
     this.isVideoPlaying.set(false);
     this.esperandoInicioVideo = true;
+
     this.preloadImage(this.targetPosterForEnd);
 
-    setTimeout(() => {
-      if (this.pasoEnReproduccion) {
-        this.currentVideoUrl.set(`${this.pathVideos}${this.pasoEnReproduccion.video}`);
-        this.cdr.detectChanges();
+    // Asignamos la nueva URL del video inmediatamente
+    this.currentVideoUrl.set(`${this.pathVideos}${this.pasoEnReproduccion.video}`);
+    this.esperandoInicioVideo = true;
+    this.cdr.detectChanges();
 
-        if (this.videoElement) {
-          this.videoElement.nativeElement.play().catch(e => console.error('Autoplay bloqueado:', e));
+    if (this.videoElement) {
+      const videoNode = this.videoElement.nativeElement;
+      videoNode.currentTime = 0; // Aseguramos que empiece desde el inicio
+
+      videoNode.play().then(() => {
+        // El video arrancó con éxito, actualizamos la perspectiva de inmediato
+        if (this.pasoEnReproduccion) {
+          this.perspectivaActual.set(this.pasoEnReproduccion.targetPerspectiva);
         }
-      }
-    }, 150);
+      }).catch(e => console.error('Autoplay bloqueado o error al reproducir:', e));
+    }
   }
 
   onVideoTimeUpdate() {
     if (!this.esperandoInicioVideo || !this.videoElement || !this.pasoEnReproduccion) return;
 
-    if (this.videoElement.nativeElement.currentTime > 0.02) {
+    // Apenas el video emite su primer fotograma real (currentTime > 0.001),
+    // ocultamos la foto estática de inmediato para revelar el video sin demora.
+    if (this.videoElement.nativeElement.currentTime > 0.001) {
       this.esperandoInicioVideo = false;
-      this.isVideoPlaying.set(true);
-      this.perspectivaActual.set(this.pasoEnReproduccion.targetPerspectiva);
+      this.isVideoPlaying.set(true); // Esto quita la clase .hidden al video y la oculta al poster
 
       if (this.posterTimeoutRef) clearTimeout(this.posterTimeoutRef);
-      this.posterTimeoutRef = setTimeout(() => {
-        this.currentPoster.set(this.targetPosterForEnd);
-      }, 600);
     }
   }
 
   onVideoEnded() {
     if (this.pasoEnReproduccion) {
+      // ANTES de cambiar el estado, fijamos la foto póster actual para que
+      // tape el video justo en el fotograma final exacto.
+      this.currentPoster.set(this.targetPosterForEnd);
+      this.isVideoPlaying.set(false); // Oculta el video instantáneamente mostrando la foto abajo
       this.estadoActual.set(this.pasoEnReproduccion.targetState);
     }
-    this.isVideoPlaying.set(false);
+
+    // Pasamos al siguiente paso en la cola sin esperas
     this.reproducirSiguienteDeLaCola();
   }
 
@@ -257,6 +267,11 @@ export class MainComponent {
       sequence.push({ video: 'home_izquierda_reverse.mp4', poster: 'home.webp', targetState: 'NAVEGANDO_360', targetPerspectiva: 'FRENTE' });
     }
     sequence.push({ video: 'top.mp4', poster: 'top.webp', targetState: 'ADENTRO', targetPerspectiva: 'FRENTE' });
+    const pisos = this.edificioCompleto();
+    if (pisos.length > 0) {
+      const pisoDefault = pisos.find(f => f.nombre === 'T2') || pisos[0];
+      this.pisoActual.set(pisoDefault);
+    }
     this.ejecutarSecuencia(sequence);
   }
 
