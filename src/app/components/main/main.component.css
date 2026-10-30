@@ -256,29 +256,35 @@
   fill: rgba(255, 255, 255, 0.2);
 }
 
-/* Círculo-pista en el centro del edificio (mismo estilo que el botón Entrar) */
-.zona-hint-pulse {
-  pointer-events: none;
+/* Círculo-pista: a la misma altura del botón Entrar (bottom: 100px) */
+.zona-hint-circle {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  pointer-events: all;
+  cursor: pointer;
   animation: hint-pulse 1.8s ease-in-out infinite;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.zona-hint-circle.hide {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.6);
+  pointer-events: none;
 }
 
 @keyframes hint-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
-}
-
-.zona-hint {
-  fill: rgba(15, 23, 42, 0.55);
-  stroke: rgba(255, 255, 255, 0.45);
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-  opacity: 1;
-  transition: opacity 0.25s ease;
-}
-
-.zona-entrada path:hover ~ .zona-hint-pulse .zona-hint,
-.zona-entrada.confirmado .zona-hint {
-  opacity: 0;
 }
 
 /* Texto "Entrar": abajo del edificio, a la altura del viejo botón Descubrir (bottom: 100px) */
@@ -310,4 +316,78 @@
   opacity: 1;
   transform: translateX(-50%) scale(1);
   pointer-events: auto;
+}
+
+/* --- Recomendación de orientación (mobile, al llegar al top) --- */
+.orientation-hint {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 40px 32px;
+  box-sizing: border-box;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.orientation-hint.show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0s linear 0s;
+}
+
+.orientation-hint__icon {
+  width: 84px;
+  height: 84px;
+  color: #38bdf8;
+  animation: orient-rotate 2.6s ease-in-out infinite;
+}
+
+@keyframes orient-rotate {
+  0%, 25% { transform: rotate(0deg); }
+  55%, 85% { transform: rotate(-90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.orientation-hint__title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.orientation-hint__text {
+  margin: 0;
+  max-width: 420px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #cbd5e1;
+}
+
+.orientation-hint__btn {
+  margin-top: 8px;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent-color, #2563eb);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.orientation-hint__btn:hover {
+  transform: scale(1.05);
 }

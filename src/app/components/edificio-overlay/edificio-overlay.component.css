@@ -120,6 +120,24 @@
   letter-spacing: 0;
 }
 
+/* Mobile landscape (>=16:9): el plano llena el ancho (recorte mínimo de
+   calles arriba/abajo), queda centrado y los badges crecen para leerse */
+@media (max-width: 1023px) and (min-aspect-ratio: 16/9) {
+  .overlay {
+    justify-content: center;
+  }
+
+  .canvas-container {
+    width: 100vw;
+    height: auto;
+    margin: 0;
+  }
+
+  .badge-text {
+    font-size: 15px;
+  }
+}
+
 .status-dot {
   transition: fill 0.2s ease;
 }
