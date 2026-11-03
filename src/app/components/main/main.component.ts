@@ -58,18 +58,18 @@ export class MainComponent {
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
 
   // Contornos clickeables del edificio por perspectiva (coords en lienzo 1920x1080)
-  private readonly contornosEdificio: Record<Perspectiva, { d: string; x: number; y: number; cx: number; cy: number }> = {
+  private readonly contornosEdificio: Record<Perspectiva, { d: string; x: number; y: number }> = {
     FRENTE: {
       d: 'M245.513 0.511078L287.513 10.5111V43.5111L337.013 51.0111L319.513 692.011L131.013 800.011L21.0129 746.511L0.512878 76.0111L176.513 43.5111V13.5111L245.513 0.511078Z',
-      x: 783, y: 127, cx: 168.76, cy: 400.26
+      x: 783, y: 127
     },
     DERECHA: {
       d: 'M342.015 11.5069L261.515 0.506927L217.515 9.50693V26.5069L107.515 7.50693L0.514542 26.5069L22.5145 669.507L231.015 766.507L317.515 721.007L342.015 11.5069Z',
-      x: 789, y: 151, cx: 171.26, cy: 383.51
+      x: 789, y: 151
     },
     IZQUIERDA: {
       d: 'M47.0206 15.5108V49.5108L0.520599 42.0108L22.5206 682.011L121.021 738.011V766.511L136.021 760.011L173.021 780.511L325.521 692.511L344.521 18.5108L233.021 0.510803L169.521 11.0108L120.021 0.510803L47.0206 15.5108Z',
-      x: 783, y: 162, cx: 172.52, cy: 390.51
+      x: 783, y: 162
     }
   };
 
@@ -86,17 +86,14 @@ export class MainComponent {
   tourAbierto = signal<boolean>(false);
   videosAbiertos = signal<boolean>(false);
   readonly imagenesRender: string[] = [
-    'fotos/render/A-Render Principal Modificado (2).webp',
-    'fotos/render/B-Render Secundario Modificado (1).webp',
-    'fotos/render/C-Render Peatonal (1) (1).webp',
-    'fotos/render/Copia de D-Render Terraza (1) (1).webp',
-    'fotos/render/Copia de F-Render Interiro Quincho (1) (1).webp',
-    'fotos/render/Copia de G-Render 360º Microdepto.webp',
-    'fotos/render/Copia de H-Render Interior Departamento 2 Dormitorios (1).webp',
-    'fotos/render/AP-IMG-3-v2-FULL-SIZE.webp',
-    'fotos/render/Render ao 1 (1).webp',
-    'fotos/render/T4 004 (1) (1).webp',
-    'fotos/render/alto p ia 2-expanded.webp'
+    'fotos/galeria-general/A-Render Principal Modificado (2).webp',
+    'fotos/galeria-general/B-Render Secundario Modificado (1).webp',
+    'fotos/galeria-general/C-Render Peatonal (1) (1).webp',
+    'fotos/galeria-general/Copia de D-Render Terraza (1) (1).webp',
+    'fotos/galeria-general/Copia de F-Render Interiro Quincho (1) (1).webp',
+    'fotos/galeria-general/AP-IMG-3-v2-FULL-SIZE.webp',
+    'fotos/galeria-general/T4 004 (1) (1).webp',
+    'fotos/galeria-general/alto p ia 2-expanded.webp'
   ];
 
   // Tour 360 (menú hamburguesa) y videos del menú
@@ -132,6 +129,27 @@ export class MainComponent {
     }
   }
 
+  // Recomendación de orientación (solo mobile) al llegar al top
+  recomendacionOrientacion = signal<boolean>(false);
+  private recomendacionTimer: ReturnType<typeof setTimeout> | null = null;
+
+  private mostrarRecomendacionOrientacion() {
+    this.recomendacionOrientacion.set(true);
+    if (this.recomendacionTimer) clearTimeout(this.recomendacionTimer);
+    this.recomendacionTimer = setTimeout(() => {
+      this.recomendacionOrientacion.set(false);
+      this.recomendacionTimer = null;
+    }, 6000);
+  }
+
+  private cancelarRecomendacionOrientacion() {
+    if (this.recomendacionTimer) {
+      clearTimeout(this.recomendacionTimer);
+      this.recomendacionTimer = null;
+    }
+    this.recomendacionOrientacion.set(false);
+  }
+
   constructor() {
 
     effect(() => {
@@ -142,6 +160,20 @@ export class MainComponent {
       }
     });
 
+    effect(() => {
+      const llegoAlTop = this.mostrarOverlay();
+      const enPortrait = window.matchMedia('(orientation: portrait)').matches;
+      if (llegoAlTop && this.esTactil && enPortrait) {
+        this.mostrarRecomendacionOrientacion();
+      } else {
+        this.cancelarRecomendacionOrientacion();
+      }
+    });
+
+    // Si el usuario gira el teléfono, la recomendación ya cumplió: ocultar
+    window.matchMedia('(orientation: portrait)').addEventListener('change', (e) => {
+      if (!e.matches) this.cancelarRecomendacionOrientacion();
+    });
 
   }
 
@@ -289,6 +321,7 @@ export class MainComponent {
     const el = e.target as Element | null;
     if (el && el.closest('.zona-entrada')) return;
     this.mobileConfirmado.set(false);
+    this.zonaHover.set(false);
   }
 
   volverAtras() {

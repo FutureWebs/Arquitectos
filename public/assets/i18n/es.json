@@ -3,5 +3,8 @@
   "aria_back": "Volver atrás",
   "aria_fullscreen": "Alternar pantalla completa",
   "btn_discover": "Descubrir",
-  "btn_enter": "Entrar"
+  "btn_enter": "Entrar",
+  "orientation_title": "Gira tu teléfono",
+  "orientation_text": "Para navegar mejor y disfrutar de la experiencia, te recomendamos usar el teléfono en horizontal.",
+  "orientation_ok": "Entendido"
 }
