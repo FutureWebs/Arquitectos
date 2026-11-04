@@ -246,7 +246,7 @@ export class MainComponent {
     const videoNode = this.videoElement.nativeElement;
 
     // 1. Si estamos esperando el inicio del video, quitamos el póster al primer fotograma
-    if (this.esperandoInicioVideo && videoNode.currentTime > 0.001) {
+    if (this.esperandoInicioVideo && videoNode.currentTime > 0.05) {
       this.esperandoInicioVideo = false;
       this.isVideoPlaying.set(true);
       if (this.posterTimeoutRef) clearTimeout(this.posterTimeoutRef);
@@ -256,25 +256,46 @@ export class MainComponent {
     // 2. ANTICIPACIÓN AL FINAL: Si al video le quedan menos de 0.15 segundos para terminar,
     // adelantamos la foto de cierre para que la transición sea totalmente invisible.
     if (!this.esperandoInicioVideo && videoNode.duration && !videoNode.paused) {
+      this.currentPoster.set(this.targetPosterForEnd);
       const tiempoRestante = videoNode.duration - videoNode.currentTime;
 
       if (tiempoRestante <= 0.15 && this.pasoEnReproduccion) {
         // Fijamos la foto póster justo antes del corte
-        this.currentPoster.set(this.targetPosterForEnd);
+
         this.isVideoPlaying.set(false); // Oculta el video mostrando la foto abajo suavemente
       }
     }
+
   }
+  /*
+  onVideoTimeUpdate() {
+    if (!this.esperandoInicioVideo || !this.videoElement || !this.pasoEnReproduccion) return;
+
+    // Apenas el video emite su primer fotograma real (currentTime > 0.001),
+    // ocultamos la foto estática de inmediato para revelar el video sin demora.
+    if (this.videoElement.nativeElement.currentTime > 0.001) {
+      this.esperandoInicioVideo = false;
+      this.isVideoPlaying.set(true); // Esto quita la clase .hidden al video y la oculta al poster
+
+      if (this.posterTimeoutRef) clearTimeout(this.posterTimeoutRef);
+    }
+  }
+
+   */
 
   onVideoEnded() {
     if (this.pasoEnReproduccion) {
-      // Nos aseguramos de fijar el estado final de la app
+      // ANTES de cambiar el estado, fijamos la foto póster actual para que
+      // tape el video justo en el fotograma final exacto.
+      this.currentPoster.set(this.targetPosterForEnd);
+      this.isVideoPlaying.set(false); // Oculta el video instantáneamente mostrando la foto abajo
       this.estadoActual.set(this.pasoEnReproduccion.targetState);
     }
 
-    // Reproducimos el siguiente paso de la cola de inmediato
+    // Pasamos al siguiente paso en la cola sin esperas
     this.reproducirSiguienteDeLaCola();
   }
+
 
   iniciarDescubrimiento() {
     this.ejecutarSecuencia([
