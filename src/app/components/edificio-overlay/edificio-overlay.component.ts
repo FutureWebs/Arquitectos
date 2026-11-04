@@ -34,14 +34,8 @@ export class EdificioOverlay {
     return this.listaPisos.slice().reverse().slice(1);
   }
 
-  letraDepto(index: number): string {
-    let n = index;
-    let letra = '';
-    do {
-      letra = String.fromCharCode(65 + (n % 26)) + letra;
-      n = Math.floor(n / 26) - 1;
-    } while (n >= 0);
-    return letra;
+  deptoNumero(apto: Apartment): string {
+    return apto.id.split('-Apto-')[1] || apto.id;
   }
 
 

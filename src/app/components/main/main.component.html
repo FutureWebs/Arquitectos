@@ -70,15 +70,13 @@
                   (click)="onEdificioClick()"
                   (mouseenter)="zonaHover.set(true)"
                   (mouseleave)="zonaHover.set(false)" />
-            <g class="zona-hint-pulse">
-              <circle class="zona-hint"
-                      [attr.cx]="contornoEdificio().cx"
-                      [attr.cy]="contornoEdificio().cy"
-                      r="32" />
-            </g>
           </g>
         </svg>
       </div>
+      <div class="zona-hint-circle"
+           [class.hide]="zonaHover() || mobileConfirmado()"
+           (mouseenter)="zonaHover.set(true)"
+           (click)="onEdificioClick()"></div>
       <div class="zona-entrada__label"
            [class.visible]="zonaHover() || mobileConfirmado()"
            (click)="onEdificioClick()"
@@ -152,6 +150,19 @@
   modo="video"
   (closed)="videosAbiertos.set(false)">
 </app-gallery-carousel>
+
+<!-- Recomendación de orientación (mobile): al llegar al top, gira el teléfono -->
+<div class="orientation-hint" [class.show]="recomendacionOrientacion()" (click)="recomendacionOrientacion.set(false)">
+  <svg class="orientation-hint__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7.5" y="2.5" width="9" height="19" rx="2" />
+    <line x1="10.5" y1="18.5" x2="13.5" y2="18.5" />
+  </svg>
+  <h2 class="orientation-hint__title">{{ 'orientation_title' | translate }}</h2>
+  <p class="orientation-hint__text">{{ 'orientation_text' | translate }}</p>
+  <button class="orientation-hint__btn" (click)="recomendacionOrientacion.set(false)">
+    {{ 'orientation_ok' | translate }}
+  </button>
+</div>
 
 @if (svgInfo) {
   <app-info-card
