@@ -9,6 +9,7 @@ import { SidenavComponent } from '../sidenav/sidenav.component';
 import { InfoCard } from '../info-card/info-card';
 import { GalleryCarouselComponent } from '../gallery-carousel/gallery-carousel.component';
 import { InfoDepto } from '../../models/info-depto';
+import { MediaPreloadService } from '../../services/media-preload.service';
 
 type AppState = 'INICIO' | 'NAVEGANDO_360' | 'ADENTRO';
 type Perspectiva = 'FRENTE' | 'DERECHA' | 'IZQUIERDA';
@@ -30,6 +31,7 @@ interface VideoStep {
 export class MainComponent {
   private buildingService = inject(BuildingDataService);
   private cdr = inject(ChangeDetectorRef);
+  private mediaCache = inject(MediaPreloadService);
 
   @ViewChild('mainVideo') videoElement!: ElementRef<HTMLVideoElement>;
 
@@ -175,6 +177,14 @@ export class MainComponent {
       if (!e.matches) this.cancelarRecomendacionOrientacion();
     });
 
+    // Al entrar al 360 (o volver a él) re-precachamos: refresca la caché HTTP
+    // (max-age=600 en GH Pages) y garantiza pósters listos para la próxima flecha
+    effect(() => {
+      if (this.estadoActual() === 'NAVEGANDO_360') {
+        this.precargarPosters360();
+      }
+    });
+
   }
 
   ngOnInit() {
@@ -182,6 +192,9 @@ export class MainComponent {
     img.onload = () => setTimeout(() => this.isLoading.set(false), 400);
     img.onerror = () => this.isLoading.set(false);
     img.src = this.currentPoster();
+
+    // Warm-up: precarga los pósters del 360 en idle (cubre también la transición de intro)
+    this.precargarPosters360();
   }
 
   abrirMenuPrincipal() {
@@ -200,12 +213,7 @@ export class MainComponent {
     this.reproducirSiguienteDeLaCola();
   }
 
-  private preloadImage(url: string) {
-    const img = new Image();
-    img.src = url;
-  }
-
-  private reproducirSiguienteDeLaCola() {
+  private async reproducirSiguienteDeLaCola() {
     if (this.videoQueue.length === 0) {
       this.isAnimating.set(false);
       this.isVideoPlaying.set(false);
@@ -213,32 +221,84 @@ export class MainComponent {
       return;
     }
 
-    this.pasoEnReproduccion = this.videoQueue.shift()!;
-    this.targetPosterForEnd = `${this.pathFotos}${this.pasoEnReproduccion.poster}`;
+    const paso = this.videoQueue.shift()!;
+    this.pasoEnReproduccion = paso;
+    this.targetPosterForEnd = `${this.pathFotos}${paso.poster}`;
 
     this.isVideoPlaying.set(false);
     this.esperandoInicioVideo = true;
 
-    this.preloadImage(this.targetPosterForEnd);
+    // 1) Esperamos la foto de destino (máx. 2s) ANTES de arrancar el video.
+    //    Garantiza que al revelar al final del video el póster ya esté en caché:
+    //    sin 2da descarga y sin flash de imagen equivocada/negra.
+    await Promise.race([
+      this.mediaCache.cargarPoster(this.targetPosterForEnd).catch(() => undefined),
+      new Promise<void>((resolve) => setTimeout(resolve, 2000)),
+    ]);
 
-    // Asignamos la nueva URL del video inmediatamente
-    this.currentVideoUrl.set(`${this.pathVideos}${this.pasoEnReproduccion.video}`);
+    // Si durante la espera la secuencia fue reemplazada, no arrancamos nada
+    if (this.pasoEnReproduccion !== paso) return;
+
+    // 2) Recién ahora asignamos la URL del video y lo reproducimos
+    this.currentVideoUrl.set(`${this.pathVideos}${paso.video}`);
     this.esperandoInicioVideo = true;
     this.cdr.detectChanges();
 
     if (this.videoElement) {
       const videoNode = this.videoElement.nativeElement;
-      videoNode.currentTime = 0; // Aseguramos que empiece desde el inicio
+      videoNode.currentTime = 0;
 
       videoNode.play().then(() => {
-        // El video arrancó con éxito, actualizamos la perspectiva de inmediato
-        if (this.pasoEnReproduccion) {
-          this.perspectivaActual.set(this.pasoEnReproduccion.targetPerspectiva);
+        if (this.pasoEnReproduccion === paso) {
+          this.perspectivaActual.set(paso.targetPerspectiva);
         }
       }).catch(e => console.error('Autoplay bloqueado o error al reproducir:', e));
     }
   }
 
+  private precargarPosters360() {
+    const urls = [
+      `${this.pathFotos}home.webp`,
+      `${this.pathFotos}home_derecha.webp`,
+      `${this.pathFotos}home_izquierda.webp`,
+      `${this.pathFotos}top.webp`,
+    ];
+    const cargar = () => this.mediaCache.precargarPosters(urls);
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => cargar(), { timeout: 3000 });
+    } else {
+      setTimeout(cargar, 1000);
+    }
+  }
+
+
+  onVideoTimeUpdate() {
+    if (!this.videoElement || !this.pasoEnReproduccion) return;
+
+    const videoNode = this.videoElement.nativeElement;
+
+    // 1. Si estamos esperando el inicio del video, quitamos el póster al primer fotograma
+    if (this.esperandoInicioVideo && videoNode.currentTime > 0.05) {
+      this.esperandoInicioVideo = false;
+      this.isVideoPlaying.set(true);
+      return;
+    }
+
+    // 2. ANTICIPACIÓN AL FINAL: Si al video le quedan menos de 0.15 segundos para terminar,
+    // adelantamos la foto de cierre para que la transición sea totalmente invisible.
+    if (!this.esperandoInicioVideo && videoNode.duration && !videoNode.paused) {
+      this.currentPoster.set(this.targetPosterForEnd);
+      const tiempoRestante = videoNode.duration - videoNode.currentTime;
+
+      if (tiempoRestante <= 0.15 && this.pasoEnReproduccion) {
+        // Fijamos la foto póster justo antes del corte
+
+        this.isVideoPlaying.set(false); // Oculta el video mostrando la foto abajo suavemente
+      }
+    }
+
+  }
+  /*
   onVideoTimeUpdate() {
     if (!this.esperandoInicioVideo || !this.videoElement || !this.pasoEnReproduccion) return;
 
@@ -252,6 +312,8 @@ export class MainComponent {
     }
   }
 
+   */
+
   onVideoEnded() {
     if (this.pasoEnReproduccion) {
       // ANTES de cambiar el estado, fijamos la foto póster actual para que
@@ -264,6 +326,7 @@ export class MainComponent {
     // Pasamos al siguiente paso en la cola sin esperas
     this.reproducirSiguienteDeLaCola();
   }
+
 
   iniciarDescubrimiento() {
     this.ejecutarSecuencia([
@@ -379,5 +442,4 @@ export class MainComponent {
   private esperandoInicioVideo = false;
   private videoQueue: VideoStep[] = [];
   private pasoEnReproduccion: VideoStep | null = null;
-  private posterTimeoutRef: any;
 }
