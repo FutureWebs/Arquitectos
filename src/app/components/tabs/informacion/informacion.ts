@@ -12,4 +12,11 @@ import { InfoDepto } from '../../../models/info-depto';
 })
 export class Informacion {
   @Input() info!: InfoDepto;
+
+  estadoBadge(): 'ok' | 'warn' | 'bad' {
+    const d = (this.info?.disponibilidad || '').toLowerCase();
+    if (d.includes('disp')) return 'ok';
+    if (d.includes('reserv')) return 'warn';
+    return 'bad';
+  }
 }

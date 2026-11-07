@@ -1,7 +1,7 @@
 .gallery-overlay {
   position: fixed;
   inset: 0;
-  background: #000000;
+  background: var(--color-lightbox);
   z-index: 990;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
   width: 44px;
   height: 44px;
   border: 3px solid rgba(255, 255, 255, 0.25);
-  border-top-color: #ffffff;
+  border-top-color: var(--color-gold);
   border-radius: 50%;
   animation: gallery-spin 1s linear infinite;
   pointer-events: none;
@@ -36,28 +36,34 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 2;
-  transition: transform 0.2s ease, background 0.2s ease;
+  opacity: 0.9;
+  transition: transform var(--duration-fast) var(--ease-out),
+    background var(--duration-fast), border-color var(--duration-fast),
+    color var(--duration-fast), opacity var(--duration-fast);
 }
 
 .gallery-btn:hover {
   transform: scale(1.08);
-  background: rgba(15, 23, 42, 0.75);
+  background: var(--color-gold-soft);
+  border-color: var(--color-gold);
+  color: var(--color-accent-text);
+  opacity: 1;
 }
 
 .gallery-btn svg {
   width: 24px;
   height: 24px;
-  stroke: #ffffff;
+  stroke: currentColor;
   stroke-width: 2;
   fill: none;
 }
@@ -94,13 +100,13 @@
   transform: translateX(-50%);
   padding: 8px 20px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 2px;
   z-index: 2;
   user-select: none;

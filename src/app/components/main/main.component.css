@@ -45,12 +45,12 @@
 .loading-screen {
   position: absolute;
   inset: 0;
-  background: #0f172a;
+  background: var(--color-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--color-text);
   z-index: 200;
   gap: 15px;
 }
@@ -59,7 +59,7 @@
   width: 48px;
   height: 48px;
   border: 4px solid rgba(255, 255, 255, 0.2);
-  border-top-color: #ffffff;
+  border-top-color: var(--color-gold);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -73,7 +73,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--duration) var(--ease-out);
 }
 
 .ui-layer.ui-hidden {
@@ -98,16 +98,16 @@
 
 /* --- ESTILOS DE BRANDING HERO --- */
 .hero-star-icon {
-  color: #ffffff;
+  color: var(--color-gold);
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
   margin-bottom: 2px;
   animation: pulseStar 3s ease-in-out infinite;
 }
 
 .hero-brand-title {
-  color: #ffffff;
+  color: var(--color-text);
   font-size: 32px;
-  font-weight: 800;
+  font-weight: 200;
   letter-spacing: 3px;
   margin: 0;
   text-shadow: 0 2px 10px rgba(0,0,0,0.6);
@@ -115,22 +115,23 @@
 
 .hero-brand-pill {
   display: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--color-gold-line);
   padding: 4px 16px;
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  color: var(--color-text);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   margin-bottom: 6px;
 }
 
 .hero-text {
-  color: #cbd5e1;
+  color: var(--color-text-muted);
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 300;
   text-shadow: 0 2px 6px rgba(0,0,0,0.6);
   margin: 0;
 }
@@ -149,27 +150,30 @@
 }
 
 .btn-premium {
-  background: var(--accent-color, #2563eb);
-  color: white;
+  background: var(--gradient-gold);
+  color: var(--color-on-gold);
   border: none;
-  padding: 16px 36px;
-  border-radius: 30px;
+  padding: 16px 40px;
+  border-radius: 999px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
-  transition: transform 0.2s, background 0.2s;
+  box-shadow: var(--shadow-gold);
+  transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration);
 }
 
 .btn-premium:hover {
   transform: scale(1.05);
+  box-shadow: 0 12px 36px rgba(212, 185, 138, 0.5);
 }
 
 .btn-nav {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  color: white;
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -177,18 +181,25 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s;
+  opacity: 0.85;
+  transition: transform var(--duration-fast) var(--ease-out),
+    background var(--duration-fast), border-color var(--duration-fast),
+    color var(--duration-fast), opacity var(--duration-fast);
 }
 
 .btn-nav svg {
   width: 24px;
   height: 24px;
-  stroke: white;
+  stroke: currentColor;
   stroke-width: 2;
   fill: none;
 }
 
 .btn-nav:hover {
+  background: var(--color-gold-soft);
+  border-color: var(--color-gold);
+  color: var(--color-accent-text);
+  opacity: 1;
   transform: scale(1.08);
 }
 
@@ -243,20 +254,20 @@
   pointer-events: all;
   cursor: pointer;
   touch-action: manipulation;
-  transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
+  transition: fill var(--duration-fast) var(--ease-out), stroke var(--duration-fast) var(--ease-out), filter var(--duration-fast) var(--ease-out);
 }
 
 .zona-entrada path:hover {
-  fill: rgba(255, 255, 255, 0.12);
-  stroke: rgba(255, 255, 255, 0.95);
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+  fill: rgba(212, 185, 138, 0.12);
+  stroke: var(--color-gold);
+  filter: drop-shadow(0 0 12px rgba(212, 185, 138, 0.6));
 }
 
 .zona-entrada path:active {
-  fill: rgba(255, 255, 255, 0.2);
+  fill: rgba(212, 185, 138, 0.2);
 }
 
-/* Círculo-pista: a la misma altura del botón Entrar (bottom: 100px) */
+/* Círculo-pista (patrón hotspot dorado): a la misma altura del botón Entrar */
 .zona-hint-circle {
   position: absolute;
   bottom: 100px;
@@ -265,11 +276,9 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: var(--color-gold);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 6px var(--color-gold-glow), 0 8px 32px rgba(0, 0, 0, 0.45);
   pointer-events: all;
   cursor: pointer;
   animation: hint-pulse 1.8s ease-in-out infinite;
@@ -295,17 +304,16 @@
   transform: translateX(-50%) scale(0.92);
   padding: 14px 40px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  border: 1px solid var(--color-gold-line);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  color: var(--color-accent-text);
   font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 4px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
@@ -330,27 +338,27 @@
   gap: 18px;
   padding: 40px 32px;
   box-sizing: border-box;
-  background: rgba(15, 23, 42, 0.94);
+  background: var(--color-lightbox);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: #ffffff;
+  color: var(--color-text);
   text-align: center;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+  transition: opacity 0.4s var(--ease-out), visibility 0s linear 0.4s;
 }
 
 .orientation-hint.show {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.4s ease, visibility 0s linear 0s;
+  transition: opacity 0.4s var(--ease-out), visibility 0s linear 0s;
 }
 
 .orientation-hint__icon {
   width: 84px;
   height: 84px;
-  color: #38bdf8;
+  color: var(--color-gold);
   animation: orient-rotate 2.6s ease-in-out infinite;
 }
 
@@ -363,16 +371,17 @@
 .orientation-hint__title {
   margin: 0;
   font-size: 26px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-weight: 200;
+  letter-spacing: -0.01em;
 }
 
 .orientation-hint__text {
   margin: 0;
   max-width: 420px;
   font-size: 16px;
+  font-weight: 300;
   line-height: 1.5;
-  color: #cbd5e1;
+  color: var(--color-text-muted);
 }
 
 .orientation-hint__btn {
@@ -380,12 +389,14 @@
   padding: 14px 36px;
   border: none;
   border-radius: 999px;
-  background: var(--accent-color, #2563eb);
-  color: #ffffff;
+  background: var(--gradient-gold);
+  color: var(--color-on-gold);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  box-shadow: var(--shadow-gold);
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
 .orientation-hint__btn:hover {

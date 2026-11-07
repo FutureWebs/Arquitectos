@@ -16,3 +16,26 @@
   align-items: center;
   pointer-events: auto; /* Reactivar clicks en los botones */
 }
+
+/* Botón hamburguesa: patrón exacto del showroom (sólido oscuro + oro + halo) */
+.btn-glass.btn-menu {
+  width: 2.75rem;
+  height: 2.75rem;
+  background: var(--color-bg);
+  border-color: var(--color-gold-line);
+  color: var(--color-accent-icon);
+  box-shadow: 0 0 0 5px var(--color-gold-soft);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.btn-glass.btn-menu:hover:not(:disabled) {
+  background: var(--color-bg);
+  border-color: var(--color-gold-line);
+  color: var(--color-accent-icon);
+  transform: scale(1.05);
+}
+
+.btn-glass.btn-menu:active:not(:disabled) {
+  transform: scale(0.95);
+}

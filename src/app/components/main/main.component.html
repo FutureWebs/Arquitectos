@@ -123,7 +123,9 @@
 
 <app-sidenav
   [isOpen]="isSidenavOpen()"
+  [enInicio]="estadoActual() === 'INICIO'"
   (closeSidenav)="isSidenavOpen.set(false)"
+  (inicioClicked)="onMenuInicio()"
   (galleryClicked)="galeriaAbierta.set(true)"
   (tourClicked)="tourAbierto.set(true)"
   (videosClicked)="videosAbiertos.set(true)">

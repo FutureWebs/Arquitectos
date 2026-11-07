@@ -11,17 +11,26 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
   @Input() isOpen: boolean = false;
+  @Input() enInicio: boolean = false;
   @Output() closeSidenav = new EventEmitter<void>();
   @Output() galleryClicked = new EventEmitter<void>();
   @Output() tourClicked = new EventEmitter<void>();
   @Output() videosClicked = new EventEmitter<void>();
+  @Output() inicioClicked = new EventEmitter<void>();
 
   ubicacionUrl = 'https://maps.app.goo.gl/N3P3VjhsurUdVeBo8';
+  anio = new Date().getFullYear();
+  galeriaOpen = false;
 
   constructor(private router: Router) {}
 
   close() {
     this.closeSidenav.emit();
+  }
+
+  onInicio() {
+    this.close();
+    this.inicioClicked.emit();
   }
 
   onGaleria() {

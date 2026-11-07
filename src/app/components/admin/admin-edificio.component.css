@@ -121,7 +121,7 @@ h3 {
 }
 
 .card-depto strong {
-  color: #2563eb;
+  color: var(--color-accent-text);
 }
 
 /* Botones de acción de estados */

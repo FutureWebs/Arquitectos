@@ -8,7 +8,7 @@
 
       @if (info!.disponibilidad) {
         <div class="info-disponibilidad">
-          <span class="badge">{{ info!.disponibilidad }}</span>
+          <span [class]="'badge badge--' + estadoBadge()">{{ info!.disponibilidad }}</span>
         </div>
       }
 
