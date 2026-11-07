@@ -56,7 +56,7 @@
       (backPressed)="volverAtras()"
       (toggleFullscreen)="toggleFullscreen()"
       (floorChanged)="onFloorChanged($event)"
-      (apartmentSelected)="abrirDetalle($event)">
+      (apartmentSelected)="onDeptoClick($event)">
     </app-edificio-overlay>
   }
 
@@ -165,13 +165,4 @@
     {{ 'orientation_ok' | translate }}
   </button>
 </div>
-
-@if (svgInfo) {
-  <app-info-card
-    [info]="infoSeleccionada"
-    [visible]="mostrarInfo"
-    (close)="cerrarInfo()"
-    (open)="abrirInfo()">
-  </app-info-card>
-}
 </div>

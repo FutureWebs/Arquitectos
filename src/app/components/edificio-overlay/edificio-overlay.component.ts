@@ -35,6 +35,11 @@ export class EdificioOverlay {
   }
 
   deptoNumero(apto: Apartment): string {
+    // Prioriza el número que manda la web padre (iframe); si no, el de nuestro id
+    const externo = apto.externo?.numero;
+    if (externo !== undefined && externo !== null && `${externo}` !== '') {
+      return `${externo}`;
+    }
     return apto.id.split('-Apto-')[1] || apto.id;
   }
 

@@ -35,6 +35,8 @@ export interface Apartment {
   estado: 'DISPONIBLE' | 'RESERVADO' | 'VENDIDO';
   precio?: number;
   disponibilidadText?: string;
+  /** Info que envía la web padre (iframe) — ver embed-protocol.ts */
+  externo?: { dbId: string; numero?: number | string };
 }
 
 export interface Floor {

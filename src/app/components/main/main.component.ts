@@ -6,10 +6,10 @@ import { BuildingDataService } from '../../services/building-data.service';
 import { Apartment, Floor } from '../../models/building.models';
 import { TranslatePipe } from '@ngx-translate/core';
 import { SidenavComponent } from '../sidenav/sidenav.component';
-import { InfoCard } from '../info-card/info-card';
 import { GalleryCarouselComponent } from '../gallery-carousel/gallery-carousel.component';
-import { InfoDepto } from '../../models/info-depto';
 import { MediaPreloadService } from '../../services/media-preload.service';
+import { ParentBridgeService } from '../../services/parent-bridge.service';
+import { DeptoExterno } from '../../models/embed-protocol';
 
 type AppState = 'INICIO' | 'NAVEGANDO_360' | 'ADENTRO';
 type Perspectiva = 'FRENTE' | 'DERECHA' | 'IZQUIERDA';
@@ -24,7 +24,7 @@ interface VideoStep {
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, TopBarComponent, EdificioOverlay, TranslatePipe, SidenavComponent, InfoCard, GalleryCarouselComponent],
+  imports: [CommonModule, TopBarComponent, EdificioOverlay, TranslatePipe, SidenavComponent, GalleryCarouselComponent],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
@@ -32,6 +32,7 @@ export class MainComponent {
   private buildingService = inject(BuildingDataService);
   private cdr = inject(ChangeDetectorRef);
   private mediaCache = inject(MediaPreloadService);
+  private bridge = inject(ParentBridgeService);
 
   @ViewChild('mainVideo') videoElement!: ElementRef<HTMLVideoElement>;
 
@@ -52,10 +53,6 @@ export class MainComponent {
 
   currentPoster = signal<string>(`${this.pathFotos}intro.webp`);
   currentVideoUrl = signal<string>('');
-
-  mostrarInfo = false;
-  svgInfo = false;
-  infoSeleccionada!: InfoDepto;
 
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
 
@@ -185,7 +182,31 @@ export class MainComponent {
       }
     });
 
+    // Info verídica de la web padre (iframe): parchea estados/nombres de los
+    // deptos cuando llega el CONFIG o cuando Firestore reemplaza los pisos.
+    effect(() => {
+      const cfg: DeptoExterno[] | null = this.bridge.deptosExternos();
+      const pisos = this.buildingService.edificioPisos();
+      if (cfg && pisos.length) {
+        this.bridge.parchearDeptos(pisos, cfg);
+      }
+    });
+
+    // Tras recibir un CONFIG, refresca el piso visible para repintar los badges
+    effect(() => {
+      const v = this.bridge.configVersion();
+      if (v === 0 || v === this.configAplicada) return;
+      const p = this.pisoActual();
+      if (p) {
+        const fresco = this.buildingService.edificioPisos().find((f) => f.nivel === p.nivel);
+        this.pisoActual.set(fresco ? { ...fresco } : { ...p });
+      }
+      this.configAplicada = v;
+    });
+
   }
+
+  private configAplicada = 0;
 
   ngOnInit() {
     const img = new Image();
@@ -195,6 +216,9 @@ export class MainComponent {
 
     // Warm-up: precarga los pósters del 360 en idle (cubre también la transición de intro)
     this.precargarPosters360();
+
+    // Avisamos a la web padre (iframe) que estamos listas para recibir el CONFIG
+    this.bridge.avisarListo();
   }
 
   abrirMenuPrincipal() {
@@ -421,22 +445,10 @@ export class MainComponent {
     }
   }
 
-  // Al seleccionar un apartamento, cargamos sus datos estáticos y el estado actualizado
-  abrirDetalle(apto: Apartment) {
-    this.svgInfo = true;
-    this.mostrarInfo = true;
-    this.infoSeleccionada = {
-      ...apto.datosEstaticos,
-      disponibilidad: apto.disponibilidadText || apto.estado
-    };
-  }
-
-  abrirInfo() {
-    this.mostrarInfo = true;
-  }
-
-  cerrarInfo() {
-    this.mostrarInfo = false;
+  // Clic en un depto: en modo embebido se avisa a la web padre (que abre SU modal);
+  // sin padre no hay modal local (funcionalidad eliminada en la rama experimental).
+  onDeptoClick(apto: Apartment) {
+    this.bridge.notificarDepto(apto);
   }
 
   // Método dedicado para manejar el cambio de piso seleccionado
