@@ -3,9 +3,9 @@
   <!-- Grupo Izquierda: Menú Hamburguesa + Botón Volver -->
   <div class="top-left-group">
 
-    <!-- Botón Menú Hamburguesa -->
+    <!-- Botón Menú Hamburguesa (estilo menuButton del showroom) -->
     @if (mostrarMenuBtn) {
-      <button class="btn-glass"
+      <button class="btn-glass btn-menu"
               [disabled]="isBlocked"
               (click)="onMenuClick()"
               [attr.aria-label]="'aria_menu' | translate">

@@ -201,6 +201,13 @@ export class MainComponent {
     this.isSidenavOpen.set(true);
   }
 
+  onMenuInicio() {
+    if (this.isAnimating()) return;
+    if (this.estadoActual() !== 'INICIO') {
+      this.volverAtras();
+    }
+  }
+
 
 
   // --- MÉTODOS DE VIDEO Y NAVEGACIÓN (Se mantienen igual) ---

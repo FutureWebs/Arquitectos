@@ -46,19 +46,7 @@
     (galleryClicked)="galeriaAbierta.set(true)">
   </app-top-bar>
 
-  <!-- Reemplaza la línea (floorChanged)="pisoActual.set($event)" por esto: -->
-  @if (pisoActual()) {
-    <app-edificio-overlay
-      [isVisible]="mostrarOverlay()"
-      [floorData]="pisoActual()!"
-      [listaPisos]="edificioCompleto()"
-      [isFullscreen]="isFullscreen()"
-      (backPressed)="volverAtras()"
-      (toggleFullscreen)="toggleFullscreen()"
-      (floorChanged)="onFloorChanged($event)"
-      (apartmentSelected)="abrirDetalle($event)">
-    </app-edificio-overlay>
-  }
+
 
   <!-- Zona clickeable del edificio: hover resalta el contorno, click entra al edificio -->
   @if (mostrarZonaEntrada()) {
@@ -121,9 +109,25 @@
     }
   </div>
 
+  <!-- Reemplaza la línea (floorChanged)="pisoActual.set($event)" por esto: -->
+  @if (pisoActual()) {
+    <app-edificio-overlay
+      [isVisible]="mostrarOverlay()"
+      [floorData]="pisoActual()!"
+      [listaPisos]="edificioCompleto()"
+      [isFullscreen]="isFullscreen()"
+      (backPressed)="volverAtras()"
+      (toggleFullscreen)="toggleFullscreen()"
+      (floorChanged)="onFloorChanged($event)"
+      (apartmentSelected)="abrirDetalle($event)">
+    </app-edificio-overlay>
+  }
+
 <app-sidenav
   [isOpen]="isSidenavOpen()"
+  [enInicio]="estadoActual() === 'INICIO'"
   (closeSidenav)="isSidenavOpen.set(false)"
+  (inicioClicked)="onMenuInicio()"
   (galleryClicked)="galeriaAbierta.set(true)"
   (tourClicked)="tourAbierto.set(true)"
   (videosClicked)="videosAbiertos.set(true)">

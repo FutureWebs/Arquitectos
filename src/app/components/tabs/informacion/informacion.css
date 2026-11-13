@@ -28,7 +28,7 @@
 
 .info-edificio {
   font-size: 15px;
-  color: #94a3b8;
+  color: var(--color-text-muted);
   margin-bottom: 12px;
 }
 
@@ -38,20 +38,38 @@
 
 .badge {
   display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  background: rgba(16, 185, 129, 0.2); /* Verde esmeralda translúcido moderno */
-  color: #34d399;
-  border: 1px solid rgba(52, 211, 153, 0.3);
+  letter-spacing: var(--tracking-caps);
+  background: var(--color-gold-soft);
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-gold-line);
+}
+
+.badge--ok {
+  color: var(--color-ok);
+  background: var(--color-ok-surface);
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.badge--warn {
+  color: var(--color-warn);
+  background: var(--color-warn-surface);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.badge--bad {
+  color: var(--color-danger);
+  background: var(--color-danger-surface);
+  border-color: rgba(248, 113, 113, 0.3);
 }
 
 .info-tipologia {
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--color-text);
   font-weight: 500;
 }
 
@@ -99,9 +117,9 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 8px;
-  background: rgba(56, 189, 248, 0.15); /* Celeste brillante translúcido */
-  color: #38bdf8;
+  border-radius: var(--radius-sm);
+  background: var(--color-gold-soft);
+  color: var(--color-accent-icon);
   flex-shrink: 0;
 }
 

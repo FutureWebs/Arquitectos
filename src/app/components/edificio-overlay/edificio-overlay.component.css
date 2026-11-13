@@ -16,8 +16,8 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: center;         /* Centra verticalmente igual que el video */
+  justify-content: flex-start; /* Permite empezar el scroll desde la izquierda */
 }
 
 .overlay.visible {
@@ -29,35 +29,28 @@
   display: none;
 }
 
-/* --- CONTENEDOR ÚNICO (IMAGEN + SVG JUNTOS) --- */
 .canvas-container {
   position: relative;
-  /* Por defecto para computadoras: se adapta al ancho (100% de la pantalla) */
-  width: 100vw;
-  height: auto;
-  aspect-ratio: 1920 / 1080;
+  /* Toma el mayor valor para cubrir toda la pantalla SIN perder jamás la relación 1920x1080 */
+  width: max(100vw, calc(100vh * (1920 / 1080)));
+  height: max(100vh, calc(100vw * (1080 / 1920)));
   flex-shrink: 0;
-  margin: auto;
+  margin: 0;
 }
 
-@media (max-width: 1023px) {
+/* En PC (pantallas anchas), centramos horizontalmente si sobra ancho */
+@media (min-width: 1024px) {
   .overlay {
-    justify-content: flex-start; /* Vital para que exista espacio de scroll a ambos lados */
-  }
-
-  .canvas-container {
-    height: 100vh;
-    width: auto;
-    aspect-ratio: 1920 / 1080;
-    margin: 0;
-    flex-shrink: 0;
+    justify-content: center;
+    overflow-x: hidden; /* En PC no hace falta barra de scroll horizontal */
   }
 }
+
 /* Tanto la foto como el SVG ocupan exactamente el 100% de ese contenedor único */
 .bg-img {
   width: 100%;
   height: 100%;
-  object-fit: fill; /* Fuerza a que cubran exactamente las mismas dimensiones proporcionales */
+  object-fit: cover; /* Cambiado a cover para que escale exactamente igual que los videos de fondo */
   display: block;
 }
 
@@ -88,54 +81,32 @@
   cursor: not-allowed;
 }
 
-/* --- BADGES Y PÍLDORAS FLOTANTES --- */
+/* --- BADGES Y PÍLDORAS FLOTANTES (sistema glass + oro) --- */
 .apto-badge {
   cursor: pointer;
   pointer-events: auto;
   user-select: none;
-  transition: transform 0.2s ease;
+  transition: transform var(--duration-fast) var(--ease-out);
   -webkit-tap-highlight-color: transparent;
 }
 
 .badge-container-bg {
-  fill: rgba(255, 255, 255, 0.96);
+  fill: rgba(20, 24, 32, 0.88);
+  stroke: var(--color-gold-line);
   stroke-width: 1.5;
   transition: stroke 0.2s ease;
 }
 
-.apto-badge.disponible .status-dot { fill: #34d399; }
-.apto-badge.disponible .badge-container-bg { stroke: rgba(52, 211, 153, 0.5); }
-
-.apto-badge.reservado .status-dot { fill: #fbbf24; }
-.apto-badge.reservado .badge-container-bg { stroke: rgba(251, 191, 36, 0.5); }
-
-.apto-badge.vendido .status-dot { fill: #ef4444; }
-.apto-badge.vendido .badge-container-bg { stroke: rgba(239, 68, 68, 0.5); }
+.apto-badge.disponible .status-dot { fill: var(--color-available); }
+.apto-badge.reservado .status-dot { fill: var(--color-reserved); }
+.apto-badge.vendido .status-dot { fill: var(--color-unavailable); }
 
 .badge-text {
-  fill: #0f172a;
+  fill: var(--color-accent-text);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   font-family: var(--font-family, sans-serif);
-  letter-spacing: 0;
-}
-
-/* Mobile landscape (>=16:9): el plano llena el ancho (recorte mínimo de
-   calles arriba/abajo), queda centrado y los badges crecen para leerse */
-@media (max-width: 1023px) and (min-aspect-ratio: 16/9) {
-  .overlay {
-    justify-content: center;
-  }
-
-  .canvas-container {
-    width: 100vw;
-    height: auto;
-    margin: 0;
-  }
-
-  .badge-text {
-    font-size: 15px;
-  }
+  letter-spacing: 0.02em;
 }
 
 .status-dot {
@@ -150,19 +121,19 @@
   transform: translateY(-50%);
   max-height: 70vh;
   overflow-y: auto;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   padding: 8px;
   z-index: 100;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--glass-shadow);
   scrollbar-width: none;
   max-width: 48px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity var(--duration) var(--ease-out);
 }
 
 .floor-selector.visible {
@@ -183,31 +154,31 @@
 .floor-btn {
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: var(--color-text-muted);
   width: 32px;
   height: 32px;
   min-width: 32px;
-  border-radius: 10px;
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
   font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: background var(--duration-fast), color var(--duration-fast), transform var(--duration-fast) var(--ease-out);
   outline: none;
 }
 
 .floor-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  background: var(--color-gold-soft);
+  color: var(--color-text);
 }
 
 .floor-btn.active {
-  background: #38bdf8;
-  color: #0f172a;
-  font-weight: 700;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  background: var(--gradient-gold);
+  color: var(--color-on-gold);
+  font-weight: 600;
+  box-shadow: 0 0 12px var(--color-gold-glow);
 }
 
 @media (max-width: 767px) {
