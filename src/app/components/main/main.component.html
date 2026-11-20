@@ -9,7 +9,7 @@
 
   <img [src]="currentPoster()"
        class="poster-layer"
-       [class.hidden]="isVideoPlaying()"
+       [class.hidden]="posterOculto()"
        alt="" />
 
   <!-- Video de intro (inicial_web): primer plano de fondo en estado INICIO -->
@@ -116,6 +116,7 @@
       [floorData]="pisoActual()!"
       [listaPisos]="edificioCompleto()"
       [isFullscreen]="isFullscreen()"
+      [seleccionBloqueada]="introEnCurso()"
       (backPressed)="volverAtras()"
       (toggleFullscreen)="toggleFullscreen()"
       (floorChanged)="onFloorChanged($event)"

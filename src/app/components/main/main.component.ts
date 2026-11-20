@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, signal, computed, inject, ChangeDetectorRef, effect, HostListener } from '@angular/core';
+import { Component, ElementRef, ViewChild, signal, computed, inject, ChangeDetectorRef, effect, HostListener, untracked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 import { EdificioOverlay } from '../edificio-overlay/edificio-overlay.component';
@@ -45,6 +45,8 @@ export class MainComponent {
   isLoading = signal<boolean>(true);
   isVideoPlaying = signal<boolean>(false);
   isFullscreen = signal<boolean>(false);
+  /** El póster permanece visible (z-index) hasta que el video confirma frame compuesto */
+  posterOculto = signal<boolean>(false);
 
   // Obtenemos los pisos sincronizados desde el servicio (JSON + Firebase)
   edificioCompleto = this.buildingService.edificioPisos;
@@ -58,6 +60,9 @@ export class MainComponent {
   infoSeleccionada!: InfoDepto;
 
   mostrarOverlay = computed(() => this.estadoActual() === 'ADENTRO' && !this.isAnimating());
+
+  /** Intro de entrada al edificio: T2 → 1s → T. Mientras corre, el usuario no puede elegir piso. */
+  introEnCurso = signal<boolean>(false);
 
   // Contornos clickeables del edificio por perspectiva (coords en lienzo 1920x1080)
   private readonly contornosEdificio: Record<Perspectiva, { d: string; x: number; y: number }> = {
@@ -185,6 +190,43 @@ export class MainComponent {
       }
     });
 
+    // Intro al entrar al edificio: aterrizamos en T2, esperamos 1 segundo y
+    // cambiamos solo a T; recién ahí el usuario puede elegir piso
+    // (mientras corre la intro, los botones de piso están bloqueados).
+    effect((onCleanup) => {
+      if (!this.mostrarOverlay()) {
+        this.introEnCurso.set(false);
+        return;
+      }
+
+      // Lecturas sin tracking: si los pisos llegan después (Firestore), que no
+      // reinicie la secuencia y patée al usuario del piso que esté eligiendo.
+      const pisos = untracked(() => this.edificioCompleto());
+      const pisoT2 = pisos.find(f => f.nombre === 'T2');
+      const pisoT = pisos.find(f => f.nombre === 'T');
+      if (!pisoT2 || !pisoT) return; // sin T2/T no hay intro
+
+      // Fase 1: fijar T2 en el momento en que el overlay queda visible.
+      this.introEnCurso.set(true);
+      this.pisoActual.set({ ...pisoT2 });
+
+      // Fase 2: a los 1 segundo, pasar a T solo si seguimos dentro y nadie
+      // tocó el piso (el guard cubre salidas rápidas del overlay).
+      const timer = setTimeout(() => {
+        const dentro = untracked(() => this.mostrarOverlay());
+        const actual = untracked(() => this.pisoActual());
+        if (dentro && actual?.nombre === 'T2') {
+          this.pisoActual.set({ ...pisoT });
+        }
+        this.introEnCurso.set(false);
+      }, 1000);
+
+      onCleanup(() => {
+        clearTimeout(timer);
+        this.introEnCurso.set(false);
+      });
+    });
+
   }
 
   ngOnInit() {
@@ -224,6 +266,7 @@ export class MainComponent {
     if (this.videoQueue.length === 0) {
       this.isAnimating.set(false);
       this.isVideoPlaying.set(false);
+      this.posterOculto.set(false);
       this.pasoEnReproduccion = null;
       return;
     }
@@ -233,6 +276,8 @@ export class MainComponent {
     this.targetPosterForEnd = `${this.pathFotos}${paso.poster}`;
 
     this.isVideoPlaying.set(false);
+    this.posterOculto.set(false);
+    this.revealToken++; // invalida rVFC pendientes del paso anterior
     this.esperandoInicioVideo = true;
 
     // 1) Esperamos la foto de destino (máx. 2s) ANTES de arrancar el video.
@@ -284,26 +329,46 @@ export class MainComponent {
 
     const videoNode = this.videoElement.nativeElement;
 
-    // 1. Si estamos esperando el inicio del video, quitamos el póster al primer fotograma
+    // 1. Revelado: el video pasa a visible, pero el póster sigue ENCIMA
+    //    (z-index) hasta que el browser confirma con requestVideoFrameCallback
+    //    que un frame ya fue compuesto → jamás se ve el video en negro.
     if (this.esperandoInicioVideo && videoNode.currentTime > 0.05) {
       this.esperandoInicioVideo = false;
       this.isVideoPlaying.set(true);
+      this.revelarVideoCuandoPintado(videoNode);
       return;
     }
 
-    // 2. ANTICIPACIÓN AL FINAL: Si al video le quedan menos de 0.15 segundos para terminar,
-    // adelantamos la foto de cierre para que la transición sea totalmente invisible.
+    // 2. Puntero de la foto de destino: se cambia el src del <img> mientras
+    //    está oculto. El corte al final ocurre en onVideoEnded (sin
+    //    anticipación: el video se reproduce completo, sin perder continuidad).
     if (!this.esperandoInicioVideo && videoNode.duration && !videoNode.paused) {
       this.currentPoster.set(this.targetPosterForEnd);
-      const tiempoRestante = videoNode.duration - videoNode.currentTime;
-
-      if (tiempoRestante <= 0.15 && this.pasoEnReproduccion) {
-        // Fijamos la foto póster justo antes del corte
-
-        this.isVideoPlaying.set(false); // Oculta el video mostrando la foto abajo suavemente
-      }
     }
 
+  }
+
+  /**
+   * Mantiene el póster visible por encima del video recién revelado hasta que
+   * el browser confirma (requestVideoFrameCallback) que compuso un frame. Si el
+   * browser no lo soporta, retira el póster a los 150ms (sigue cubriendo el
+   * video mientras tanto).
+   */
+  private revelarVideoCuandoPintado(videoNode: HTMLVideoElement): void {
+    const token = ++this.revealToken;
+    const confirmar = () => {
+      if (token === this.revealToken) {
+        this.posterOculto.set(true);
+      }
+    };
+    const v = videoNode as HTMLVideoElement & {
+      requestVideoFrameCallback?: (cb: () => void) => number;
+    };
+    if (typeof v.requestVideoFrameCallback === 'function') {
+      v.requestVideoFrameCallback(confirmar);
+    } else {
+      setTimeout(confirmar, 150);
+    }
   }
   /*
   onVideoTimeUpdate() {
@@ -323,10 +388,12 @@ export class MainComponent {
 
   onVideoEnded() {
     if (this.pasoEnReproduccion) {
-      // ANTES de cambiar el estado, fijamos la foto póster actual para que
-      // tape el video justo en el fotograma final exacto.
+      // Corte final seco en el frame exacto: la foto de destino ya estaba
+      // cargada y apuntando desde el bloque 2, así que es un cambio de
+      // contenido casi imperceptible (el video termina en la misma escena).
       this.currentPoster.set(this.targetPosterForEnd);
-      this.isVideoPlaying.set(false); // Oculta el video instantáneamente mostrando la foto abajo
+      this.isVideoPlaying.set(false);
+      this.posterOculto.set(false);
       this.estadoActual.set(this.pasoEnReproduccion.targetState);
     }
 
@@ -441,6 +508,9 @@ export class MainComponent {
 
   // Método dedicado para manejar el cambio de piso seleccionado
   onFloorChanged(nuevoPiso: Floor) {
+    // Durante la intro de entrada (T2 → 1s → T) la elección de piso está
+    // bloqueada: recién después de aterrizar en T el usuario puede elegir.
+    if (this.introEnCurso()) return;
     this.pisoActual.set({ ...nuevoPiso });
     this.cdr.detectChanges(); // Forzamos la detección de cambios
   }
@@ -449,4 +519,5 @@ export class MainComponent {
   private esperandoInicioVideo = false;
   private videoQueue: VideoStep[] = [];
   private pasoEnReproduccion: VideoStep | null = null;
+  private revealToken = 0;
 }

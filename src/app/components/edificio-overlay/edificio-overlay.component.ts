@@ -14,6 +14,8 @@ export class EdificioOverlay {
   @Input({ required: true }) listaPisos: Floor[] = [];
   @Input() isVisible = false;
   @Input() isFullscreen = false;
+  /** Durante la intro de entrada (T2 → T) los botones de piso están inactivos */
+  @Input() seleccionBloqueada = false;
 
   @Output() backPressed = new EventEmitter<void>();
   @Output() toggleFullscreen = new EventEmitter<void>();

@@ -23,7 +23,20 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
 
+/* El póster permanece ENCIMA del video recién revelado (ver
+   revelarVideoCuandoPintado) hasta que el browser confirma que compuso un
+   frame: así jamás se pinta el video en negro y el cambio es un corte seco
+   de contenido casi idéntico (foto → video arrancando de la misma escena). */
+.poster-layer {
+  z-index: 1;
+}
+
+/* El video vive siempre en su propia capa de compositor; al no re-asignar la
+   capa en el momento del revelado, no hay frame negro. */
+.background-video {
+  transform: translateZ(0);
 }
 
 .poster-layer.hidden, .background-video.inactive {
