@@ -40,6 +40,7 @@
       <button
         class="floor-btn"
         [class.active]="piso.nivel === floorData.nivel"
+        [disabled]="seleccionBloqueada"
         (click)="floorChanged.emit(piso)">
         {{ piso.nombre }}
       </button>
