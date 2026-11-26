@@ -1,7 +1,7 @@
 <div class="overlay" [class.visible]="isVisible" #overlayContainer>
   <!-- Contenedor con ancho fijo idéntico al Canva (1920x1080) -->
-  <div class="canvas-container" >
-    <img [src]="floorData.planoFondoSvg" class="bg-img" alt="Plano del piso"  />
+  <div class="canvas-container">
+    <img [src]="floorData.planoFondoSvg" class="bg-img" alt="Plano del piso" />
 
     <svg class="interactive-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
 
@@ -30,6 +30,9 @@
         }
       }
     </svg>
+
+    <!-- Velado blanco sutil al cambiar de piso -->
+    <div class="floor-flash" [class.active]="isFloorFlashing()"></div>
   </div>
 </div>
 
